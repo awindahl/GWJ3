@@ -23,6 +23,17 @@ environment = SubResource( 1 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 8.41548, 11.431, -16.6022 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.6076, 5.37168, -20.7886 )
-mass = 3.0
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -45.0346, 5.37168, -11.8036 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -45.0346, 5.37168, -53.8331 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 4.28833, 5.37168, -53.8331 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 4.28833, 5.37168, 17.1016 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 22.6945, 5.37168, 52.1077 )
 

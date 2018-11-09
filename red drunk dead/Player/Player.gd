@@ -47,16 +47,19 @@ const STAIRJUMP = 6
 func _ready():
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 #warning-ignore:unused_argument
 func _process(delta):
 	# Where the Player is Looking
 	var dir = $Yaw/Camera/LookAt.get_global_transform().origin - $Yaw/Camera.get_global_transform().origin.normalized()
 	LookVector = dir
+
 func _physics_process(delta):
 	# TODO - check if on ladder
 	_process_movement(delta)
+
+# Self Exlpanatory
 func _apply_gravity(delta):
-	# Self Exlpanatory
 	Velocity.y += delta * Gravity
 
 # Payoff
