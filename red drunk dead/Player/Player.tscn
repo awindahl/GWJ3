@@ -22,7 +22,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01944, 0 )
 [node name="Camera" type="Camera" parent="Yaw"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195593, -0.705511, 0.0455761 )
 current = true
-fov = 90.0
 far = 2048.0
 
 [node name="LookAt" type="Position3D" parent="Yaw/Camera"]

@@ -66,8 +66,8 @@ func _process_movement(delta):
 	var Down = Input.is_action_pressed("ui_down")
 	var Left = Input.is_action_pressed("ui_left")
 	var Right = Input.is_action_pressed("ui_right")
-	var Jump = Input.is_action_pressed("jump")
-	var Sprint = Input.is_action_pressed("sprint")
+	var Jump = Input.is_action_pressed("Jump")
+	var Sprint = Input.is_action_pressed("Sprint")
 	var Aim = $Yaw/Camera.get_camera_transform().basis
 	
 	Direction = Vector3()
@@ -156,5 +156,3 @@ func _unhandled_input(event):
 		Pitch = max(min(Pitch - event.relative.y * ViewSensitivity, 89), -89)
 		$Yaw.rotation = Vector3(0, deg2rad(Yaw), 0)
 		$Yaw/Camera.rotation = Vector3(deg2rad(Pitch), 0, 0)
-
-
