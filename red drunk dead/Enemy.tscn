@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -29,6 +30,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1.3, 0, 1, -5.68248e-008, 0, 
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="KnockTimer" type="Timer" parent="."]
@@ -36,5 +38,16 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
+[node name="GunCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 2.36468, 0 )
+cast_to = Vector3( 0, -200, 0 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Forward" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57836, -2.70873 )
+texture = ExtResource( 2 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="KnockTimer" to="." method="_on_KnockTimer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
