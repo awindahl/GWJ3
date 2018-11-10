@@ -167,6 +167,7 @@ func _shoot():
 	#should only be called once
 	if Input.is_action_just_pressed("shoot") && CanFire:
 		Input.action_release("shoot")
+		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
 		$Yaw/Camera/GunCheck.force_raycast_update()
 		CanFire = false
 		$GunCoolDown.start()

@@ -2,6 +2,7 @@ extends KinematicBody
 
 # Physics
 var Gravity = -70
+var Health = 40
 var Direction = Vector3()
 var WalkSpeed = 15
 var MoveSpeed = WalkSpeed
@@ -43,13 +44,18 @@ func _process(delta):
 	else:
 		Velocity = move_and_slide(direction_vect, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	
+	if Health <= 0:
+		#remove this later
+		queue_free()
+	
 func _on_Timer_timeout():
 	randomize()
 	Direction.x = randi() % 3 - 1
 	Direction.z = randi() % 3 - 1
 
 func bullet_hit(damage, bullet_global_transform):
-	print("true")
+	
+	Health -= damage
 	CanMove = false
 	$KnockTimer.start()
 	
