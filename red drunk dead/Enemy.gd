@@ -42,7 +42,6 @@ func _process(delta):
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	else:
 		Velocity = move_and_slide(direction_vect, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-		print(Velocity)
 	
 func _on_Timer_timeout():
 	randomize()
@@ -50,7 +49,9 @@ func _on_Timer_timeout():
 	Direction.z = randi() % 3 - 1
 
 func bullet_hit(damage, bullet_global_transform):
+	print("true")
 	CanMove = false
+	$KnockTimer.start()
 	
 	direction_vect = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	direction_vect.y = 3

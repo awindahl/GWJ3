@@ -59,7 +59,7 @@ func _process(delta):
 func _physics_process(delta):
 	# TODO - check if on ladder
 	_process_movement(delta)
-	_shoot(delta)
+	_shoot()
 
 # Self Exlpanatory
 func _apply_gravity(delta):
@@ -163,14 +163,13 @@ func _unhandled_input(event):
 		$Yaw.rotation = Vector3(0, deg2rad(Yaw), 0)
 		$Yaw/Camera.rotation = Vector3(deg2rad(Pitch), 0, 0)
 
-func _shoot(delta):
+func _shoot():
 	#should only be called once
 	if Input.is_action_just_pressed("shoot") && CanFire:
 		Input.action_release("shoot")
 		$Yaw/Camera/GunCheck.force_raycast_update()
 		CanFire = false
 		$GunCoolDown.start()
-		print("I can't fire")
 		
 		if $Yaw/Camera/GunCheck.is_colliding():
 			var body = $Yaw/Camera/GunCheck.get_collider()
@@ -184,4 +183,3 @@ func _shoot(delta):
 
 func _on_GunCoolDown_timeout():
 	CanFire = true
-	print("I can fire")
