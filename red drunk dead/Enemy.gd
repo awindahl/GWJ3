@@ -9,7 +9,9 @@ const MAXSLOPEANGLE = 60
 var Velocity = Vector3()
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
-const BASE_BULLET_BOOST = 9
+const BASE_BULLET_BOOST = 18
+var CanMove = true
+var direction_vect
 
 # Self Exlpanatory
 func _apply_gravity(delta):
@@ -26,26 +28,32 @@ func _process(delta):
 	hVel.y = 0
 	var Target = Direction * MoveSpeed
 	var Acceleration
-	if Direction.dot(hVel) > 0:
-		Acceleration = ACCELERATION
+	
+	if CanMove:
+		if Direction.dot(hVel) > 0:
+			Acceleration = ACCELERATION
+		else:
+			Acceleration = DECELERATION
+		hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
+		Velocity.x = hVel.x
+		Velocity.z = hVel.z
+	
+	if CanMove:
+		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	else:
-		Acceleration = DECELERATION
+		Velocity = move_and_slide(direction_vect, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
+		print(Velocity)
 	
-	hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
-	Velocity.x = hVel.x
-	Velocity.z = hVel.z
-	
-	Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-	
-
 func _on_Timer_timeout():
 	randomize()
 	Direction.x = randi() % 3 - 1
 	Direction.z = randi() % 3 - 1
 
 func bullet_hit(damage, bullet_global_transform):
-	print(self.name, "I've been hit!")
+	CanMove = false
 	
-	var direction_vect = bullet_global_transform.basis.z.normalized() * BASE_BULLET_BOOST
+	direction_vect = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
+	direction_vect.y = 3
 	
-	#move_and_slide((bullet_global_transform - global_transform.origin).normalized(), direction_vect * damage)
+func _on_KnockTimer_timeout():
+	CanMove = true
