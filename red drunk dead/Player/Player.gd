@@ -5,6 +5,7 @@ const IDLE = 0
 const WALK = 1
 const SPRINT = 2
 
+var CanFire = true
 var DAMAGE = 20
 var MovementState = IDLE
 var LastFloorHeight
@@ -33,7 +34,7 @@ var Gravity = -70
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
 const MAXSLOPEANGLE = 60
-const JUMP = 15
+const JUMP = 30
 
 # Ladder - TODO
 var OnLadder = false
@@ -162,8 +163,11 @@ func _unhandled_input(event):
 		$Yaw.rotation = Vector3(0, deg2rad(Yaw), 0)
 		$Yaw/Camera.rotation = Vector3(deg2rad(Pitch), 0, 0)
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && CanFire:
 		$Yaw/Camera/GunCheck.force_raycast_update()
+		CanFire = false
+		$GunCoolDown.start()
+		print("I can't fire")
 		
 		if $Yaw/Camera/GunCheck.is_colliding():
 			var body = $Yaw/Camera/GunCheck.get_collider()
@@ -174,3 +178,7 @@ func _unhandled_input(event):
 			elif body.has_method("bullet_hit"):
 				body.bullet_hit(DAMAGE, $Yaw/Camera/GunCheck.global_transform)
 				
+
+func _on_GunCoolDown_timeout():
+	CanFire = true
+	print("I can fire")
