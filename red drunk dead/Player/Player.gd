@@ -4,12 +4,16 @@ extends KinematicBody
 const IDLE = 0
 const WALK = 1
 const SPRINT = 2
+const BASE_BULLET_BOOST = 25
 
+var Health = 40
 var CanFire = true
+var CanMove = true
 var DAMAGE = 20
 var MovementState = IDLE
 var LastFloorHeight
 var CanChangeLastFloorHeight = true
+var DirectionVector
 
 const STAND = 0
 const CROUCH = 1
@@ -150,7 +154,10 @@ func _process_movement(delta):
 	Velocity.x = hVel.x
 	Velocity.z = hVel.z
 	
-	Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
+	if CanMove:
+		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
+	else:
+		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 
 # func _process_on_ladder(delta)
 #	pass
@@ -181,6 +188,17 @@ func _shoot():
 			elif body.has_method("bullet_hit"):
 				body.bullet_hit(DAMAGE, $Yaw/Camera/GunCheck.global_transform)
 
-
 func _on_GunCoolDown_timeout():
 	CanFire = true
+
+func bullet_hit(damage, bullet_global_transform):
+	Health -= damage
+	CanMove = false
+	$MoveTimer.start()
+	
+	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
+	DirectionVector.y = 3
+	print("i took damage")
+
+func _on_MoveTimer_timeout():
+	CanMove = true

@@ -52,4 +52,9 @@ one_shot = true
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.86804, 0 )
 shape = SubResource( 1 )
 
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]

@@ -12,7 +12,7 @@ const ACCELERATION = 0.5
 const DECELERATION = 0.5
 const BASE_BULLET_BOOST = 18
 var CanMove = true
-var direction_vect
+var DirectionVector
 var CanFire = true
 var DAMAGE = 20
 
@@ -23,6 +23,7 @@ func _apply_gravity(delta):
 func _process(delta):
 	
 	_apply_gravity(delta)
+	_shoot()
 
 	Direction.y = 0
 	Direction = Direction.normalized()
@@ -43,10 +44,8 @@ func _process(delta):
 	
 	if CanMove:
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-		
-		
 	else:
-		Velocity = move_and_slide(direction_vect, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
+		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	
 	if Health <= 0:
 		#remove this later
@@ -80,16 +79,16 @@ func bullet_hit(damage, bullet_global_transform):
 	CanMove = false
 	$KnockTimer.start()
 	
-	direction_vect = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
-	direction_vect.y = 3
+	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
+	DirectionVector.y = 3
 	
 func _on_KnockTimer_timeout():
 	CanMove = true
 	
 func _shoot():
+	$GunCast.force_raycast_update()
 	#should only be called once
 	if CanFire:
-		$GunCast.force_raycast_update()
 		CanFire = false
 		$ShootTimer.start()
 		
