@@ -9,6 +9,7 @@ const MAXSLOPEANGLE = 60
 var Velocity = Vector3()
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
+const BASE_BULLET_BOOST = 9
 
 # Self Exlpanatory
 func _apply_gravity(delta):
@@ -41,4 +42,10 @@ func _on_Timer_timeout():
 	randomize()
 	Direction.x = randi() % 3 - 1
 	Direction.z = randi() % 3 - 1
-	print (Direction)
+
+func bullet_hit(damage, bullet_global_transform):
+	print(self.name, "I've been hit!")
+	
+	var direction_vect = bullet_global_transform.basis.z.normalized() * BASE_BULLET_BOOST
+	
+	#move_and_slide((bullet_global_transform - global_transform.origin).normalized(), direction_vect * damage)

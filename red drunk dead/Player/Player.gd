@@ -5,6 +5,7 @@ const IDLE = 0
 const WALK = 1
 const SPRINT = 2
 
+var DAMAGE = 20
 var MovementState = IDLE
 var LastFloorHeight
 var CanChangeLastFloorHeight = true
@@ -148,6 +149,7 @@ func _process_movement(delta):
 	Velocity.z = hVel.z
 	
 	Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
+	
 
 # func _process_on_ladder(delta)
 #	pass
@@ -159,3 +161,16 @@ func _unhandled_input(event):
 		Pitch = max(min(Pitch - event.relative.y * ViewSensitivity, 89), -89)
 		$Yaw.rotation = Vector3(0, deg2rad(Yaw), 0)
 		$Yaw/Camera.rotation = Vector3(deg2rad(Pitch), 0, 0)
+	
+	if Input.is_action_just_pressed("shoot"):
+		$Yaw/Camera/GunCheck.force_raycast_update()
+		
+		if $Yaw/Camera/GunCheck.is_colliding():
+			var body = $Yaw/Camera/GunCheck.get_collider()
+			
+			if body == null:
+				pass
+			
+			elif body.has_method("bullet_hit"):
+				body.bullet_hit(DAMAGE, $Yaw/Camera/GunCheck.global_transform)
+				
