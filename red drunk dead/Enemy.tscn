@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 
+radius = 3.0
+mid_height = 2.0
 
 [sub_resource type="SpatialMaterial" id=2]
 
@@ -16,6 +18,12 @@ roughness = 0.1
 
 [sub_resource type="CapsuleShape" id=3]
 
+radius = 3.0
+height = 2.0
+
+[sub_resource type="BoxShape" id=4]
+
+extents = Vector3( 15, 26, 8 )
 
 [node name="Enemy" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -40,14 +48,23 @@ autostart = true
 
 [node name="GunCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 2.36468, 0 )
-cast_to = Vector3( 0, -200, 0 )
+cast_to = Vector3( 0, 51.84, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="Forward" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57836, -2.70873 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.57836, 5.02075 )
 texture = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.233 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 24.99 )
+shape = SubResource( 4 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="KnockTimer" to="." method="_on_KnockTimer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

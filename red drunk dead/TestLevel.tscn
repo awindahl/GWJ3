@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Town.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -25,20 +25,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59176, -18.1463, -4.28161 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -45.0346, 1.57215, -11.8036 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00697231, -9.10564, -0.00132084 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -45.0346, 1.57215, -25.8824 )
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.4464, -9.93732, 0 )
 
-[node name="Enemy3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -27.4519, 1.57215, -11.8036 )
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.668455, 0, -0.743752, 0, 1, 0, 0.743752, 0, -0.668455, -31.4327, -9.93732, 36.0158 )
 
-[node name="Enemy4" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -45.0346, 1.57215, -42.8396 )
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.991887, 0, 0.127125, 0, 1, 0, -0.127125, 0, -0.991887, 9.12764, -9.93732, 22.3962 )
 
-[node name="Enemy5" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -45.0346, 1.57215, 16.9206 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.991887, 0, 0.127125, 0, 1, 0, -0.127125, 0, -0.991887, -65.9496, -9.93732, 52.8556 )
 

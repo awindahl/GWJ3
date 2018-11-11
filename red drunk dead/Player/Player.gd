@@ -5,6 +5,7 @@ const IDLE = 0
 const WALK = 1
 const SPRINT = 2
 const BASE_BULLET_BOOST = 25
+const TYPE = "PLAYER"
 
 var Health = 40
 var CanFire = true
@@ -158,7 +159,9 @@ func _process_movement(delta):
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	else:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-
+	
+	#print(self.translation)
+	
 # func _process_on_ladder(delta)
 #	pass
 
@@ -196,7 +199,7 @@ func bullet_hit(damage, bullet_global_transform):
 	CanMove = false
 	$MoveTimer.start()
 	
-	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
+	DirectionVector = bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	DirectionVector.y = 3
 	print("i took damage")
 
