@@ -57,6 +57,11 @@ func _process(delta):
 	
 	if BodyPos:
 		
+		var DirectSpace = get_world().direct_space_state
+		var Result = DirectSpace.intersect_ray(translation, BodyPos.translation, [self,StaticBody], collision_mask)
+	
+		print(Result.size())
+		
 		var value = 0.05
 		value += delta
 		var LookDir = (BodyPos.translation - translation) * -1
@@ -70,9 +75,24 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	randomize()
-#	Direction.x = randi() % 3 - 1
-#	Direction.z = randi() % 3 - 1
-#
+	Direction.x = randi() % 3 - 1
+	Direction.z = randi() % 3 - 1
+	if Direction.x == 0 && Direction.z == -1:
+		rotation_degrees.y = 180
+	elif Direction.x == 1 && Direction.z == 0:
+		rotation_degrees.y = 90
+	elif Direction.x == 0 && Direction.z == 1:
+		rotation_degrees.y = 0
+	elif Direction.x == -1 && Direction.z == 0:
+		rotation_degrees.y = -90
+	elif Direction.x == 1 && Direction.z == 1:
+		rotation_degrees.y = 45
+	elif Direction.x == -1 && Direction.z == 1:
+		rotation_degrees.y = -45
+	elif Direction.x == -1 && Direction.z == -1:
+		rotation_degrees.y = -135
+	elif Direction.x == 1 && Direction.z == -1:
+		rotation_degrees.y = 135
 
 func bullet_hit(damage, bullet_global_transform):
 	Health -= damage
@@ -102,20 +122,20 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
-				print("im shooting")
+				BodyPos = null
+				$Timer.start()
 
 func _on_ShootTimer_timeout():
 	CanFire = true
 
 func _on_Area_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
-		var SpaceState = get_world().direct_space_state
-		var Result = SpaceState.intersect_ray(translation, body.translation, [self], collision_mask)
-		print (Result.size())
+		$Timer.stop()
 		BodyPos = body
 		return
 
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
+		$Timer.start()
 		BodyPos = null
 		rotation_degrees.x = 0
