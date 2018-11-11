@@ -17,6 +17,7 @@ var CanFire = true
 var DAMAGE = 20
 var BodyPos
 var BeenShot = false
+var InTheZone = true
 
 const TYPE = "ENEMY"
 
@@ -46,11 +47,12 @@ func _process(delta):
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
 	
-	if CanMove:
+	if CanMove && InTheZone:
 		if is_on_wall():
 			Direction.x *= -1
 			Direction.z *= -1
 			print(Direction)
+		
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
@@ -131,9 +133,15 @@ func _on_Area_body_entered(body):
 		$Timer.stop()
 		BodyPos = body
 		return
-
+	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
 		$Timer.start()
 		BodyPos = null
 		rotation_degrees.x = 0
+
+
+func _on_Spawner_body_exited(body):
+	if body.get("TYPE") == "ENEMY":
+		print("left zone, returning")
+		Direction *= -1
