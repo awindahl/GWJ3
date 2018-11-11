@@ -47,6 +47,10 @@ func _process(delta):
 		Velocity.z = hVel.z
 	
 	if CanMove:
+		if is_on_wall():
+			Direction.x *= -1
+			Direction.z *= -1
+			print(Direction)
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
