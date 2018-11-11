@@ -56,12 +56,6 @@ func _process(delta):
 		queue_free()
 	
 	if BodyPos:
-		
-		var DirectSpace = get_world().direct_space_state
-		var Result = DirectSpace.intersect_ray(translation, BodyPos.translation, [self,StaticBody], collision_mask)
-	
-		print(Result.size())
-		
 		var value = 0.05
 		value += delta
 		var LookDir = (BodyPos.translation - translation) * -1

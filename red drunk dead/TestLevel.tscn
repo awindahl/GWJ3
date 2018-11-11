@@ -1,33 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Town.tscn" type="PackedScene" id=1]
+[ext_resource path="res://town/PrototypeTown.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
-
-[sub_resource type="ProceduralSky" id=1]
-
-
-[sub_resource type="Environment" id=2]
-
-background_mode = 2
-background_sky = SubResource( 1 )
-ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.57
-fog_color = Color( 0.4, 0.415686, 0.266667, 1 )
-tonemap_mode = 3
 
 [node name="TestLevel" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.4195, 0 )
 
-[node name="Scene Root" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59176, -18.1463, -4.28161 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+[node name="PrototypeTown" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00697231, -9.10564, -0.00132084 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00697231, 2.25575, 5.15247 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.4464, -9.93732, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0591, 5.48032, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.48217, 0.876078, 0, -0.876078, 0.48217, 0, 0, 0 )
+shadow_enabled = true
 
