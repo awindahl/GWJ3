@@ -2,7 +2,7 @@ extends KinematicBody
 
 # Physics
 var Gravity = -70
-var Health = 400
+export var Health = 50
 var Direction = Vector3()
 var WalkSpeed = 10
 var MoveSpeed = WalkSpeed
@@ -14,7 +14,7 @@ const BASE_BULLET_BOOST = 40
 var CanMove = true
 var DirectionVector
 var CanFire = true
-var DAMAGE = 20
+export var DAMAGE = 20
 var BodyPos
 var BeenShot = false
 var InTheZone = true
@@ -113,7 +113,6 @@ func _on_Timer_timeout():
 			pass
 		else:
 			rotation_degrees.y = rot(TempDir)
-			print(rotation_degrees.y)
 	else:
 		pass
 
@@ -175,7 +174,6 @@ func _on_Area_body_entered(body):
 	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
-		print("aoao")
 		CanMove = true
 		$Timer.start()
 		BodyPos = null
@@ -194,8 +192,6 @@ func _on_Area_body_exited(body):
 func _on_Spawner_body_exited(body):
 	$ExitTimer.start(2)
 	if body.get("TYPE") == "ENEMY":
-		print("left zone, returning")
-		
 		var TempDir = Direction
 		Direction *= -1
 		TempDir.y = 0
