@@ -7,7 +7,7 @@ const SPRINT = 2
 const BASE_BULLET_BOOST = 25
 const TYPE = "PLAYER"
 
-var Health = 40
+var Health = 100
 var CanFire = true
 var CanMove = true
 var BeenShot = false
@@ -18,6 +18,7 @@ var CanChangeLastFloorHeight = true
 var DirectionVector
 var Status = ["SOBER", "DRINK1", "DRINK2"]
 var CurrentStatus = Status[0]
+var Ammo = 5
 
 const STAND = 0
 const CROUCH = 1
@@ -29,6 +30,7 @@ var WalkSpeed = 15
 var SprintSpeed = 25
 var MoveSpeed = WalkSpeed
 var Velocity = Vector3()
+var IsShooting = false
 
 # Mouse
 var Yaw = 0
@@ -180,6 +182,19 @@ func _process_movement(delta):
 	Velocity.x = hVel.x
 	Velocity.z = hVel.z
 	
+	$Hud/Ammo.text = var2str(Ammo) + "/5"
+	
+	$Hud/Health.text = "+ " + var2str(Health)
+	
+	#here be game over
+	if Health <= 0:
+		print("game over")
+		queue_free()
+	
+	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < 5 && !IsShooting:
+		$ReloadTimer.start()
+		$Yaw/Camera/revolver/AnimationPlayer.play("reload")
+	
 	if CanMove:
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	elif BeenShot:
@@ -195,8 +210,10 @@ func _unhandled_input(event):
 
 func _shoot():
 	#should only be called once
-	if Input.is_action_just_pressed("shoot") && CanFire:
+	if Input.is_action_just_pressed("shoot") && CanFire && Ammo && $ReloadTimer.time_left == 0:
+		IsShooting = true
 		Input.action_release("shoot")
+		Ammo -= 1
 		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
 		$Yaw/Camera/GunCheck.force_raycast_update()
 		CanFire = false
@@ -213,6 +230,7 @@ func _shoot():
 
 func _on_GunCoolDown_timeout():
 	CanFire = true
+	IsShooting = false
 
 func bullet_hit(damage, bullet_global_transform):
 	Health -= damage
@@ -226,3 +244,8 @@ func bullet_hit(damage, bullet_global_transform):
 func _on_MoveTimer_timeout():
 	CanMove = true
 	BeenShot = false
+
+
+func _on_ReloadTimer_timeout():
+	Ammo = 5
+	return

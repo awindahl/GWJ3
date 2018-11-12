@@ -122,7 +122,6 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
-				BodyPos = null
 				$Timer.start()
 
 func _on_ShootTimer_timeout():
@@ -140,8 +139,9 @@ func _on_Area_body_exited(body):
 		BodyPos = null
 		rotation_degrees.x = 0
 
-
 func _on_Spawner_body_exited(body):
 	if body.get("TYPE") == "ENEMY":
 		print("left zone, returning")
 		Direction *= -1
+		rotation_degrees.y *= -1
+		
