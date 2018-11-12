@@ -23,7 +23,7 @@ height = 2.0
 
 [sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 15, 26, 8 )
+extents = Vector3( 25, 26, 8 )
 
 [node name="Enemy" type="KinematicBody"]
 script = ExtResource( 1 )

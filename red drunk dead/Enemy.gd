@@ -62,7 +62,7 @@ func _process(delta):
 		queue_free()
 	
 	if BodyPos:
-		var value = 0.05
+		var value = 0.2
 		value += delta
 		var LookDir = (BodyPos.translation - translation) * -1
 		var RotTrans = get_transform().looking_at(get_transform().origin + LookDir, Vector3 (0,1,0))

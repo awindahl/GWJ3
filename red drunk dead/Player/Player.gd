@@ -15,6 +15,8 @@ var MovementState = IDLE
 var LastFloorHeight
 var CanChangeLastFloorHeight = true
 var DirectionVector
+var Status = ["SOBER", "DRINK1", "DRINK2"]
+var CurrentStatus = Status[0]
 
 const STAND = 0
 const CROUCH = 1
@@ -50,6 +52,8 @@ const LADDERACCELERATION = 2
 const MAXSTAIRSLOPE = 20
 const STAIRJUMP = 6
 
+var temp = true
+
 # Setup
 func _ready():
 	# Get the mouse
@@ -65,6 +69,26 @@ func _physics_process(delta):
 	# TODO - check if on ladder
 	_process_movement(delta)
 	_shoot()
+	
+	if Input.is_action_just_pressed("1"):
+		CurrentStatus = Status[0]
+	if Input.is_action_just_pressed("2"):
+		CurrentStatus = Status[1]
+	if Input.is_action_just_pressed("3"):
+		CurrentStatus = Status[2]
+	
+	if CurrentStatus != "SOBER":
+		WalkSpeed = 50
+		SprintSpeed = 75
+		
+		var RandomMovement = Vector3(1, 0, 1)
+		
+		Velocity = move_and_slide(RandomMovement, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))	
+		if temp:
+			$AnimationPlayer.play("Shake")
+			temp = false
+	else:
+		$AnimationPlayer.stop()
 
 # Self Exlpanatory
 func _apply_gravity(delta):
