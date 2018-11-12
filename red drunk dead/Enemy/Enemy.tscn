@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -23,7 +23,11 @@ height = 2.0
 
 [sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 25, 48, 8 )
+extents = Vector3( 28, 48, 30 )
+
+[sub_resource type="BoxShape" id=5]
+
+extents = Vector3( 90, 90, 64 )
 
 [node name="Enemy" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -62,6 +66,13 @@ texture = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 46.0534 )
 shape = SubResource( 4 )
 
+[node name="Hindsight" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Hindsight"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+shape = SubResource( 5 )
+disabled = true
+
 [node name="ExitTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -71,4 +82,6 @@ one_shot = true
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Hindsight" to="." method="_on_Hindsight_body_entered"]
+[connection signal="body_exited" from="Hindsight" to="." method="_on_Hindsight_body_exited"]
 [connection signal="timeout" from="ExitTimer" to="." method="_on_ExitTimer_timeout"]

@@ -58,6 +58,7 @@ const STAIRJUMP = 6
 
 var temp = true
 var RandomMovement
+var FrameVar = 0
 
 # Setup
 func _ready():
@@ -77,15 +78,17 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("1"):
 		Drunkeness = 0
-	if Input.is_action_just_pressed("2") && Drunkeness <= 50:
+	if Input.is_action_just_pressed("2") && Drunkeness < 50:
 		Drunkeness += 10
 		temp = true
 	
 	if Drunkeness > 0.1:
-		Drunkeness -= 0.01
+		if FrameVar > 100:
+			Drunkeness -= 0.1
+			FrameVar = 0
 		CurrentStatus = "DRUNK"
-		WalkSpeed = 15 + (Drunkeness/2)
-		SprintSpeed = 25 + (Drunkeness/2)
+		WalkSpeed = 15 + (Drunkeness/3)
+		SprintSpeed = 25 + (Drunkeness/3)
 		RandomMovement = Vector3(1, 0, 1)
 		
 		if temp:
@@ -188,10 +191,10 @@ func _process_movement(delta):
 	
 	$Hud/Ammo.text = var2str(Ammo) + "/5"
 	if Drunkeness > 0.1:
-		$Hud/Drunk.text = var2str(Drunkeness) 
+		$Hud/Drunk.text = var2str(Drunkeness) + "‰"
 	else:
-		$Hud/Drunk.text = "0.00"
-	$Hud/Health.text = "+ " + var2str(Health)
+		$Hud/Drunk.text = "0.0‰"
+	$Hud/Health.text = "+" + var2str(Health)
 	
 	#here be game over
 	if Health <= 0:
@@ -206,7 +209,9 @@ func _process_movement(delta):
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-
+	
+	FrameVar += 1
+	
 # Camera Movements
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

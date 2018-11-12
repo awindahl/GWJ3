@@ -101,26 +101,29 @@ func _process(delta):
 		set_transform(Transform(ThisRot, translation))
 
 func _on_Timer_timeout():
-	randomize()
-	Direction.x = randi() % 3 - 1
-	Direction.z = randi() % 3 - 1
-	var TempDir = Direction
-	TempDir.x = ceil(Direction.x)
-	TempDir.z = ceil(Direction.z)
-	
-
-	if Direction.z == 0 && Direction.x == 0:
-		pass
+	if CanMove:
+		randomize()
+		Direction.x = randi() % 3 - 1
+		Direction.z = randi() % 3 - 1
+		var TempDir = Direction
+		TempDir.x = ceil(Direction.x)
+		TempDir.z = ceil(Direction.z)
+		
+		if Direction.z == 0 && Direction.x == 0:
+			pass
+		else:
+			rotation_degrees.y = rot(TempDir)
+			print(rotation_degrees.y)
 	else:
-		rotation_degrees.y = rot(TempDir)
-		print(rotation_degrees.y)
-	
+		pass
+
 	
 func bullet_hit(damage, bullet_global_transform):
 	Health -= damage
 	CanMove = false
 	BeenShot = true
 	$KnockTimer.start()
+	$Timer.stop()
 	
 	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	DirectionVector.y = 3
@@ -128,18 +131,19 @@ func bullet_hit(damage, bullet_global_transform):
 	TempDir.y = 0
 	TempDir.x = ceil(TempDir.x)
 	TempDir.z = ceil(TempDir.z)
-
-
+	
 	if TempDir.x == 0 && TempDir.z == 0:
 		pass
 	elif BeenShot && !BodyPos:
-		print(TempDir)
-		TempDir *= -1
-		rotation_degrees.y = rot(TempDir) 
-	
+		
+		$Hindsight/CollisionShape.disabled = false
+		
+
 func _on_KnockTimer_timeout():
-	CanMove = true
+	if !BodyPos:
+		CanMove = true
 	BeenShot = false
+	$Timer.start()
 	
 func _shoot():
 	$GunCast.force_raycast_update()
@@ -163,12 +167,16 @@ func _on_ShootTimer_timeout():
 
 func _on_Area_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
+		CanMove = false
+		$Hindsight/CollisionShape.disabled = true
 		$Timer.stop()
 		BodyPos = body
 		return
 	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
+		print("aoao")
+		CanMove = true
 		$Timer.start()
 		BodyPos = null
 		rotation_degrees.x = 0
@@ -203,3 +211,14 @@ func _on_Spawner_body_exited(body):
 
 func _on_ExitTimer_timeout():
 	$Timer.start(2)
+
+func _on_Hindsight_body_entered(body):
+	if body.get("TYPE") == "PLAYER":
+		CanMove = false
+		$Timer.stop()
+		BodyPos = body
+		return
+
+func _on_Hindsight_body_exited(body):
+	if body.get("TYPE") == "PLAYER":
+		pass
