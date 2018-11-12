@@ -2,7 +2,7 @@ extends KinematicBody
 
 # Physics
 var Gravity = -70
-var Health = 40
+var Health = 400
 var Direction = Vector3()
 var WalkSpeed = 10
 var MoveSpeed = WalkSpeed
@@ -20,6 +20,25 @@ var BeenShot = false
 var InTheZone = true
 
 const TYPE = "ENEMY"
+
+func rot(DirVect):
+	
+	if DirVect.x == 0 && DirVect.z == -1:
+		return 180
+	elif DirVect.x == 1 && DirVect.z == 0:
+		return 90
+	elif DirVect.x == 0 && DirVect.z == 1:
+		return 0
+	elif DirVect.x == -1 && DirVect.z == 0:
+		return -90
+	elif DirVect.x == 1 && DirVect.z == 1:
+		return 45
+	elif DirVect.x == -1 && DirVect.z == 1:
+		return -45
+	elif DirVect.x == -1 && DirVect.z == -1:
+		return -135
+	elif DirVect.x == 1 && DirVect.z == -1:
+		return 135
 
 # Self Exlpanatory
 func _apply_gravity(delta):
@@ -48,10 +67,18 @@ func _process(delta):
 		Velocity.z = hVel.z
 	
 	if CanMove && InTheZone:
-		if is_on_wall():
-			Direction.x *= -1
-			Direction.z *= -1
-			print(Direction)
+		if is_on_wall() && !BodyPos:
+			var TempDir = Direction
+			Direction *= -1
+			TempDir.y = 0
+			TempDir.x = ceil(TempDir.x)
+			TempDir.z = ceil(TempDir.z)
+			
+			if TempDir.x == 0 && TempDir.z == 0:
+				pass
+			else:
+				TempDir *= -1
+				rotation_degrees.y = rot(TempDir) 
 		
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	elif BeenShot:
@@ -77,23 +104,18 @@ func _on_Timer_timeout():
 	randomize()
 	Direction.x = randi() % 3 - 1
 	Direction.z = randi() % 3 - 1
-	if Direction.x == 0 && Direction.z == -1:
-		rotation_degrees.y = 180
-	elif Direction.x == 1 && Direction.z == 0:
-		rotation_degrees.y = 90
-	elif Direction.x == 0 && Direction.z == 1:
-		rotation_degrees.y = 0
-	elif Direction.x == -1 && Direction.z == 0:
-		rotation_degrees.y = -90
-	elif Direction.x == 1 && Direction.z == 1:
-		rotation_degrees.y = 45
-	elif Direction.x == -1 && Direction.z == 1:
-		rotation_degrees.y = -45
-	elif Direction.x == -1 && Direction.z == -1:
-		rotation_degrees.y = -135
-	elif Direction.x == 1 && Direction.z == -1:
-		rotation_degrees.y = 135
+	var TempDir = Direction
+	TempDir.x = ceil(Direction.x)
+	TempDir.z = ceil(Direction.z)
+	
 
+	if Direction.z == 0 && Direction.x == 0:
+		pass
+	else:
+		rotation_degrees.y = rot(TempDir)
+		print(rotation_degrees.y)
+	
+	
 func bullet_hit(damage, bullet_global_transform):
 	Health -= damage
 	CanMove = false
@@ -102,6 +124,18 @@ func bullet_hit(damage, bullet_global_transform):
 	
 	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	DirectionVector.y = 3
+	var TempDir = DirectionVector.normalized()
+	TempDir.y = 0
+	TempDir.x = ceil(TempDir.x)
+	TempDir.z = ceil(TempDir.z)
+
+
+	if TempDir.x == 0 && TempDir.z == 0:
+		pass
+	elif BeenShot && !BodyPos:
+		print(TempDir)
+		TempDir *= -1
+		rotation_degrees.y = rot(TempDir) 
 	
 func _on_KnockTimer_timeout():
 	CanMove = true
@@ -138,10 +172,34 @@ func _on_Area_body_exited(body):
 		$Timer.start()
 		BodyPos = null
 		rotation_degrees.x = 0
+		var TempDir = Direction
+		TempDir.y = 0
+		TempDir.x = ceil(TempDir.x)
+		TempDir.z = ceil(TempDir.z)
+		
+		if TempDir.x == 0 && TempDir.z == 0:
+			pass
+		else:
+			
+			rotation_degrees.y = rot(TempDir)
 
 func _on_Spawner_body_exited(body):
+	$ExitTimer.start(2)
 	if body.get("TYPE") == "ENEMY":
 		print("left zone, returning")
-		Direction *= -1
-		rotation_degrees.y *= -1
 		
+		var TempDir = Direction
+		Direction *= -1
+		TempDir.y = 0
+		TempDir.x = ceil(TempDir.x)
+		TempDir.z = ceil(TempDir.z)
+		
+		if TempDir.x == 0 && TempDir.z == 0:
+			pass
+		else:
+			TempDir *= -1
+			rotation_degrees.y = rot(TempDir) 
+
+
+func _on_ExitTimer_timeout():
+	$Timer.start(2)

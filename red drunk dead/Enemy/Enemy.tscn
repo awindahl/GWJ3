@@ -23,7 +23,7 @@ height = 2.0
 
 [sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 25, 26, 8 )
+extents = Vector3( 25, 48, 8 )
 
 [node name="Enemy" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -48,7 +48,7 @@ autostart = true
 
 [node name="GunCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
-cast_to = Vector3( 0, 50, 0 )
+cast_to = Vector3( 0, 100, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 
@@ -59,11 +59,16 @@ texture = ExtResource( 2 )
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 24.99 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 46.0534 )
 shape = SubResource( 4 )
+
+[node name="ExitTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="KnockTimer" to="." method="_on_KnockTimer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="timeout" from="ExitTimer" to="." method="_on_ExitTimer_timeout"]
