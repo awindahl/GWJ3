@@ -10,6 +10,7 @@ const TYPE = "PLAYER"
 var Health = 40
 var CanFire = true
 var CanMove = true
+var BeenShot = false
 var DAMAGE = 20
 var MovementState = IDLE
 var LastFloorHeight
@@ -53,6 +54,7 @@ const MAXSTAIRSLOPE = 20
 const STAIRJUMP = 6
 
 var temp = true
+var RandomMovement
 
 # Setup
 func _ready():
@@ -80,14 +82,13 @@ func _physics_process(delta):
 	if CurrentStatus != "SOBER":
 		WalkSpeed = 50
 		SprintSpeed = 75
+		RandomMovement = Vector3(1, 0, 1)
 		
-		var RandomMovement = Vector3(1, 0, 1)
-		
-		Velocity = move_and_slide(RandomMovement, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))	
 		if temp:
 			$AnimationPlayer.play("Shake")
 			temp = false
 	else:
+		temp = true
 		$AnimationPlayer.stop()
 
 # Self Exlpanatory
@@ -181,13 +182,8 @@ func _process_movement(delta):
 	
 	if CanMove:
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-	else:
+	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-	
-	#print(self.translation)
-	
-# func _process_on_ladder(delta)
-#	pass
 
 # Camera Movements
 func _unhandled_input(event):
@@ -225,7 +221,8 @@ func bullet_hit(damage, bullet_global_transform):
 	
 	DirectionVector = bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	DirectionVector.y = 3
-	print("i took damage")
+	BeenShot = true
 
 func _on_MoveTimer_timeout():
 	CanMove = true
+	BeenShot = false
