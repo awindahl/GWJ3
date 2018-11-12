@@ -131,6 +131,26 @@ custom_colors/default_color = Color( 0.560784, 0.101961, 0.101961, 1 )
 text = "+100"
 scroll_active = false
 
+[node name="Drunk" type="RichTextLabel" parent="Hud"]
+margin_left = 195.0
+margin_top = 537.0
+margin_right = 402.0
+margin_bottom = 593.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
+text = "0%"
+scroll_active = false
+
+[node name="permille" type="RichTextLabel" parent="Hud"]
+margin_left = 299.0
+margin_top = 537.0
+margin_right = 442.0
+margin_bottom = 593.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
+text = "‰"
+scroll_active = false
+
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

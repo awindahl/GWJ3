@@ -16,9 +16,10 @@ var MovementState = IDLE
 var LastFloorHeight
 var CanChangeLastFloorHeight = true
 var DirectionVector
-var Status = ["SOBER", "DRINK1", "DRINK2"]
+var Status = ["SOBER", "DRUNK"]
 var CurrentStatus = Status[0]
 var Ammo = 5
+var Drunkeness = 0
 
 const STAND = 0
 const CROUCH = 1
@@ -75,15 +76,16 @@ func _physics_process(delta):
 	_shoot()
 	
 	if Input.is_action_just_pressed("1"):
-		CurrentStatus = Status[0]
-	if Input.is_action_just_pressed("2"):
-		CurrentStatus = Status[1]
-	if Input.is_action_just_pressed("3"):
-		CurrentStatus = Status[2]
+		Drunkeness = 0
+	if Input.is_action_just_pressed("2") && Drunkeness <= 50:
+		Drunkeness += 10
+		temp = true
 	
-	if CurrentStatus != "SOBER":
-		WalkSpeed = 50
-		SprintSpeed = 75
+	if Drunkeness > 0.1:
+		Drunkeness -= 0.01
+		CurrentStatus = "DRUNK"
+		WalkSpeed = 15 + (Drunkeness/2)
+		SprintSpeed = 25 + (Drunkeness/2)
 		RandomMovement = Vector3(1, 0, 1)
 		
 		if temp:
@@ -92,6 +94,8 @@ func _physics_process(delta):
 	else:
 		temp = true
 		$AnimationPlayer.stop()
+		WalkSpeed = 15
+		SprintSpeed = 25
 
 # Self Exlpanatory
 func _apply_gravity(delta):
@@ -183,7 +187,10 @@ func _process_movement(delta):
 	Velocity.z = hVel.z
 	
 	$Hud/Ammo.text = var2str(Ammo) + "/5"
-	
+	if Drunkeness > 0.1:
+		$Hud/Drunk.text = var2str(Drunkeness) 
+	else:
+		$Hud/Drunk.text = "0.00"
 	$Hud/Health.text = "+ " + var2str(Health)
 	
 	#here be game over
