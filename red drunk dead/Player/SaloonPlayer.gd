@@ -205,10 +205,6 @@ func _process_movement(delta):
 		print("game over")
 		queue_free()
 	
-	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < 5 && !IsShooting:
-		$ReloadTimer.start()
-		$Yaw/Camera/revolver/AnimationPlayer.play("reload")
-	
 	CanMove = false
 	
 	if CanMove:
@@ -232,7 +228,7 @@ func _shoot():
 	if Input.is_action_just_pressed("shoot") && CanFire && Ammo && $ReloadTimer.time_left == 0 && CanMoveCam:
 		IsShooting = true
 		#Ammo -= 1
-		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
+		#$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
 		$Yaw/Camera/GunCheck.force_raycast_update()
 		CanFire = false
 		$GunCoolDown.start()
@@ -245,7 +241,7 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit"):
 				body.bullet_hit(DAMAGE, $Yaw/Camera/GunCheck.global_transform)
-		
+
 func _on_GunCoolDown_timeout():
 	CanFire = true
 	IsShooting = false
