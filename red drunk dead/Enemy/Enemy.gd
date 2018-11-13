@@ -158,7 +158,10 @@ func _shoot():
 				pass
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
-				body.bullet_hit(DAMAGE, $GunCast.global_transform)
+				randomize()
+				var random = randi()%11 + 1
+				if random > 5:
+					body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
