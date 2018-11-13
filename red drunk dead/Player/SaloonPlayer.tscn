@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/SaloonPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Marlboro.tres" type="DynamicFont" id=4]
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 1.47, 1.1, 1.47 )
+extents = Vector3( 1.1, 1.1, 1.1 )
 
 [sub_resource type="Animation" id=2]
 
@@ -67,17 +67,17 @@ far = 2048.0
 transform = Transform( 1, 0, 0, 0, 1, 1.49012e-008, 0, 1.49012e-008, 1, -0.034, 0, -7.92116 )
 
 [node name="GunCheck" type="RayCast" parent="Yaw/Camera"]
-transform = Transform( -3.7253e-009, 4.37114e-008, 1, 1, -4.37114e-008, 3.7253e-009, 4.37114e-008, 1, -4.37114e-008, 0, 0, 1.16415e-009 )
+transform = Transform( -3.72529e-009, 4.37114e-008, 1, 1, -4.37114e-008, 3.72529e-009, 4.37114e-008, 1, -4.37114e-008, 0, 0, 1.16415e-009 )
 enabled = true
 cast_to = Vector3( 0, -600, 0 )
 
 [node name="Crosshair" type="Sprite3D" parent="Yaw/Camera"]
-transform = Transform( 0.5, -3.90032e-010, 1.11691e-008, 0, 0.499695, 0.0174497, -1.11759e-008, -0.0174497, 0.499695, 0, 0, -3.83829 )
+transform = Transform( 0.5, -3.90033e-010, 1.11691e-008, 0, 0.499695, 0.0174497, -1.11759e-008, -0.0174497, 0.499695, 0, 0, -3.87905 )
 modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 2 )
 
 [node name="revolver" parent="Yaw/Camera" instance=ExtResource( 3 )]
-transform = Transform( -0.4, 0, 3.49691e-008, 0, 0.4, 0, -3.49691e-008, 0, -0.4, 1.06736, -1.88585, -2.77148 )
+transform = Transform( -0.4, 0, -6.03983e-008, 0, 0.4, 0, 6.03983e-008, 0, -0.4, 1.06736, -1.88585, -2.77148 )
 
 [node name="FloorCheck" type="RayCast" parent="."]
 enabled = true
@@ -113,6 +113,7 @@ margin_right = 48.0
 margin_bottom = 169.0
 
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
+visible = false
 margin_left = 762.0
 margin_top = 285.0
 margin_right = 873.0
