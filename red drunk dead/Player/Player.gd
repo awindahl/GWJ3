@@ -76,6 +76,10 @@ func _physics_process(delta):
 	_process_movement(delta)
 	_shoot()
 	
+	if Health > 100:
+		if FrameVar > 100:
+			Health -= 1
+	
 	if Input.is_action_just_pressed("1"):
 		Drunkeness = 0
 	if Input.is_action_just_pressed("2") && Drunkeness < 50:
