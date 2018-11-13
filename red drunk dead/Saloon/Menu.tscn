@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Saloon/Menu.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Saloon/Button.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+albedo_color = Color( 0.94902, 1, 0.768627, 1 )
+metallic_specular = 0.0
+
+[sub_resource type="CubeMesh" id=2]
+
+material = SubResource( 1 )
+size = Vector3( 2.16, 0.06, 3.83 )
+
+[sub_resource type="BoxShape" id=6]
+
+extents = Vector3( 0.34, 0.56, 0.27 )
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "Move"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -6.49041, 2.81147, 5.76837 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 86.3184, -67.6323, -24.5214 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="BoxShape" id=5]
+
+extents = Vector3( 1, 0.158231, 2.23711 )
+
+[node name="Menu" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Button1" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
+transform = Transform( -0.5, 7.72998e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, -1.58992 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button1"]
+transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button1/StaticBody"]
+transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+shape = SubResource( 6 )
+
+[node name="Button2" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
+transform = Transform( -0.5, 7.72998e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, -0.967022 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button2"]
+transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button2/StaticBody"]
+transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+shape = SubResource( 6 )
+
+[node name="Button3" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
+transform = Transform( -0.5, 7.72997e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, -0.339365 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button3"]
+transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button3/StaticBody"]
+transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+shape = SubResource( 6 )
+
+[node name="Button4" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
+transform = Transform( -0.5, 7.72997e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, 0.227132 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button4"]
+transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button4/StaticBody"]
+transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Move = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 5 )
+
+[connection signal="input_event" from="MeshInstance/Button1/StaticBody" to="MeshInstance/Button1" method="_on_StaticBody_input_event"]
+[connection signal="input_event" from="MeshInstance/Button2/StaticBody" to="MeshInstance/Button2" method="_on_StaticBody_input_event"]
+[connection signal="input_event" from="MeshInstance/Button3/StaticBody" to="MeshInstance/Button3" method="_on_StaticBody_input_event"]
+[connection signal="input_event" from="MeshInstance/Button4/StaticBody" to="MeshInstance/Button4" method="_on_StaticBody_input_event"]

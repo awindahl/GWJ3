@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/blocktown.dae-9767bef613eebc7c70716b5fb9e11549.scn"
+path="res://.import/Bottle.dae-1e5dc1a66ef397212a5f0022984a2273.scn"
 
 [deps]
 
-source_file="res://blocktown.dae"
-dest_files=[ "res://.import/blocktown.dae-9767bef613eebc7c70716b5fb9e11549.scn" ]
+source_file="res://Assets/Imported Objects/Bottle.dae"
+dest_files=[ "res://.import/Bottle.dae-1e5dc1a66ef397212a5f0022984a2273.scn" ]
 
 [params]
 

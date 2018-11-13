@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
@@ -23,18 +23,22 @@ height = 2.0
 
 [sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 15, 26, 8 )
+extents = Vector3( 28, 48, 30 )
+
+[sub_resource type="BoxShape" id=5]
+
+extents = Vector3( 90, 90, 64 )
 
 [node name="Enemy" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1.3, 0, 1, -5.68248e-008, 0, 1.50474, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1.3, 0, 1, -5.68248e-008, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1.3, 0, 1, -5.68248e-008, 0, 1.50474, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1.3, 0, 1, -5.68248e-008, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -47,24 +51,37 @@ one_shot = true
 autostart = true
 
 [node name="GunCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 2.36468, 0 )
-cast_to = Vector3( 0, 51.84, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+cast_to = Vector3( 0, 100, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="Forward" type="Sprite3D" parent="."]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.57836, 5.02075 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 5.021 )
 texture = ExtResource( 2 )
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.233 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 24.99 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 46.0534 )
 shape = SubResource( 4 )
+
+[node name="Hindsight" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Hindsight"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="ExitTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="KnockTimer" to="." method="_on_KnockTimer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Hindsight" to="." method="_on_Hindsight_body_entered"]
+[connection signal="body_exited" from="Hindsight" to="." method="_on_Hindsight_body_exited"]
+[connection signal="timeout" from="ExitTimer" to="." method="_on_ExitTimer_timeout"]
