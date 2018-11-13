@@ -224,7 +224,6 @@ func _shoot():
 	#should only be called once
 	if Input.is_action_just_pressed("shoot") && CanFire && Ammo && $ReloadTimer.time_left == 0:
 		IsShooting = true
-		Input.action_release("shoot")
 		Ammo -= 1
 		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
 		$Yaw/Camera/GunCheck.force_raycast_update()
@@ -239,7 +238,7 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit"):
 				body.bullet_hit(DAMAGE, $Yaw/Camera/GunCheck.global_transform)
-
+		
 func _on_GunCoolDown_timeout():
 	CanFire = true
 	IsShooting = false

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://town/PrototypeTown.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy/EnemyArea.gd" type="Script" id=3]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Imported Objects/SolidBarrel.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -22,6 +23,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00697231, 4.25632, 5.15247 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.48217, 0.876078, 0, -0.876078, 0.48217, 0, 0, 0 )
 shadow_enabled = true
+shadow_bias = 1.4
 
 [node name="EnemyArea1" type="Spatial" parent="."]
 script = ExtResource( 3 )
@@ -48,5 +50,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4545, 0, -97.0396 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EnemyArea1/Spawner"]
 shape = SubResource( 1 )
+
+[node name="Barrels" type="Spatial" parent="."]
+
+[node name="SolidBarrel" parent="Barrels" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29372, 20.3388, -18.522 )
+
+[node name="SolidBarrel2" parent="Barrels" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0164108, -11.4121 )
+
+[node name="SolidBarrel3" parent="Barrels" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14776, -0.0164108, -11.4121 )
+
+[node name="SolidBarrel4" parent="Barrels" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3531, -0.0164108, -11.4121 )
 
 [connection signal="body_exited" from="EnemyArea1/Spawner" to="EnemyArea1/Enemy" method="_on_Spawner_body_exited"]
