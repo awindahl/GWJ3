@@ -159,8 +159,10 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
-				$Timer.start()
-
+			
+			elif BodyPos && body.get("TYPE") == "BARREL":
+				body.bullet_hit(DAMAGE, $GunCast.global_transform)
+			
 func _on_ShootTimer_timeout():
 	CanFire = true
 

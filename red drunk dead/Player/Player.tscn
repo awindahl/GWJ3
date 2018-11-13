@@ -107,14 +107,16 @@ one_shot = true
 anims/Shake = SubResource( 2 )
 
 [node name="Hud" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 8.0
+margin_top = 129.0
+margin_right = 48.0
+margin_bottom = 169.0
 
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
-margin_left = 686.0
-margin_top = 365.0
-margin_right = 797.0
-margin_bottom = 411.0
+margin_left = 762.0
+margin_top = 285.0
+margin_right = 873.0
+margin_bottom = 331.0
 custom_fonts/normal_font = ExtResource( 4 )
 text = "5/5
 "
