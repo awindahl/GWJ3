@@ -65,7 +65,7 @@ modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 2 )
 
 [node name="Arm" parent="Yaw/Camera" instance=ExtResource( 3 )]
-transform = Transform( -0.531606, 0.124996, 0.437917, 0.0889515, 0.688652, -0.0885814, -0.446635, -0.0116243, -0.538871, 4.09712, -4.45623, -3.69083 )
+transform = Transform( -0.262148, 0.0514202, 0.136509, 0.0381221, 0.295136, -0.0379635, -0.140803, -0.0158268, -0.264432, 3.15622, -2.95981, -3.69083 )
 
 [node name="FloorCheck" type="RayCast" parent="."]
 enabled = true
@@ -97,9 +97,9 @@ anims/Shake = SubResource( 2 )
 
 [node name="Hud" type="Control" parent="."]
 margin_left = 8.0
-margin_top = 129.0
+margin_top = 9.0
 margin_right = 48.0
-margin_bottom = 169.0
+margin_bottom = 49.0
 
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
 visible = false
