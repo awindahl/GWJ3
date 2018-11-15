@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/SaloonPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=2]
-[ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Arm.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Marlboro.tres" type="DynamicFont" id=4]
 
 [sub_resource type="BoxShape" id=1]
@@ -15,7 +15,7 @@ resource_name = "Shake"
 length = 6.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Yaw/Camera/revolver:rotation_degrees")
+tracks/0/path = NodePath("Yaw/Camera/Crosshair:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -24,27 +24,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, -180, 0 ), Vector3( 10, -190, 0 ), Vector3( 0, -180, 0 ), Vector3( -10, -170, 0 ), Vector3( 0, -180, 0 ) ]
+"values": [ Vector3( 0, 0, -3.83829 ), Vector3( 0.5, -0.5, -3.838 ), Vector3( 0, 0, -3.83829 ), Vector3( -0.5, 0.5, -3.838 ), Vector3( 0, 0, -3.83829 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Yaw/Camera/Crosshair:translation")
+tracks/1/path = NodePath("Yaw/Camera/GunCheck:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, -3.83829 ), Vector3( 0.5, -0.5, -3.838 ), Vector3( 0, 0, -3.83829 ), Vector3( -0.5, 0.5, -3.838 ), Vector3( 0, 0, -3.83829 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Yaw/Camera/GunCheck:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
@@ -59,7 +47,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01944, -5.82077e-011 )
 
 [node name="Camera" type="Camera" parent="Yaw"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.497531, 0, 0.603074 )
 current = true
 far = 2048.0
 
@@ -76,8 +64,8 @@ transform = Transform( 0.5, -3.90033e-010, 1.11691e-008, 0, 0.499695, 0.0174497,
 modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 2 )
 
-[node name="revolver" parent="Yaw/Camera" instance=ExtResource( 3 )]
-transform = Transform( -0.4, 0, -6.03983e-008, 0, 0.4, 0, 6.03983e-008, 0, -0.4, 1.06736, -1.88585, -2.77148 )
+[node name="Arm" parent="Yaw/Camera" instance=ExtResource( 3 )]
+transform = Transform( -0.262148, 0.0514202, 0.136509, 0.0381221, 0.295136, -0.0379635, -0.140803, -0.0158268, -0.264432, 3.15622, -2.95981, -3.69083 )
 
 [node name="FloorCheck" type="RayCast" parent="."]
 enabled = true
@@ -109,9 +97,9 @@ anims/Shake = SubResource( 2 )
 
 [node name="Hud" type="Control" parent="."]
 margin_left = 8.0
-margin_top = 129.0
+margin_top = 9.0
 margin_right = 48.0
-margin_bottom = 169.0
+margin_bottom = 49.0
 
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
 visible = false
