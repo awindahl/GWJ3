@@ -20,7 +20,7 @@ surfaces/0 = {
 }
 
 [node name="WoodBarrelTopDestroyed" type="MeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30474, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.569952, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 

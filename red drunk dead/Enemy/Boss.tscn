@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Boss.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/banditBoss/BanditBoss.tscn" type="PackedScene" id=2]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 5.72, 4.78, 6.99 )
+extents = Vector3( 3.54, 2.96, 7.56 )
 
 [sub_resource type="BoxShape" id=2]
 
@@ -24,7 +24,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -6.84486, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -36,7 +36,7 @@ one_shot = true
 autostart = true
 
 [node name="GunCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 3.98982, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.16969, 0 )
 cast_to = Vector3( 0, 100, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
