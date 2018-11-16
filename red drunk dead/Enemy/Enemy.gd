@@ -19,6 +19,7 @@ var BodyPos
 var BeenShot = false
 var InTheZone = true
 var bottle
+var spawn
 const TYPE = "ENEMY"
 
 func _ready():
@@ -86,7 +87,6 @@ func _process(delta):
 
 	if InTheZone && !BeenShot && CanMove:
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-		print("AAOOAO")
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 		
@@ -108,7 +108,6 @@ func _process(delta):
 		set_transform(Transform(ThisRot, translation))
 
 func die():
-	print("ah im dead")
 	CanMove = false
 	set_process(false)
 	$Timer.paused = true
@@ -125,7 +124,7 @@ func die():
 	var random = randi()% 11 + 1
 	
 	if random > 5:
-		var spawn = bottle.instance()
+		spawn = bottle.instance()
 		spawn.translation.y = -2
 		add_child(spawn)
 		spawn.get_node("AnimationPlayer").play("Spin")

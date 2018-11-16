@@ -37,6 +37,7 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4545, 0, -97.0396 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EnemyArea1/Spawner"]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Boss" parent="EnemyArea1" instance=ExtResource( 3 )]
@@ -53,3 +54,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72465, -0.0607643, -11.0361 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00697231, 6.05271, -0.00132084 )
 
+[connection signal="body_exited" from="EnemyArea1/Spawner" to="EnemyArea1/Enemy" method="_on_Spawner_body_exited"]
+[connection signal="body_exited" from="EnemyArea1/Spawner" to="EnemyArea1/Boss" method="_on_Spawner_body_exited"]

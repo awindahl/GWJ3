@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://town/GunPickup.gd" type="Script" id=1]
+[ext_resource path="res://Player/Gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/spin-anim.tres" type="Animation" id=3]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 0.64, 0.32, 0.39 )
+
+[node name="GunPickup" type="Spatial"]
+transform = Transform( 0.32909, -0.165, 0, 0.19, 0.285788, 0, 0, 0, 0.41, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Gun" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.953346, 0.301879, 0, -0.301879, 0.953346, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="Gun"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Gun/Area"]
+transform = Transform( 2, 0, 0, 0, 2.75, 0, 0, 0, 4.75, 0, 1.24696, 0.822942 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Spin = ExtResource( 3 )
+
+[connection signal="body_entered" from="Gun/Area" to="." method="_on_Area_body_entered"]

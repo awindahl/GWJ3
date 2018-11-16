@@ -18,11 +18,15 @@ export var DAMAGE = 20
 var BodyPos
 var BeenShot = false
 var InTheZone = true
+var pickup 
+var spawn
 
 const TYPE = "ENEMY"
 
 func _ready():
 	$Mesh/AnimationPlayer.play("idle-loop")
+	pickup = preload("res://town/GunPickup.tscn")
+	spawn = pickup.instance()
 
 func rot(DirVect):
 	
@@ -96,7 +100,6 @@ func _process(delta):
 		set_transform(Transform(ThisRot, translation))
 
 func die():
-	print("ah im dead")
 	CanMove = false
 	set_process(false)
 	$Timer.paused = true
@@ -108,8 +111,10 @@ func die():
 	$Hindsight/CollisionShape.disabled = true
 	$ExitTimer.paused = true
 	#BodyPos = null
-
-
+	spawn = pickup.instance()
+	add_child(spawn)
+	spawn.translation.y = -2
+	spawn.get_node("AnimationPlayer").play("Spin")
 
 func _on_Timer_timeout():
 	if CanMove:

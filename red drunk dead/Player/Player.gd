@@ -19,6 +19,7 @@ var DirectionVector
 var Status = ["SOBER", "DRUNK"]
 var CurrentStatus = Status[0]
 var Ammo = 5
+var MaxAmmo = 5
 var Drunkeness = 0
 
 const STAND = 0
@@ -193,7 +194,7 @@ func _process_movement(delta):
 	Velocity.x = hVel.x
 	Velocity.z = hVel.z
 	
-	$Hud/Ammo.text = var2str(Ammo) + "/5"
+	$Hud/Ammo.text = var2str(Ammo) + "/" + var2str(MaxAmmo)
 	if Drunkeness > 0.1:
 		$Hud/Drunk.text = var2str(Drunkeness) + "‰"
 	else:

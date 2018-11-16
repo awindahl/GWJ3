@@ -1,0 +1,20 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "Spin"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 30 ), Vector3( 0, -90, 30 ), Vector3( 0, -180, 30 ), Vector3( 0, -270, 30 ), Vector3( 0, -359, 30 ) ]
+}
+
