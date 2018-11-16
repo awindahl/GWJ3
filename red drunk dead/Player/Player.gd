@@ -7,7 +7,7 @@ const SPRINT = 2
 const BASE_BULLET_BOOST = 25
 const TYPE = "PLAYER"
 
-var Health = 100
+var Health = 10000
 var CanFire = true
 var CanMove = true
 var BeenShot = false
@@ -45,7 +45,7 @@ var Gravity = -70
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
 const MAXSLOPEANGLE = 60
-const JUMP = 30
+const JUMP = 15
 
 # Ladder - TODO
 var OnLadder = false

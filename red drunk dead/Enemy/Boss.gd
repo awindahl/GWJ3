@@ -18,12 +18,11 @@ export var DAMAGE = 20
 var BodyPos
 var BeenShot = false
 var InTheZone = true
-var bottle
+
 const TYPE = "ENEMY"
 
 func _ready():
 	$Mesh/AnimationPlayer.play("idle-loop")
-	bottle = preload("res://Assets/Imported Objects/Bottle.tscn") 
 
 func rot(DirVect):
 	
@@ -49,7 +48,7 @@ func _apply_gravity(delta):
 	Velocity.y += delta * Gravity
 	if DirectionVector != null:
 		DirectionVector.y += delta * Gravity
-		
+
 func _process(delta):
 	
 	_apply_gravity(delta)
@@ -57,18 +56,6 @@ func _process(delta):
 	
 	Direction.y = 0
 	Direction = Direction.normalized()
-	
-	var Normal
-	if $FloorCheck.is_colliding():
-		Normal = $FloorCheck.get_collision_normal()
-	else:
-		Normal = Vector3(0,0,0)
-	
-	# Fall Damage and Gravity
-	if Normal.y == 0:
-		pass
-	else:
-		_apply_gravity(delta)
 	
 	var hVel = Velocity
 	hVel.y = 0
@@ -85,8 +72,9 @@ func _process(delta):
 		Velocity.z = hVel.z
 
 	if InTheZone && !BeenShot && CanMove:
+	
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-		print("AAOOAO")
+		
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 		
@@ -120,16 +108,9 @@ func die():
 	$Hindsight/CollisionShape.disabled = true
 	$ExitTimer.paused = true
 	#BodyPos = null
-	
-	randomize()
-	var random = randi()% 11 + 1
-	
-	if random > 5:
-		var spawn = bottle.instance()
-		spawn.translation.y = -2
-		add_child(spawn)
-		spawn.get_node("AnimationPlayer").play("Spin")
-	
+
+
+
 func _on_Timer_timeout():
 	if CanMove:
 		$Mesh/AnimationPlayer.play("walk-loop")
@@ -148,6 +129,7 @@ func _on_Timer_timeout():
 	else:
 		pass
 
+	
 func bullet_hit(damage, bullet_global_transform):
 	Health -= damage
 	CanMove = false
@@ -179,6 +161,7 @@ func _shoot():
 	$GunCast.force_raycast_update()
 	#should only be called once
 	if CanFire:
+		var anim = randi() % 3 + 1
 		
 		CanFire = false
 		$ShootTimer.start()
@@ -191,7 +174,7 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				randomize()
-				$Mesh/AnimationPlayer.play("shoot")
+				$Mesh/AnimationPlayer.play("fire" + var2str(anim))
 				var random = randi()%11 + 1
 				if random > 5:
 					body.bullet_hit(DAMAGE, $GunCast.global_transform)
@@ -204,6 +187,7 @@ func _on_ShootTimer_timeout():
 
 func _on_Area_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
+		$Mesh/AnimationPlayer.play("draw")
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
 		$Timer.stop()
@@ -248,6 +232,7 @@ func _on_ExitTimer_timeout():
 
 func _on_Hindsight_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
+		$Mesh/AnimationPlayer.play("draw")
 		CanMove = false
 		$Timer.stop()
 		BodyPos = body
