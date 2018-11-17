@@ -185,16 +185,14 @@ func _shoot():
 		
 		CanFire = false
 		$ShootTimer.start()
-		
 		if $GunCast.is_colliding():
-			get_node("shoot"+str(randi()%3+1)).play()
 			var body = $GunCast.get_collider()
-			
 			if body == null:
 				pass
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				randomize()
+				get_node("shoot"+str(randi()%3+1)).play()
 				$Mesh/AnimationPlayer.play("shoot")
 				var random = randi()%11 + 1
 				if random > 4:
