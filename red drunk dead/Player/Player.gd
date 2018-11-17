@@ -167,8 +167,8 @@ func _process_movement(delta):
 		MovementState = IDLE
 	
 	var Normal
-	if $Yaw/Camera/FloorCheck.is_colliding():
-		Normal = $Yaw/Camera/FloorCheck.get_collision_normal()
+	if $FloorCheck.is_colliding():
+		Normal = $FloorCheck.get_collision_normal()
 	else:
 		Normal = Vector3(0,0,0)
 	

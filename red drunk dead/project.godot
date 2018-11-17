@@ -27,6 +27,7 @@ Global="*res://Global.gd"
 window/size/width=322
 window/size/height=120
 window/size/resizable=false
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
