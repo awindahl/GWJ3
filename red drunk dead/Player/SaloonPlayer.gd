@@ -32,6 +32,7 @@ var SprintSpeed = 25
 var MoveSpeed = WalkSpeed
 var Velocity = Vector3()
 var IsShooting = false
+var Cash = Global.Cash
 
 # Mouse
 var Yaw = 0
@@ -68,6 +69,7 @@ func _physics_process(delta):
 	# TODO - check if on ladder
 	_process_movement(delta)
 	_shoot()
+	Cash = Global.Cash
 	
 	if Health > 100:
 		if FrameVar > 100:
@@ -185,6 +187,8 @@ func _process_movement(delta):
 	hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
 	Velocity.x = hVel.x
 	Velocity.z = hVel.z
+	
+	$Hud/Cash.text = "$" + var2str(Cash)
 	
 	CanMove = false
 	

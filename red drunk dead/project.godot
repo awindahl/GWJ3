@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="red drunk dead"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [debug]
 
 settings/stdout/print_fps=true

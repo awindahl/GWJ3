@@ -7,20 +7,21 @@ const SPRINT = 2
 const BASE_BULLET_BOOST = 25
 const TYPE = "PLAYER"
 
-var Health = 10000
+var Health = Global.Health
 var CanFire = true
 var CanMove = true
 var BeenShot = false
-var DAMAGE = 20
+var DAMAGE = Global.DAMAGE
 var MovementState = IDLE
 var LastFloorHeight
 var CanChangeLastFloorHeight = true
 var DirectionVector
 var Status = ["SOBER", "DRUNK"]
 var CurrentStatus = Status[0]
-var Ammo = 5
-var MaxAmmo = 5
-var Drunkeness = 0
+var Ammo = Global.Ammo
+var MaxAmmo = Global.MaxAmmo
+var Drunkeness = Global.Drunkeness
+var Cash = Global.Cash
 
 const STAND = 0
 const CROUCH = 1
@@ -28,8 +29,8 @@ const CROUCH = 1
 var Posture = STAND
 
 var Direction = Vector3()
-var WalkSpeed = 15
-var SprintSpeed = 25
+var WalkSpeed = Global.WalkSpeed
+var SprintSpeed = Global.SprintSpeed
 var MoveSpeed = WalkSpeed
 var Velocity = Vector3()
 var IsShooting = false
@@ -64,8 +65,10 @@ var FrameVar = 0
 func _ready():
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	MoveSpeed = WalkSpeed
 
 func _physics_process(delta):
+	
 	# TODO - check if on ladder
 	_process_movement(delta)
 	_shoot()
@@ -114,6 +117,7 @@ func _process_movement(delta):
 	var Aim = $Yaw/Camera.get_camera_transform().basis
 	
 	Direction = Vector3()
+	Cash = Global.Cash
 	
 	if Up:
 		Direction -= Aim[2]
@@ -194,10 +198,12 @@ func _process_movement(delta):
 		$Hud/Drunk.text = "\n" + "0.0‰"
 	$Hud/Health.text = "\n" + "+" + var2str(Health)
 	
+	$Hud/Cash.text = "$" + var2str(Cash)
+	
 	#here be game over
 	if Health <= 0:
-		print("game over")
-		queue_free()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene("res://Saloon/LoseScreen.tscn")
 	
 	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < 5 && !IsShooting:
 		$ReloadTimer.start()

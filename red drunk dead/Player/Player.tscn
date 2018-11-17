@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape" id=1]
 
-radius = 0.52
+radius = 0.31
 height = 0.91
 
 [sub_resource type="Animation" id=2]
@@ -89,6 +89,15 @@ custom_colors/default_color = Color( 0.560784, 0.101961, 0.101961, 1 )
 text = "
 + 100"
 
+[node name="Cash" type="RichTextLabel" parent="Hud"]
+margin_left = 260.0
+margin_top = 83.0
+margin_right = 320.0
+margin_bottom = 107.0
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0.133333, 0.458824, 0.105882, 1 )
+text = "Cash"
+
 [node name="Drunk" type="RichTextLabel" parent="Hud"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -114,7 +123,7 @@ near = 0.01
 far = 2048.0
 
 [node name="FloorCheck" type="RayCast" parent="Yaw/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -5.88764, -0.171759 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -5.00286, -0.171759 )
 enabled = true
 cast_to = Vector3( 0, -0.59, 0 )
 
@@ -131,7 +140,7 @@ enabled = true
 cast_to = Vector3( 0, -2400, 0 )
 
 [node name="Crosshair" type="Sprite3D" parent="Yaw/Camera/revolver/GunCheck"]
-transform = Transform( 4.66829e-016, 0.499695, 0.0174497, 1.06798e-008, -0.0174497, 0.499695, 0.5, 3.72718e-010, -1.06733e-008, 0, -2.74132, 1.19209e-007 )
+transform = Transform( 4.66839e-016, 0.499696, 0.0174497, 1.06798e-008, -0.0174497, 0.499695, 0.5, 3.7272e-010, -1.06733e-008, -1.04308e-007, -1.82284, 0 )
 texture = ExtResource( 4 )
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]

@@ -16,7 +16,10 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 			get_parent().get_parent().get_parent().get_node("Player").CanMoveCam = true
 			get_parent().get_parent().get_parent().get_node("Player").set_process(true)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			get_parent().get_parent().get_parent().get_node("Player").Drunkeness += 10
+			
+			# enter different alcohols here
+			Global.Drunkeness += 10
+			Global.Cash -= 10
 		else:
 			temp = 0
 	

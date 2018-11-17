@@ -179,7 +179,7 @@ func _shoot():
 				randomize()
 				$Mesh/AnimationPlayer.play("fire" + var2str(anim))
 				var random = randi()%11 + 1
-				if random > 5:
+				if random > 3:
 					body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
