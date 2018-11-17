@@ -178,7 +178,7 @@ transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 17.4348, 6.84938, 12.5978 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -10.0
+volume_db = -20.0
 autoplay = true
 
 [node name="glug" type="AudioStreamPlayer" parent="."]
@@ -187,9 +187,9 @@ volume_db = -20.0
 
 [node name="drink1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -10.0
+volume_db = -20.0
 
 [node name="drink2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-volume_db = -10.0
+volume_db = -20.0
 

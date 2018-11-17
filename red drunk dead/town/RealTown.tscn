@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://town/town/town.dae" type="PackedScene" id=1]
+[ext_resource path="res://Assets/sound/music/world_music.wav" type="AudioStream" id=2]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 
@@ -90,115 +91,186 @@ data = PoolVector3Array( -0.2486, -0.8724, -0.9635, -0.4695, -0.8724, -0.935, -0
 
 data = PoolVector3Array( -1, -1, 1, -1, -0.8922, 0.937, -1, -0.8922, 1, -1, -1, 1, -1, -0.8922, 0.032, -1, -0.8922, 0.937, -1, -1, 1, -1, -0.8922, -0.9541, -1, -0.8922, 0.032, -1, -1, 1, -1, -0.8922, -1, -1, -0.8922, -0.9541, -1, -1, 1, -1, -1, -1, -1, -0.8922, -1, -1, -1, -1, -0.9639, -0.8922, -1, -1, -0.8922, -1, -1, -1, -1, 0.9411, -0.8922, -1, -0.9639, -0.8922, -1, -1, -1, -1, 1, -0.8922, -1, 0.9411, -0.8922, -1, -1, -1, -1, 1, -1, -1, 1, -0.8922, -1, 1, -1, -1, 1, -0.8922, -0.9448, 1, -0.8922, -1, 1, -1, -1, 1, -0.8922, 0.9375, 1, -0.8922, -0.9448, 1, -1, -1, 1, -0.8922, 1, 1, -0.8922, 0.9375, 1, -1, -1, 1, -1, 1, 1, -0.8922, 1, 1, -1, 1, 0.942, -0.8922, 1, 1, -0.8922, 1, 1, -1, 1, -0.961, -0.8922, 1, 0.942, -0.8922, 1, 1, -1, 1, -1, -0.8922, 1, -0.961, -0.8922, 1, 1, -1, 1, -1, -1, 1, -1, -0.8922, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 0.9411, -0.8922, -1, -0.9639, 1.3774, -1, -0.9639, -0.8922, -1, 0.9411, -0.8922, -1, 0.9411, 1.3774, -1, -0.9639, 1.3774, -1, -0.9639, 1.3774, -1, -1, 1.5286, -1, -1, 1.3774, -1, -0.9639, 1.3774, -1, -0.9639, 1.5286, -1, -1, 1.5286, -1, -0.9611, -0.8922, 0.937, -0.9624, 1.3774, 0.0329, -0.9624, -0.8922, 0.0329, -0.9611, -0.8922, 0.937, -0.9611, 1.3774, 0.937, -0.9624, 1.3774, 0.0329, 1, -0.8922, -0.9448, 0.942, -0.8922, 0.9375, 0.9411, -0.8922, -0.945, 1, -0.8922, -0.9448, 1, -0.8922, 0.9375, 0.942, -0.8922, 0.9375, -1, -0.8922, -0.9541, -0.9639, 1.3774, -0.9539, -0.9639, -0.8922, -0.9539, -1, -0.8922, -0.9541, -1, 1.3774, -0.9541, -0.9639, 1.3774, -0.9539, -1, -0.8922, 0.032, -1, 1.3774, 0.937, -1, -0.8922, 0.937, -1, -0.8922, 0.032, -1, 1.3774, 0.032, -1, 1.3774, 0.937, 1, -0.8922, 1, 1, 1.3883, 0.9375, 1, -0.8922, 0.9375, 1, -0.8922, 1, 1, 1.3883, 1, 1, 1.3883, 0.9375, -0.9639, -0.8922, -1, -1, 1.3774, -1, -1, -0.8922, -1, -0.9639, -0.8922, -1, -0.9639, 1.3774, -1, -1, 1.3774, -1, 0.942, -0.8922, 1, -0.9611, -0.8922, 0.937, 0.942, -0.8922, 0.9375, 0.942, -0.8922, 1, -0.961, -0.8922, 1, -0.9611, -0.8922, 0.937, 0.942, -0.8922, 0.9375, -0.9639, -0.8922, -0.9539, 0.9411, -0.8922, -0.945, 0.942, -0.8922, 0.9375, -0.9624, -0.8922, 0.0329, -0.9639, -0.8922, -0.9539, 0.942, -0.8922, 0.9375, -0.9611, -0.8922, 0.937, -0.9624, -0.8922, 0.0329, 0.942, -0.8922, 0.9375, 0.942, 1.3883, 1, 0.942, -0.8922, 1, 0.942, -0.8922, 0.9375, 0.942, 1.3883, 0.9375, 0.942, 1.3883, 1, 1, -0.8922, 0.9375, 0.942, 1.3883, 0.9375, 0.942, -0.8922, 0.9375, 1, -0.8922, 0.9375, 1, 1.3883, 0.9375, 0.942, 1.3883, 0.9375, 0.942, -0.8922, 1, 1, 1.3883, 1, 1, -0.8922, 1, 0.942, -0.8922, 1, 0.942, 1.3883, 1, 1, 1.3883, 1, 0.942, 1.3883, 1, 1, 1.5395, 1, 1, 1.3883, 1, 0.942, 1.3883, 1, 0.942, 1.5395, 1, 1, 1.5395, 1, -1, 1.3774, 0.032, -1, 1.5286, 0.937, -1, 1.3774, 0.937, -1, 1.3774, 0.032, -1, 2.1035, 0.032, -1, 1.5286, 0.937, -0.9639, 1.3774, -0.9539, 0.942, 1.3883, 0.9375, 0.9411, 1.3774, -0.945, -0.9639, 1.3774, -0.9539, -0.9611, 1.3774, 0.937, 0.942, 1.3883, 0.9375, -0.9639, 1.3774, -0.9539, -0.9624, 1.3774, 0.0329, -0.9611, 1.3774, 0.937, -1, -0.8922, -1, -1, 1.3774, -0.9541, -1, -0.8922, -0.9541, -1, -0.8922, -1, -1, 1.3774, -1, -1, 1.3774, -0.9541, 0.9411, -0.8922, -0.945, 1, 1.3774, -0.9448, 1, -0.8922, -0.9448, 0.9411, -0.8922, -0.945, 0.9411, 1.3774, -0.945, 1, 1.3774, -0.9448, -0.9639, -0.8922, -0.9539, 0.9411, 1.3774, -0.945, 0.9411, -0.8922, -0.945, -0.9639, -0.8922, -0.9539, -0.9639, 1.3774, -0.9539, 0.9411, 1.3774, -0.945, 1, -0.8922, -1, 0.9411, 1.3774, -1, 0.9411, -0.8922, -1, 1, -0.8922, -1, 1, 1.3774, -1, 0.9411, 1.3774, -1, 1, -0.8922, -0.9448, 1, 1.3774, -1, 1, -0.8922, -1, 1, -0.8922, -0.9448, 1, 1.3774, -0.9448, 1, 1.3774, -1, -1, 1.3774, -0.9541, -1, 2.1035, 0.032, -1, 1.3774, 0.032, -1, 1.3774, -0.9541, -1, 1.5286, -0.9541, -1, 2.1035, 0.032, -1, -0.8922, 0.032, -0.9639, -0.8922, -0.9539, -0.9624, -0.8922, 0.0329, -1, -0.8922, 0.032, -1, -0.8922, -0.9541, -0.9639, -0.8922, -0.9539, 1, 1.3774, -1, 0.9411, 1.5286, -1, 0.9411, 1.3774, -1, 1, 1.3774, -1, 1, 1.5286, -1, 0.9411, 1.5286, -1, -1, -0.8922, 1, -0.961, 1.3774, 1, -0.961, -0.8922, 1, -1, -0.8922, 1, -1, 1.3774, 1, -0.961, 1.3774, 1, -0.961, -0.8922, 1, -0.9611, 1.3774, 0.937, -0.9611, -0.8922, 0.937, -0.961, -0.8922, 1, -0.961, 1.3774, 1, -0.9611, 1.3774, 0.937, -1, -0.8922, 0.937, -1, 1.3774, 1, -1, -0.8922, 1, -1, -0.8922, 0.937, -1, 1.3774, 0.937, -1, 1.3774, 1, -0.9624, -0.8922, 0.0329, -1, 1.3774, 0.032, -1, -0.8922, 0.032, -0.9624, -0.8922, 0.0329, -0.9624, 1.3774, 0.0329, -1, 1.3774, 0.032, -0.9624, 1.3774, 0.0329, -1, 1.3774, -0.9541, -1, 1.3774, 0.032, -0.9624, 1.3774, 0.0329, -0.9639, 1.3774, -0.9539, -1, 1.3774, -0.9541, -0.961, 1.3774, 1, 0.942, 1.3883, 0.9375, -0.9611, 1.3774, 0.937, -0.961, 1.3774, 1, 0.942, 1.3883, 1, 0.942, 1.3883, 0.9375, 0.9411, 1.3774, -0.945, 1, 1.3883, 0.9375, 1, 1.3774, -0.9448, 0.9411, 1.3774, -0.945, 0.942, 1.3883, 0.9375, 1, 1.3883, 0.9375, -0.961, 1.3774, 1, 0.942, 1.5395, 1, 0.942, 1.3883, 1, -0.961, 1.3774, 1, -0.961, 1.5286, 1, 0.942, 1.5395, 1, 1, 1.3774, -0.9448, 1, 1.5286, -1, 1, 1.3774, -1, 1, 1.3774, -0.9448, 1, 1.5286, -0.9448, 1, 1.5286, -1, -1, 1.3774, 1, -0.961, 1.5286, 1, -0.961, 1.3774, 1, -1, 1.3774, 1, -1, 1.5286, 1, -0.961, 1.5286, 1, -1, 1.3774, 0.937, -1, 1.5286, 1, -1, 1.3774, 1, -1, 1.3774, 0.937, -1, 1.5286, 0.937, -1, 1.5286, 1, 1, 1.3883, 0.9375, 1, 1.5286, -0.9448, 1, 1.3774, -0.9448, 1, 1.3883, 0.9375, 1, 2.109, -0.0036, 1, 1.5286, -0.9448, 1, 1.3883, 0.9375, 1, 1.5395, 0.9375, 1, 2.109, -0.0036, 1, 1.3883, 1, 1, 1.5395, 0.9375, 1, 1.3883, 0.9375, 1, 1.3883, 1, 1, 1.5395, 1, 1, 1.5395, 0.9375, 0.9411, 1.3774, -1, -0.9639, 1.5286, -1, -0.9639, 1.3774, -1, 0.9411, 1.3774, -1, 0.9411, 1.5286, -1, -0.9639, 1.5286, -1, -1, 1.3774, -1, -1, 1.5286, -0.9541, -1, 1.3774, -0.9541, -1, 1.3774, -1, -1, 1.5286, -1, -1, 1.5286, -0.9541, -1, 1.5286, -0.9541, 1, 2.109, -0.0036, -1, 2.1035, 0.032, -1, 1.5286, -0.9541, 1, 1.5286, -0.9448, 1, 2.109, -0.0036, -1, 1.5286, -0.9541, 1, 1.5286, -1, 1, 1.5286, -0.9448, -1, 1.5286, -0.9541, -1, 1.5286, -1, 1, 1.5286, -1, -1, 2.1035, 0.032, 1, 1.5395, 0.9375, -1, 1.5286, 0.937, -1, 2.1035, 0.032, 1, 2.109, -0.0036, 1, 1.5395, 0.9375, 1, 1.5395, 1, -1, 1.5286, 0.937, 1, 1.5395, 0.9375, 1, 1.5395, 1, -1, 1.5286, 1, -1, 1.5286, 0.937, 1, 1.5395, 1, -0.961, 1.5286, 1, -1, 1.5286, 1, 1, 1.5395, 1, 0.942, 1.5395, 1, -0.961, 1.5286, 1 )
 
-[node name="Scene Root" index="0" instance=ExtResource( 1 )]
+[node name="Scene Root" instance=ExtResource( 1 )]
+
+[node name="church" parent="." index="0"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="church" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="church/StaticBody" index="0"]
 shape = SubResource( 1 )
 
+[node name="cottage" parent="." index="1"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="cottage" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cottage/StaticBody" index="0"]
 shape = SubResource( 2 )
+
+[node name="cottage001" parent="." index="2"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="cottage001" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cottage001/StaticBody" index="0"]
 shape = SubResource( 3 )
 
+[node name="cottage002" parent="." index="3"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="cottage002" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cottage002/StaticBody" index="0"]
 shape = SubResource( 4 )
+
+[node name="cottage003" parent="." index="4"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="cottage003" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cottage003/StaticBody" index="0"]
 shape = SubResource( 5 )
 
+[node name="cross" parent="." index="5"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="cross" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cross/StaticBody" index="0"]
 shape = SubResource( 6 )
+
+[node name="cross001" parent="." index="6"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="cross001" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cross001/StaticBody" index="0"]
 shape = SubResource( 7 )
 
+[node name="cross002" parent="." index="7"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="cross002" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cross002/StaticBody" index="0"]
 shape = SubResource( 8 )
+
+[node name="cross003" parent="." index="8"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="cross003" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cross003/StaticBody" index="0"]
 shape = SubResource( 9 )
 
+[node name="cross004" parent="." index="9"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="cross004" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="cross004/StaticBody" index="0"]
 shape = SubResource( 10 )
+
+[node name="ground" parent="." index="10"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="ground" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="ground/StaticBody" index="0"]
 shape = SubResource( 11 )
 
+[node name="hotel" parent="." index="11"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="hotel" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="hotel/StaticBody" index="0"]
 shape = SubResource( 12 )
+
+[node name="house" parent="." index="12"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="house" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house/StaticBody" index="0"]
 shape = SubResource( 13 )
 
+[node name="house001" parent="." index="13"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="house001" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house001/StaticBody" index="0"]
 shape = SubResource( 14 )
+
+[node name="house002" parent="." index="14"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="house002" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house002/StaticBody" index="0"]
 shape = SubResource( 15 )
 
+[node name="house003" parent="." index="15"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="house003" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house003/StaticBody" index="0"]
 shape = SubResource( 16 )
+
+[node name="house004" parent="." index="16"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="house004" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house004/StaticBody" index="0"]
 shape = SubResource( 17 )
 
+[node name="house005" parent="." index="17"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="house005" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house005/StaticBody" index="0"]
 shape = SubResource( 18 )
+
+[node name="house007" parent="." index="18"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="house007" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="house007/StaticBody" index="0"]
 shape = SubResource( 19 )
 
+[node name="post_office" parent="." index="19"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="post_office" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="post_office/StaticBody" index="0"]
 shape = SubResource( 20 )
+
+[node name="saloon" parent="." index="20"]
+editor/display_folded = true
 
 [node name="StaticBody" type="StaticBody" parent="saloon" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="saloon/StaticBody" index="0"]
 shape = SubResource( 21 )
 
+[node name="stable" parent="." index="21"]
+editor/display_folded = true
+
 [node name="StaticBody" type="StaticBody" parent="stable" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="stable/StaticBody" index="0"]
 shape = SubResource( 22 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="24"]
+stream = ExtResource( 2 )
+volume_db = -20.0
+autoplay = true
 

@@ -1,7 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/bandit/Bandit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/voicelines/enemy/die1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/voicelines/enemy/die1.5.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/voicelines/enemy/found1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/voicelines/enemy/found2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/voicelines/enemy/found3.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/voicelines/enemy/hurt1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/voicelines/enemy/hurt2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/sound/58904__rock-savage__western-shot-modern-2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/sound/58905__rock-savage__western-shot-modern-1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/sound/58906__rock-savage__western-shot-modern-3.wav" type="AudioStream" id=12]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -61,6 +71,66 @@ one_shot = true
 [node name="FloorCheck" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.75864, 0 )
 enabled = true
+
+[node name="die1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="die3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="die4" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="die2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="spotted1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="spotted2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="spotted3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="hurt1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="hurt2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 9 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="shoot1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 10 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="shoot2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 11 )
+unit_db = -10.0
+unit_size = 50.6
+
+[node name="shoot3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 12 )
+unit_db = -10.0
+unit_size = 50.6
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="KnockTimer" to="." method="_on_KnockTimer_timeout"]

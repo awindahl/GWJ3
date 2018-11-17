@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 
-length = 0.6
+length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Armature:rotation_degrees")
 tracks/0/interp = 1
@@ -15,14 +15,17 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 17.3052, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 17.3052, 0, 0 ), Vector3( 17.3052, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [node name="revolver" index="0" instance=ExtResource( 1 )]
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+
+[node name="Armature" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 0.954734, -0.297462, 0, 0.297462, 0.954734, 0.0286517, 0, 0 )
 
 [node name="revolver_Cylinder" parent="Armature/Skeleton" index="0"]
 material/0 = ExtResource( 2 )
