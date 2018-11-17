@@ -74,8 +74,7 @@ func _process(delta):
 		hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
-		
-	print (Velocity)
+
 	if InTheZone && !BeenShot && CanMove:
 	
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
