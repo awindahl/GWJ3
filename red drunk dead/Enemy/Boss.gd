@@ -10,7 +10,7 @@ const MAXSLOPEANGLE = 60
 var Velocity = Vector3()
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
-const BASE_BULLET_BOOST = 40
+const BASE_BULLET_BOOST = 20
 var CanMove = true
 var DirectionVector
 var CanFire = true
@@ -74,13 +74,15 @@ func _process(delta):
 		hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
-
+		
+	print (Velocity)
 	if InTheZone && !BeenShot && CanMove:
 	
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 		
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
+	
 		
 	if Health <= 0:
 		_apply_gravity(delta)
@@ -88,6 +90,7 @@ func _process(delta):
 		die()
 	
 	if BodyPos:
+		var LastRot = rotation_degrees
 		var value = 0.2
 		value += delta
 		var LookDir = (BodyPos.translation - translation) * -1
@@ -97,7 +100,10 @@ func _process(delta):
 		if value > 1:
 			value = 1
 		
-		set_transform(Transform(ThisRot, translation))
+		set_transform(Transform(ThisRot, get_transform().origin))
+		
+		rotation_degrees.x = LastRot.x
+		
 
 func die():
 	CanMove = false
