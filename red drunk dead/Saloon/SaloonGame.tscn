@@ -59,13 +59,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Items" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="SolidBarrel" parent="Items" instance=ExtResource( 7 )]
 transform = Transform( 1.77, 0, 0, 0, 1.76, 0, 0, 0, 1.76, -23.3754, 0.079567, -30.7632 )
 
 [node name="SolidBarrel2" parent="Items" instance=ExtResource( 7 )]
-transform = Transform( 1.77, 0, 0, 0, 1.76, 0, 0, 0, 1.76, -23.3754, 12.5316, -30.7632 )
+transform = Transform( -0.184561, 0, 1.75041, 0, 1.76, 0, -1.76035, 0, -0.183518, -23.3754, 12.5316, -30.7632 )
 
 [node name="SolidBarrel3" parent="Items" instance=ExtResource( 7 )]
 transform = Transform( 1.39427, 0, 1.08422, 0, 1.76, 0, -1.09038, 0, 1.38639, -14.3567, -0.543303, -30.7632 )

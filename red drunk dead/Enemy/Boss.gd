@@ -85,7 +85,7 @@ func _process(delta):
 		
 	if Health <= 0:
 		_apply_gravity(delta)
-		$Mesh/AnimationPlayer.play("die")
+		$Mesh/AnimationPlayer.queue("die")
 		die()
 	
 	if BodyPos:
@@ -212,7 +212,6 @@ func _on_Area_body_entered(body):
 		$Timer.stop()
 		drawGun()
 		BodyPos = body
-		return
 	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
@@ -245,8 +244,7 @@ func _on_Spawner_body_exited(body):
 		else:
 			TempDir *= -1
 			rotation_degrees.y = rot(TempDir) 
-
-
+			
 func _on_ExitTimer_timeout():
 	$Timer.start(2)
 

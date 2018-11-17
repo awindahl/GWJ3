@@ -60,11 +60,12 @@ const STAIRJUMP = 12
 var temp = true
 var RandomMovement
 var FrameVar = 0
-var MyEffect = Global.MyEffect
+var MyEffect
 var fiveshot = false
 
 # Setup
 func _ready():
+	MyEffect = Global.MyEffect
 	randomize()
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -112,6 +113,15 @@ func _apply_gravity(delta):
 
 # cool function B-) 
 func effect(effect):
+	# reset
+	if MyEffect.size() == 0:
+		Global.MaxAmmo = 5
+		Global.Ammo = 5
+		MaxAmmo = Global.MaxAmmo
+		Ammo = Global.Ammo
+		fiveshot = false
+		$GunCoolDown.wait_time = 0.5
+		
 	for effects in MyEffect:
 		if effects == effect[0]:
 			FrameVar -= 1
@@ -120,7 +130,7 @@ func effect(effect):
 			Global.Ammo = 12
 			MaxAmmo = Global.MaxAmmo
 			Ammo = Global.Ammo
-			var rand = randi()%101 + 1
+			var rand = randi()%11 + 1
 			if rand == 1:
 				Input.action_press("shoot", 1)
 		if effects == effect[2]:

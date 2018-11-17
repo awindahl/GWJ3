@@ -110,7 +110,7 @@ func _process(delta):
 		rotation_degrees.x = LastRot.x
 
 func die():
-	get_node("spotted"+str(randi()%4+1)).play()
+	get_node("spotted"+str(randi()%3+1)).play()
 	CanMove = false
 	set_process(false)
 	$Timer.paused = true

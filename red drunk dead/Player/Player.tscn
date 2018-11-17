@@ -51,11 +51,11 @@ margin_bottom = 59.0
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
 margin_left = 186.0
 margin_top = 44.0
-margin_right = 228.0
+margin_right = 254.0
 margin_bottom = 83.0
 custom_fonts/normal_font = ExtResource( 2 )
-text = "
-5/5
+meta_underlined = false
+text = "5/5
 "
 scroll_active = false
 
@@ -66,8 +66,7 @@ margin_right = 53.0
 margin_bottom = 120.0
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.560784, 0.101961, 0.101961, 1 )
-text = "
-+ 100"
+text = "+ 100"
 
 [node name="Cash" type="RichTextLabel" parent="Hud"]
 margin_left = 260.0
@@ -87,8 +86,7 @@ margin_right = 100.0
 margin_bottom = 65.0
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
-text = "
-0%"
+text = "0%"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Shake = ExtResource( 3 )
