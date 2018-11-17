@@ -148,10 +148,8 @@ func bullet_hit(damage, bullet_global_transform):
 	TempDir.y = 0
 	TempDir.x = ceil(TempDir.x)
 	TempDir.z = ceil(TempDir.z)
-	
-	if TempDir.x == 0 && TempDir.z == 0:
-		pass
-	elif BeenShot && !BodyPos:
+
+	if BeenShot && !BodyPos:
 		
 		$Hindsight/CollisionShape.disabled = false
 		

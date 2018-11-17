@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy/EnemyArea.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=3]
-[ext_resource path="res://town/RealTown.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://town/RealTown.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -51,27 +50,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70 )
 visible = false
 shape = SubResource( 1 )
 
-[node name="Enemy" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0373, 3.31643, -72.1482 )
-
-[node name="Enemy2" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8024, 3.31643, -60.7017 )
-
-[node name="Enemy3" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.4076, 3.31643, -75.4404 )
-
-[node name="Enemy4" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4319, 3.31643, -57.0952 )
-
-[node name="Enemy5" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.50535, 3.31643, -59.8621 )
-
-[node name="Boss" parent="EnemyArea1" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4864, 5.89894, -88.3209 )
+[node name="Boss" parent="EnemyArea1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8838, 6.12527, -54.1245 )
 
 [node name="Barrels" type="Spatial" parent="."]
 
-[node name="Town" parent="." instance=ExtResource( 4 )]
+[node name="Town" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 
@@ -86,6 +70,6 @@ material/0 = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="Town/MeshInstance/StaticBody"]
 shape = SubResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00697231, 1.01358, -0.00132084 )
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.707971, 0, 0.706241, 0, 1, 0, -0.706241, 0, 0.707971, -12.9908, 2.3592, 16.167 )
 

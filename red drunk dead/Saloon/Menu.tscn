@@ -32,7 +32,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -6.49041, 2.81147, 5.76837 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( -2.3597, 1.56695, 4.41339 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MeshInstance:rotation_degrees")
@@ -44,7 +44,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 86.3184, -67.6323, -24.5214 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 86.3184, -38.0233, -24.5214 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape:disabled")
@@ -53,7 +53,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]

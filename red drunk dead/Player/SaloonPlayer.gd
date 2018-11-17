@@ -36,8 +36,7 @@ var IsShooting = false
 # Mouse
 var Yaw = 0
 var Pitch = 0
-var ViewSensitivity = 0.15
-var LookVector = Vector3()
+var ViewSensitivity = 0.1
 
 # Physics
 var Gravity = -70
@@ -64,12 +63,6 @@ var FrameVar = 0
 func _ready():
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-#warning-ignore:unused_argument
-func _process(delta):
-	# Where the Player is Looking
-	var dir = $Yaw/Camera/LookAt.get_global_transform().origin - $Yaw/Camera.get_global_transform().origin.normalized()
-	LookVector = dir
 
 func _physics_process(delta):
 	# TODO - check if on ladder
@@ -192,18 +185,6 @@ func _process_movement(delta):
 	hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
 	Velocity.x = hVel.x
 	Velocity.z = hVel.z
-	
-	$Hud/Ammo.text = var2str(Ammo) + "/5"
-	if Drunkeness > 0.1:
-		$Hud/Drunk.text = var2str(Drunkeness) + "‰"
-	else:
-		$Hud/Drunk.text = "0.0‰"
-	$Hud/Health.text = "+" + var2str(Health)
-	
-	#here be game over
-	if Health <= 0:
-		print("game over")
-		queue_free()
 	
 	CanMove = false
 	

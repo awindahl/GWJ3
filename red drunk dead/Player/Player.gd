@@ -187,12 +187,12 @@ func _process_movement(delta):
 	Velocity.x = hVel.x
 	Velocity.z = hVel.z
 	
-	$Hud/Ammo.text = var2str(Ammo) + "/" + var2str(MaxAmmo)
+	$Hud/Ammo.text = "\n" + var2str(Ammo) + "/" + var2str(MaxAmmo)
 	if Drunkeness > 0.1:
-		$Hud/Drunk.text = var2str(Drunkeness) + "‰"
+		$Hud/Drunk.text = "\n" + var2str(Drunkeness) + "‰"
 	else:
-		$Hud/Drunk.text = "0.0‰"
-	$Hud/Health.text = "+" + var2str(Health)
+		$Hud/Drunk.text = "\n" + "0.0‰"
+	$Hud/Health.text = "\n" + "+" + var2str(Health)
 	
 	#here be game over
 	if Health <= 0:

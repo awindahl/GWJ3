@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 3.62, 2.64, 3.12 )
+extents = Vector3( 3.62, 3.83, 3.35 )
 
 [sub_resource type="BoxShape" id=2]
 
@@ -22,7 +22,7 @@ script = ExtResource( 1 )
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -4.19028, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -3.39662e-008, -1.01017, 0, 1, -5.68248e-008, 0, -0.740308, 0 )
+transform = Transform( 1, 0, 0, 0, -3.39662e-008, -1.01017, 0, 1, -5.68248e-008, 0, -0.589968, 0 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
