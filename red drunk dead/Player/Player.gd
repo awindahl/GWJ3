@@ -38,7 +38,6 @@ var IsShooting = false
 var Yaw = 0
 var Pitch = 0
 var ViewSensitivity = 0.15
-var LookVector = Vector3()
 
 # Physics
 var Gravity = -70
@@ -46,7 +45,7 @@ var Gravity = -70
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
 const MAXSLOPEANGLE = 60
-const JUMP = 10
+const JUMP = 20
 
 # Ladder - TODO
 var OnLadder = false
@@ -65,12 +64,6 @@ var FrameVar = 0
 func _ready():
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-#warning-ignore:unused_argument
-func _process(delta):
-	# Where the Player is Looking
-	var dir = $Yaw/Camera/LookAt.get_global_transform().origin - $Yaw/Camera.get_global_transform().origin.normalized()
-	LookVector = dir
 
 func _physics_process(delta):
 	# TODO - check if on ladder
@@ -231,18 +224,18 @@ func _shoot():
 		IsShooting = true
 		Ammo -= 1
 		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
-		$Yaw/Camera/GunCheck.force_raycast_update()
+		$Yaw/Camera/revolver/GunCheck.force_raycast_update()
 		CanFire = false
 		$GunCoolDown.start()
 		
-		if $Yaw/Camera/GunCheck.is_colliding():
-			var body = $Yaw/Camera/GunCheck.get_collider()
+		if $Yaw/Camera/revolver/GunCheck.is_colliding():
+			var body = $Yaw/Camera/revolver/GunCheck.get_collider()
 			
 			if body == null:
 				pass
 			
 			elif body.has_method("bullet_hit"):
-				body.bullet_hit(DAMAGE, $Yaw/Camera/GunCheck.global_transform)
+				body.bullet_hit(DAMAGE, $Yaw/Camera/revolver/GunCheck.global_transform)
 		
 func _on_GunCoolDown_timeout():
 	CanFire = true

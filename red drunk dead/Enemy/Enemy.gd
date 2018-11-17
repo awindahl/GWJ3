@@ -125,7 +125,7 @@ func die():
 	
 	if random > 5:
 		spawn = bottle.instance()
-		spawn.translation.y = -2
+		spawn.translation.y = -3
 		add_child(spawn)
 		spawn.get_node("AnimationPlayer").play("Spin")
 	
@@ -163,7 +163,7 @@ func bullet_hit(damage, bullet_global_transform):
 	
 	if TempDir.x == 0 && TempDir.z == 0:
 		pass
-	elif BeenShot && !BodyPos:
+	if BeenShot && !BodyPos:
 		
 		$Hindsight/CollisionShape.disabled = false
 		

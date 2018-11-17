@@ -113,7 +113,7 @@ func die():
 	#BodyPos = null
 	spawn = pickup.instance()
 	add_child(spawn)
-	spawn.translation.y = -2
+	spawn.translation.y = -3.5
 	spawn.get_node("AnimationPlayer").play("Spin")
 
 func _on_Timer_timeout():

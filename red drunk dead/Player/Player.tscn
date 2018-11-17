@@ -2,18 +2,18 @@
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Marlboro.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Player/crosshair.png" type="Texture" id=3]
-[ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=4]
+[ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/crosshair.png" type="Texture" id=4]
 
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="CapsuleShape" id=1]
 
-radius = 0.7
-height = 1.6
+radius = 0.32
+height = 0.9
 
 [sub_resource type="Animation" id=2]
 
 resource_name = "Shake"
-length = 6.0
+length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Yaw/Camera/revolver:rotation_degrees")
@@ -22,34 +22,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, -180, 0 ), Vector3( 10, -190, 0 ), Vector3( 0, -180, 0 ), Vector3( -10, -170, 0 ), Vector3( 0, -180, 0 ) ]
+"values": [ Vector3( 0, -180, 0 ), Vector3( -3.49438e-006, -166.719, 24.4846 ), Vector3( 0, -180, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Yaw/Camera/Crosshair:translation")
+tracks/1/path = NodePath("Yaw/Camera/revolver:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, -3.83829 ), Vector3( 0.5, -0.5, -3.838 ), Vector3( 0, 0, -3.83829 ), Vector3( -0.5, 0.5, -3.838 ), Vector3( 0, 0, -3.83829 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Yaw/Camera/GunCheck:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -2.13444e-007, 90, 90 ), Vector3( 3.1491e-007, 82.7698, 82.7766 ), Vector3( -2.13444e-007, 90, 90 ), Vector3( -6.37231e-007, 97.5927, 97.3335 ), Vector3( -2.13444e-007, 90, 90 ) ]
+"values": [ Vector3( 0.389009, -0.81325, -1.1013 ), Vector3( 0.201078, -0.81325, -1.1013 ), Vector3( 0.389009, -0.81325, -1.1013 ) ]
 }
 
 [node name="Player" type="KinematicBody"]
@@ -59,8 +47,8 @@ collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -1.74846e-007, -4, 0, -1.74846e-007, 7.64274e-015, -4, 4, -1.74846e-007, -1.74846e-007, 0, 3.07677, -0.181213 )
-shape = SubResource( 3 )
+transform = Transform( -1.74846e-007, -4, 0, -1.74846e-007, 7.64274e-015, -4, 4, -1.74846e-007, -1.74846e-007, 0, 2.77459, -0.181213 )
+shape = SubResource( 1 )
 
 [node name="GunCoolDown" type="Timer" parent="."]
 wait_time = 0.5
@@ -74,14 +62,12 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Shake = SubResource( 2 )
-
 [node name="Hud" type="Control" parent="."]
+editor/display_folded = true
 margin_left = 8.0
-margin_top = -1.0
+margin_top = 19.0
 margin_right = 48.0
-margin_bottom = 39.0
+margin_bottom = 59.0
 
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
 margin_left = 722.0
@@ -112,40 +98,39 @@ custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
 text = "0%"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Shake = SubResource( 2 )
+
 [node name="Yaw" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.47886, -1.16415e-010 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45196, 0 )
 
 [node name="Camera" type="Camera" parent="Yaw"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, 0, 8.64267e-006 )
 current = true
-fov = 90.0
 near = 0.01
 far = 4096.0
 
-[node name="LookAt" type="Position3D" parent="Yaw/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 1.49012e-008, 0, 1.49012e-008, 1, -0.034, 0.284243, -7.92116 )
+[node name="FloorCheck" type="RayCast" parent="Yaw/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -4.93953, -0.171759 )
+enabled = true
+cast_to = Vector3( 0, -0.23, 0 )
 
-[node name="GunCheck" type="RayCast" parent="Yaw/Camera"]
-transform = Transform( -3.7253e-009, 4.37114e-008, 1, 1, -4.37114e-008, 3.7253e-009, 4.37114e-008, 1, -4.37114e-008, 0, 0.284243, 1.16415e-009 )
+[node name="StairCheck" type="RayCast" parent="Yaw/Camera"]
+transform = Transform( -4.37114e-008, 0, 1, 0.00261881, 0.999997, 1.14472e-010, -0.999997, 0.00261881, -4.37112e-008, -0.00170898, -3.63941, -0.450779 )
+cast_to = Vector3( 0, -0.33, 0 )
+
+[node name="revolver" parent="Yaw/Camera" instance=ExtResource( 3 )]
+transform = Transform( -0.19, 0, -2.86892e-008, 0, 0.19, 0, 2.86892e-008, 0, -0.19, 0.389009, -0.81325, -1.1013 )
+
+[node name="GunCheck" type="RayCast" parent="Yaw/Camera/revolver"]
+transform = Transform( -5.26258, 3.7182e-007, 0, 2.01103e-014, 1.8591e-007, -5.19413, -4.60069e-007, -4.25312, -2.27043e-007, 2.1, 4.125, -4.077 )
 enabled = true
 cast_to = Vector3( 0, -2400, 0 )
 
-[node name="Crosshair" type="Sprite3D" parent="Yaw/Camera"]
-transform = Transform( 0.5, -3.90032e-010, 1.11691e-008, 0, 0.499695, 0.0174497, -1.11759e-008, -0.0174497, 0.499695, 0, 0.284243, -3.83829 )
+[node name="Crosshair" type="Sprite3D" parent="Yaw/Camera/revolver/GunCheck"]
+transform = Transform( 4.66829e-016, 0.499695, 0.0174497, 1.06798e-008, -0.0174497, 0.499695, 0.5, 3.72718e-010, -1.06733e-008, 0, -2.74132, 1.19209e-007 )
 modulate = Color( 1, 0, 0, 1 )
-texture = ExtResource( 3 )
-
-[node name="revolver" parent="Yaw/Camera" instance=ExtResource( 4 )]
-transform = Transform( -0.33, 0, 4.98286e-008, 0, 0.33, 0, -4.98286e-008, 0, -0.33, 0.46954, -1.60161, -1.2507 )
-
-[node name="FloorCheck" type="RayCast" parent="Yaw/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -8.40965, -0.00301003 )
-enabled = true
-cast_to = Vector3( 0, -1.72, 0 )
-
-[node name="StairCheck" type="RayCast" parent="Yaw/Camera"]
-transform = Transform( -4.37114e-008, 0, 1, 0.00261881, 0.999997, 1.14472e-010, -0.999997, 0.00261881, -4.37112e-008, -0.00170898, -7.9114, -1.00122 )
-enabled = true
+texture = ExtResource( 4 )
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
