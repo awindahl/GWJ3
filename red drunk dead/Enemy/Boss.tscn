@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemy/Boss.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/banditBoss/BanditBoss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/sound/58904__rock-savage__western-shot-modern-2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/sound/58905__rock-savage__western-shot-modern-1.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/sound/58906__rock-savage__western-shot-modern-3.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/voicelines/boss/dying.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/voicelines/boss/hurt1.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/voicelines/boss/hurt2.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/voicelines/boss/intro.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/voicelines/boss/intro2.wav" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -58,6 +66,46 @@ disabled = true
 [node name="ExitTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="shoot1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = -10.0
+unit_size = 49.8
+
+[node name="shoot2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = -10.0
+unit_size = 49.8
+
+[node name="shoot3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = -10.0
+unit_size = 49.8
+
+[node name="die" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_db = -10.049
+unit_size = 50.5
+
+[node name="hurt1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_db = -10.0
+unit_size = 49.8
+
+[node name="hurt2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+unit_db = -10.0
+unit_size = 49.8
+
+[node name="spotted1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 9 )
+unit_db = -5.0
+unit_size = 49.8
+
+[node name="spotted2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 10 )
+unit_db = -5.0
+unit_size = 49.8
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="KnockTimer" to="." method="_on_KnockTimer_timeout"]

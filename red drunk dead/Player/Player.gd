@@ -65,11 +65,19 @@ var fiveshot = false
 
 # Setup
 func _ready():
+	randomize()
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	MoveSpeed = WalkSpeed
 	effect(Global.Effect)
 
+func takeDamage(ammount):
+	get_node("hurt"+str(randi() % 2 + 1)).play()
+	Health -= ammount
+
+func enemyMissed():
+	get_node("Yaw/whiz"+str(randi() % 3 + 1)).play()
+	
 func _physics_process(delta):
 	
 	# TODO - check if on ladder
@@ -169,11 +177,13 @@ func _process_movement(delta):
 		if !CanChangeLastFloorHeight:
 			var HeightDifference = LastFloorHeight - get_translation().y
 			if HeightDifference > 8:
-				Health -= 10
+				#Health -= 10
+				takeDamage(10)
 		CanChangeLastFloorHeight = true
 		Velocity -= Velocity.dot(Normal) * Normal
 		
 		if Jump: # Jump higher when sprinting
+			get_node("jump"+str(randi()%2+1)).play()
 			if MovementState == SPRINT:
 				Velocity.y += JUMP * 1.1
 			else:
@@ -223,6 +233,7 @@ func _process_movement(delta):
 		get_tree().change_scene("res://Saloon/LoseScreen.tscn")
 	
 	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < MaxAmmo && !IsShooting:
+		$Yaw/reload.play()
 		$ReloadTimer.start()
 		$Yaw/Camera/revolver/AnimationPlayer.play("reload")
 	
@@ -246,6 +257,7 @@ func _shoot():
 	if Input.is_action_just_pressed("shoot") && CanFire && Ammo && $ReloadTimer.time_left == 0 && !fiveshot:
 		IsShooting = true
 		Ammo -= 1
+		$Yaw.get_node("gunshot"+str(randi() % 3 + 1)).play()
 		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
 		$Yaw/Camera/revolver/GunCheck.force_raycast_update()
 		CanFire = false
@@ -279,7 +291,8 @@ func _on_GunCoolDown_timeout():
 	IsShooting = false
 
 func bullet_hit(damage, bullet_global_transform):
-	Health -= damage
+	#Health -= damage
+	takeDamage(damage)
 	CanMove = false
 	$MoveTimer.start()
 	

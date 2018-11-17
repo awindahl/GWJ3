@@ -105,6 +105,7 @@ func _process(delta):
 		
 
 func die():
+	$die.play()
 	CanMove = false
 	set_process(false)
 	$Timer.paused = true
@@ -141,6 +142,7 @@ func _on_Timer_timeout():
 
 	
 func bullet_hit(damage, bullet_global_transform):
+	get_node("hurt"+str(randi()%2+1)).play()
 	Health -= damage
 	CanMove = false
 	BeenShot = true
@@ -166,15 +168,18 @@ func _on_KnockTimer_timeout():
 	$Timer.start()
 	
 func _shoot():
+
 	$GunCast.force_raycast_update()
 	#should only be called once
 	if CanFire:
+
 		var anim = randi() % 3 + 1
 		
 		CanFire = false
 		$ShootTimer.start()
 		
 		if $GunCast.is_colliding():
+			get_node("shoot"+str(randi()%3+1)).play()
 			var body = $GunCast.get_collider()
 			
 			if body == null:
@@ -186,6 +191,8 @@ func _shoot():
 				var random = randi()%11 + 1
 				if random > 3:
 					body.bullet_hit(DAMAGE, $GunCast.global_transform)
+				else:
+					body.enemyMissed()
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
@@ -193,12 +200,16 @@ func _shoot():
 func _on_ShootTimer_timeout():
 	CanFire = true
 
+func drawGun():
+	$Mesh/AnimationPlayer.play("draw")
+	get_node("spotted"+str(randi()%2+1)).play()
+
 func _on_Area_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
-		$Mesh/AnimationPlayer.play("draw")
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
 		$Timer.stop()
+		drawGun()
 		BodyPos = body
 		return
 	
@@ -240,9 +251,9 @@ func _on_ExitTimer_timeout():
 
 func _on_Hindsight_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
-		$Mesh/AnimationPlayer.play("draw")
 		CanMove = false
 		$Timer.stop()
+		drawGun()
 		BodyPos = body
 		return
 

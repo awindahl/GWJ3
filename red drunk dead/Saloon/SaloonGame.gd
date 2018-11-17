@@ -12,6 +12,11 @@ func _physics_process(delta):
 	if !$drink1.is_playing() && !$drink2.is_playing() && playing:
 		$glug.play()
 		playing = !playing
+		
 func drink():
+	var num = randi() % 2 + 1
+	get_node("drink"+str(num)).play()
+	
+func hello():
 	var num = randi() % 2 + 1
 	get_node("drink"+str(num)).play()

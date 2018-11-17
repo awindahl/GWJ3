@@ -1,44 +1,24 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Marlboro.tres" type="DynamicFont" id=2]
-[ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/crosshair.png" type="Texture" id=4]
+[ext_resource path="res://Player/Player.tres" type="Animation" id=3]
+[ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/crosshair.png" type="Texture" id=5]
+[ext_resource path="res://Assets/sound/58904__rock-savage__western-shot-modern-2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/sound/58905__rock-savage__western-shot-modern-1.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/sound/58906__rock-savage__western-shot-modern-3.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/sound/177863__dredile__clean-revolver-reload.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/sound/remix/bullet_whiz.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/voicelines/player/hurt1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/voicelines/player/hurt2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/voicelines/player/jump1.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/voicelines/player/jump2.wav" type="AudioStream" id=14]
 
 [sub_resource type="CapsuleShape" id=1]
 
 radius = 0.31
 height = 0.91
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "Shake"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Yaw/Camera/revolver:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, -180, 0 ), Vector3( -3.49438e-006, -166.719, 24.4846 ), Vector3( 0, -180, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Yaw/Camera/revolver:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.389009, -0.81325, -1.1013 ), Vector3( 0.201078, -0.81325, -1.1013 ), Vector3( 0.389009, -0.81325, -1.1013 ) ]
-}
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00697231, 0.0135794, -0.00132084 )
@@ -59,7 +39,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.5
 one_shot = true
 
 [node name="Hud" type="Control" parent="."]
@@ -111,7 +91,7 @@ text = "
 0%"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Shake = SubResource( 2 )
+anims/Shake = ExtResource( 3 )
 
 [node name="Yaw" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45196, 0 )
@@ -131,8 +111,8 @@ cast_to = Vector3( 0, -0.59, 0 )
 transform = Transform( -4.37114e-008, 0, 1, 0.00261881, 0.999997, 1.14472e-010, -0.999997, 0.00261881, -4.37112e-008, -0.00170898, -3.63941, -0.450779 )
 cast_to = Vector3( 0, -0.33, 0 )
 
-[node name="revolver" parent="Yaw/Camera" instance=ExtResource( 3 )]
-transform = Transform( -0.19, 0, -2.86892e-008, 0, 0.19, 0, 2.86892e-008, 0, -0.19, 0.389009, -0.81325, -1.1013 )
+[node name="revolver" parent="Yaw/Camera" instance=ExtResource( 4 )]
+transform = Transform( -0.19, 0, 1.66103e-008, 0, 0.19, 0, -1.66103e-008, 0, -0.19, 0.389009, -0.81325, -1.1013 )
 
 [node name="GunCheck" type="RayCast" parent="Yaw/Camera/revolver"]
 transform = Transform( -5.26258, 3.7182e-007, 0, 2.01103e-014, 1.8591e-007, -5.19413, -4.60069e-007, -4.25312, -2.27043e-007, 2.1, 4.125, -4.077 )
@@ -141,7 +121,58 @@ cast_to = Vector3( 0, -2400, 0 )
 
 [node name="Crosshair" type="Sprite3D" parent="Yaw/Camera/revolver/GunCheck"]
 transform = Transform( 4.66839e-016, 0.499696, 0.0174497, 1.06798e-008, -0.0174497, 0.499695, 0.5, 3.7272e-010, -1.06733e-008, -1.04308e-007, -1.82284, 0 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
+
+[node name="gunshot1" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79397e-009, -0.45196, -2 )
+stream = ExtResource( 6 )
+unit_db = 5.0
+
+[node name="gunshot2" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79397e-009, -0.45196, -2 )
+stream = ExtResource( 7 )
+unit_db = 5.0
+
+[node name="gunshot3" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79397e-009, -0.45196, -2 )
+stream = ExtResource( 8 )
+unit_db = 5.0
+
+[node name="reload" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79397e-009, -0.45196, -2 )
+stream = ExtResource( 9 )
+unit_db = 5.0
+
+[node name="whiz1" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.54804, 0 )
+stream = ExtResource( 10 )
+unit_db = 5.0
+
+[node name="whiz2" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.54804, 0 )
+stream = ExtResource( 10 )
+unit_db = 5.0
+
+[node name="whiz3" type="AudioStreamPlayer3D" parent="Yaw"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79397e-009, 2.54804, 0 )
+stream = ExtResource( 10 )
+unit_db = 5.0
+
+[node name="hurt1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -20.0
+
+[node name="hurt2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -20.0
+
+[node name="jump1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -30.0
+
+[node name="jump2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -30.0
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
