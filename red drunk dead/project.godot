@@ -24,8 +24,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/width=1280
-window/size/height=720
+window/size/width=322
+window/size/height=120
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -103,6 +103,10 @@ r={
 
 [rendering]
 
-quality/shadows/filter_mode=0
+quality/filters/anisotropic_filter_level=1
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
 quality/subsurface_scattering/quality=0
+quality/voxel_cone_tracing/high_quality=false
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

@@ -108,12 +108,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45196, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, 0, 8.64267e-006 )
 current = true
 near = 0.01
-far = 4096.0
+far = 2048.0
 
 [node name="FloorCheck" type="RayCast" parent="Yaw/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -4.93953, -0.171759 )
 enabled = true
-cast_to = Vector3( 0, -0.23, 0 )
+cast_to = Vector3( 0, -0.59, 0 )
 
 [node name="StairCheck" type="RayCast" parent="Yaw/Camera"]
 transform = Transform( -4.37114e-008, 0, 1, 0.00261881, 0.999997, 1.14472e-010, -0.999997, 0.00261881, -4.37112e-008, -0.00170898, -3.63941, -0.450779 )
@@ -129,7 +129,6 @@ cast_to = Vector3( 0, -2400, 0 )
 
 [node name="Crosshair" type="Sprite3D" parent="Yaw/Camera/revolver/GunCheck"]
 transform = Transform( 4.66829e-016, 0.499695, 0.0174497, 1.06798e-008, -0.0174497, 0.499695, 0.5, 3.72718e-010, -1.06733e-008, 0, -2.74132, 1.19209e-007 )
-modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 4 )
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
