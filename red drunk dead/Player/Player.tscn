@@ -5,8 +5,10 @@
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=3]
 [ext_resource path="res://revolver/revolver.tscn" type="PackedScene" id=4]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="CapsuleShape" id=3]
 
+radius = 0.7
+height = 1.6
 
 [sub_resource type="Animation" id=2]
 
@@ -52,20 +54,13 @@ tracks/2/keys = {
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00697231, 0.0135794, -0.00132084 )
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.97893, 0 )
-shape = SubResource( 1 )
-
-[node name="FloorCheck" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5791, 0 )
-enabled = true
-
-[node name="StairCheck" type="RayCast" parent="."]
-transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, -2.5791, 0 )
-enabled = true
-cast_to = Vector3( 0, -0.5, 0 )
+transform = Transform( -1.74846e-007, -4, 0, -1.74846e-007, 7.64274e-015, -4, 4, -1.74846e-007, -1.74846e-007, 0, 3.07677, -0.181213 )
+shape = SubResource( 3 )
 
 [node name="GunCoolDown" type="Timer" parent="."]
 wait_time = 0.5
@@ -89,10 +84,10 @@ margin_right = 48.0
 margin_bottom = 39.0
 
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
-margin_left = 762.0
-margin_top = 285.0
-margin_right = 873.0
-margin_bottom = 331.0
+margin_left = 722.0
+margin_top = 385.0
+margin_right = 833.0
+margin_bottom = 431.0
 custom_fonts/normal_font = ExtResource( 2 )
 text = "5/5
 "
@@ -100,9 +95,9 @@ scroll_active = false
 
 [node name="Health" type="RichTextLabel" parent="Hud"]
 margin_left = 11.0
-margin_top = 537.0
+margin_top = 637.0
 margin_right = 155.0
-margin_bottom = 593.0
+margin_bottom = 693.0
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.560784, 0.101961, 0.101961, 1 )
 text = "+100"
@@ -110,22 +105,22 @@ scroll_active = false
 
 [node name="Drunk" type="RichTextLabel" parent="Hud"]
 margin_left = 195.0
-margin_top = 537.0
+margin_top = 637.0
 margin_right = 402.0
-margin_bottom = 593.0
+margin_bottom = 693.0
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
 text = "0%"
 
 [node name="Yaw" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.65243, -1.16415e-010 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.47886, -1.16415e-010 )
 
 [node name="Camera" type="Camera" parent="Yaw"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-doppler_tracking = 1
 current = true
+fov = 90.0
 near = 0.01
-far = 2048.0
+far = 4096.0
 
 [node name="LookAt" type="Position3D" parent="Yaw/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 1.49012e-008, 0, 1.49012e-008, 1, -0.034, 0.284243, -7.92116 )
@@ -133,7 +128,7 @@ transform = Transform( 1, 0, 0, 0, 1, 1.49012e-008, 0, 1.49012e-008, 1, -0.034, 
 [node name="GunCheck" type="RayCast" parent="Yaw/Camera"]
 transform = Transform( -3.7253e-009, 4.37114e-008, 1, 1, -4.37114e-008, 3.7253e-009, 4.37114e-008, 1, -4.37114e-008, 0, 0.284243, 1.16415e-009 )
 enabled = true
-cast_to = Vector3( 0, -600, 0 )
+cast_to = Vector3( 0, -2400, 0 )
 
 [node name="Crosshair" type="Sprite3D" parent="Yaw/Camera"]
 transform = Transform( 0.5, -3.90032e-010, 1.11691e-008, 0, 0.499695, 0.0174497, -1.11759e-008, -0.0174497, 0.499695, 0, 0.284243, -3.83829 )
@@ -142,6 +137,15 @@ texture = ExtResource( 3 )
 
 [node name="revolver" parent="Yaw/Camera" instance=ExtResource( 4 )]
 transform = Transform( -0.33, 0, 4.98286e-008, 0, 0.33, 0, -4.98286e-008, 0, -0.33, 0.46954, -1.60161, -1.2507 )
+
+[node name="FloorCheck" type="RayCast" parent="Yaw/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -8.40965, -0.00301003 )
+enabled = true
+cast_to = Vector3( 0, -1.72, 0 )
+
+[node name="StairCheck" type="RayCast" parent="Yaw/Camera"]
+transform = Transform( -4.37114e-008, 0, 1, 0.00261881, 0.999997, 1.14472e-010, -0.999997, 0.00261881, -4.37112e-008, -0.00170898, -7.9114, -1.00122 )
+enabled = true
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]

@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Imported Objects/Bottle.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Imported Objects/Misc.material" type="Material" id=3]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 
 extents = Vector3( 0.36, 0.33, 0.32 )
 
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 30 ), Vector3( 0, -90, 30 ), Vector3( 0, -180, 30 ), Vector3( 0, -270, 30 ), Vector3( 0, -359, 30 ) ]
 }
 
-[node name="Bottle" instance=ExtResource( 1 )]
+[node name="Bottle" index="0" instance=ExtResource( 1 )]
 transform = Transform( -3.76552, 2.17403, -2.4687, 2.5, 4.33013, 0, 2.13796, -1.23435, -4.34805, 0.541142, 1.78416, 0 )
 script = ExtResource( 2 )
 
@@ -34,10 +34,12 @@ transform = Transform( 0.999999, -2.98023e-008, 0, 0, 0.999999, 0, 0, 0, 0.99999
 material/0 = ExtResource( 3 )
 
 [node name="Area" type="Area" parent="Beer" index="0"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Beer/Area" index="0"]
 transform = Transform( 0.555053, 0.25689, -0.791153, 0.25689, 0.851684, 0.456772, 0.791153, -0.456773, 0.406738, 0.166527, 0.323675, -0.124793 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/Spin = SubResource( 2 )

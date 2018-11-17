@@ -46,7 +46,7 @@ var Gravity = -70
 const ACCELERATION = 0.5
 const DECELERATION = 0.5
 const MAXSLOPEANGLE = 60
-const JUMP = 15
+const JUMP = 10
 
 # Ladder - TODO
 var OnLadder = false
@@ -55,7 +55,7 @@ const LADDERACCELERATION = 2
 
 # Stairs - TODO
 const MAXSTAIRSLOPE = 20
-const STAIRJUMP = 6
+const STAIRJUMP = 12
 
 var temp = true
 var RandomMovement
@@ -145,8 +145,8 @@ func _process_movement(delta):
 		MovementState = IDLE
 	
 	var Normal
-	if $FloorCheck.is_colliding():
-		Normal = $FloorCheck.get_collision_normal()
+	if $Yaw/Camera/FloorCheck.is_colliding():
+		Normal = $Yaw/Camera/FloorCheck.get_collision_normal()
 	else:
 		Normal = Vector3(0,0,0)
 	
@@ -155,7 +155,7 @@ func _process_movement(delta):
 		if !CanChangeLastFloorHeight:
 			var HeightDifference = LastFloorHeight - get_translation().y
 			if HeightDifference > 8:
-				print("Ow")
+				Health -= 10
 		CanChangeLastFloorHeight = true
 		Velocity -= Velocity.dot(Normal) * Normal
 		
@@ -171,10 +171,10 @@ func _process_movement(delta):
 			CanChangeLastFloorHeight = false
 		
 	# Stairs Code Magic
-	if Direction.length() > 0 and $StairCheck.is_colliding():
-		var StairNormal = $StairCheck.get_collision_normal()
+	if Direction.length() > 0 and $Yaw/Camera/StairCheck.is_colliding():
+		var StairNormal = $Yaw/Camera/StairCheck.get_collision_normal()
 		var StairAngle = rad2deg(acos(StairNormal.dot(Vector3(0, 1, 0))))
-		if StairAngle < MAXSTAIRSLOPE:
+		if StairAngle == 0:
 			Velocity.y = STAIRJUMP
 	
 	Direction.y = 0

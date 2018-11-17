@@ -40,7 +40,7 @@ surfaces/1 = {
 "vertex_count": 252
 }
 
-[sub_resource type="ArrayMesh" id=4]
+[sub_resource type="ArrayMesh" id=3]
 
 surfaces/0 = {
 "aabb": AABB( -0.0327839, -0.00738633, -0.27445, 0.148485, 1.41862, 0.562235 ),
@@ -69,7 +69,7 @@ surfaces/1 = {
 "vertex_count": 36
 }
 
-[sub_resource type="ArrayMesh" id=3]
+[sub_resource type="ArrayMesh" id=4]
 
 surfaces/0 = {
 "aabb": AABB( -0.49314, -0.00738633, -0.505822, 0.986279, 0.0472739, 0.961561 ),
@@ -129,7 +129,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("WoodBarrelDestroyed3:mesh")
@@ -141,7 +141,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("WoodBarrelDestroyed4:mesh")
@@ -153,7 +153,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("WoodBarrelDestroyed5:mesh")
@@ -165,7 +165,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("WoodBarrelDestroyed6:mesh")
@@ -177,7 +177,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("WoodBarrelDestroyed7:mesh")
@@ -189,7 +189,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("WoodBarrelTopDestroyed2:mesh")
@@ -237,7 +237,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 4 ) ]
+"values": [ null, SubResource( 3 ) ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("WoodBarrelTopDestroyed:mesh")
@@ -249,7 +249,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 0.01 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, SubResource( 3 ) ]
+"values": [ null, SubResource( 4 ) ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("WoodBarrelDestroyed:translation")
@@ -443,6 +443,18 @@ tracks/27/keys = {
 "update": 0,
 "values": [ Vector3( 1.10445, 168.317, 0.664665 ), Vector3( -34.6798, 171.336, -75.8852 ) ]
 }
+tracks/28/type = "value"
+tracks/28/path = NodePath(".:input_ray_pickable")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="SolidBarrel" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.874182, 0 )
@@ -459,35 +471,35 @@ material/0 = null
 material/1 = null
 
 [node name="WoodBarrelTopDestroyed" parent="." instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 4.99927, -0.0853011, 0, 0.0853011, 4.99927, -0.0255797, 6.28432, 0 )
+transform = Transform( 5, 0, 0, 0, 4.98215, -0.422114, 0, 0.422114, 4.98215, -0.126727, 5.44457, 0 )
 mesh = null
 
 [node name="WoodBarrelDestroyed" parent="." instance=ExtResource( 5 )]
-transform = Transform( -4.8931, -0.234666, 1.00126, -0.231546, 4.99448, 0.0390134, -1.00199, -0.00818829, -4.89856, -2.24067, 2.38419e-007, -0.303196 )
+transform = Transform( -4.69282, -1.44001, 0.950692, -1.35062, 4.77989, 0.573128, -1.0739, 0.281113, -4.87521, -2.24067, 2.38419e-007, -0.303196 )
 mesh = null
 
 [node name="WoodBarrelDestroyed2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 2.04286, 0.0385602, 4.56347, -0.302691, 4.98995, 0.0933371, -4.55358, -0.314398, 2.04109, 1.01807, 1.61188, -2.08361 )
+transform = Transform( 1.80283, 0.105289, 4.66248, -1.47201, 4.75604, 0.461777, -4.42527, -1.53914, 1.74586, 1.01807, 1.32301, -2.08361 )
 mesh = null
 
 [node name="WoodBarrelDestroyed3" parent="." instance=ExtResource( 5 )]
-transform = Transform( -2.16503, 0.127913, 4.50513, 0.366475, 4.98643, 0.0345382, -4.49203, 0.345159, -2.16853, -0.920441, 1.57195, -2.04488 )
+transform = Transform( -2.10931, 0.637879, 4.48819, 1.77647, 4.67064, 0.171076, -4.17073, 1.6668, -2.197, -0.920441, 1.29024, -2.04488 )
 mesh = null
 
 [node name="WoodBarrelDestroyed4" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.0366762, -0.00065406, -4.99987, -0.312197, 4.99024, 0.00163729, 4.99011, 0.3122, -0.0366454, -0.226143, 1.37327, 2.33067 )
+transform = Transform( -0.031961, -0.00170567, -4.9999, -1.52309, 4.76236, 0.00811146, 4.76227, 1.52311, -0.0309616, -0.226143, 1.12716, 2.33067 )
 mesh = null
 
 [node name="WoodBarrelDestroyed5" parent="." instance=ExtResource( 5 )]
-transform = Transform( 3.96688, 0.326718, -3.02608, -0.300679, 4.98886, 0.144477, 3.02878, 0.0673507, 3.97769, 1.50378, 0.936295, 1.52453 )
+transform = Transform( 3.95375, 1.60812, -2.60419, -1.4541, 4.73039, 0.713423, 2.69322, 0.193213, 4.20824, 1.50378, 0.768498, 1.52453 )
 mesh = null
 
 [node name="WoodBarrelDestroyed6" parent="." instance=ExtResource( 5 )]
-transform = Transform( -3.78157, 0.227583, -3.26312, 0.378241, 4.98484, -0.0906725, 3.24911, -0.315426, -3.78733, -1.54939, 2.38419e-007, 1.64956 )
+transform = Transform( -3.65313, 1.20252, -3.1951, 1.61687, 4.73086, -0.0681206, 3.00673, -1.08298, -3.84535, -1.54939, 2.38419e-007, 1.64956 )
 mesh = null
 
 [node name="WoodBarrelDestroyed7" parent="." instance=ExtResource( 5 )]
-transform = Transform( 4.93143, 0.265036, 0.781545, -0.255184, 4.99279, -0.0829803, -0.784817, 0.0419547, 4.93785, 2.26568, 1.32254, -0.6901 )
+transform = Transform( 4.57269, 1.41785, 1.44232, -1.47213, 4.77827, -0.0300082, -1.38687, -0.397212, 4.78737, 2.26568, 1.08409, -0.6901 )
 mesh = null
 
 [node name="WoodBarrelTopDestroyed2" parent="." instance=ExtResource( 4 )]
