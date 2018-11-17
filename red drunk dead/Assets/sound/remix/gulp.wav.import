@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gulp.wav-bf860a7dd70d1ae7146d040adb1d5de1.sample"
+
+[deps]
+
+source_file="res://Assets/sound/remix/gulp.wav"
+dest_files=[ "res://.import/gulp.wav-bf860a7dd70d1ae7146d040adb1d5de1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

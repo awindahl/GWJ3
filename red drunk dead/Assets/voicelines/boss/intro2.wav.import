@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/intro2.wav-8e255cbac8f40b36b05dce32bee759cc.sample"
+
+[deps]
+
+source_file="res://Assets/voicelines/boss/intro2.wav"
+dest_files=[ "res://.import/intro2.wav-8e255cbac8f40b36b05dce32bee759cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

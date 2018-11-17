@@ -44,6 +44,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00697231, 0.0135794, -0.001
 script = ExtResource( 1 )
 
 [node name="Yaw" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01944, -5.82077e-011 )
 
 [node name="Camera" type="Camera" parent="Yaw"]

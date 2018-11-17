@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/123222__cgeffex__bullet-whiz.wav-8455a6f162cb77d4de2bc44a90eabbca.sample"
+
+[deps]
+
+source_file="res://Assets/sound/123222__cgeffex__bullet-whiz.wav"
+dest_files=[ "res://.import/123222__cgeffex__bullet-whiz.wav-8455a6f162cb77d4de2bc44a90eabbca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

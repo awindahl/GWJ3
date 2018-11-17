@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/defeat1.wav-d8f147e8502dd0cb1a6696f55271cce0.sample"
+
+[deps]
+
+source_file="res://Assets/voicelines/player/defeat1.wav"
+dest_files=[ "res://.import/defeat1.wav-d8f147e8502dd0cb1a6696f55271cce0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

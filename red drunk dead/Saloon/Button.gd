@@ -21,6 +21,7 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 			# enter different alcohols here
 			Global.Drunkeness += 10
 			Global.Cash -= 10
+			get_parent().get_parent().get_parent().drink()
 		else:
 			temp = 0
 	

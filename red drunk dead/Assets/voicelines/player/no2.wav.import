@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/no2.wav-bf11125f5b275b4bd6a3e91bf67169d6.sample"
+
+[deps]
+
+source_file="res://Assets/voicelines/player/no2.wav"
+dest_files=[ "res://.import/no2.wav-bf11125f5b275b4bd6a3e91bf67169d6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
