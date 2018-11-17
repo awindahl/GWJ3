@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Saloon/Menu.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Saloon/ConfederateCharisma.png" type="Texture" id=2]
 [ext_resource path="res://Saloon/Button.gd" type="Script" id=3]
+[ext_resource path="res://Saloon/Gunfirepng.png" type="Texture" id=4]
+[ext_resource path="res://Saloon/SixShooter.png" type="Texture" id=5]
+[ext_resource path="res://Saloon/YankeeYipee.png" type="Texture" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -59,7 +62,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("MeshInstance/Button1/StaticBody/CollisionShape:disabled")
+tracks/3/path = NodePath("MeshInstance/Confederate Charisma/StaticBody/CollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -71,7 +74,7 @@ tracks/3/keys = {
 "values": [ true, true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MeshInstance/Button2/StaticBody/CollisionShape:disabled")
+tracks/4/path = NodePath("MeshInstance/Gunfire/StaticBody/CollisionShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -83,7 +86,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MeshInstance/Button3/StaticBody/CollisionShape:disabled")
+tracks/5/path = NodePath("MeshInstance/Five Shooter/StaticBody/CollisionShape:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -95,7 +98,7 @@ tracks/5/keys = {
 "values": [ true, false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MeshInstance/Button4/StaticBody/CollisionShape:disabled")
+tracks/6/path = NodePath("MeshInstance/Yankee Yipee/StaticBody/CollisionShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -118,59 +121,57 @@ script = ExtResource( 1 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="Button1" type="Sprite3D" parent="MeshInstance"]
-editor/display_folded = true
-transform = Transform( -0.5, 7.72998e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, -1.58992 )
+[node name="Confederate Charisma" type="Sprite3D" parent="MeshInstance"]
+transform = Transform( -1.19081, 1.79807e-007, -3.30012e-015, 0, -5.20518e-008, -0.5, -1.79807e-007, -1.19081, 2.18557e-008, 0.483918, 0.0365679, -1.33486 )
+transparent = false
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button1"]
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Confederate Charisma"]
 transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button1/StaticBody"]
-transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Confederate Charisma/StaticBody"]
+transform = Transform( 1, 0, 3.07958e-015, -1.42109e-014, 1, 0, -1.88738e-015, 2.13163e-014, 1.63167, 1.19209e-007, 0, 1.38329 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Button2" type="Sprite3D" parent="MeshInstance"]
-editor/display_folded = true
-transform = Transform( -0.5, 7.72998e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, -0.967022 )
-texture = ExtResource( 2 )
+[node name="Gunfire" type="Sprite3D" parent="MeshInstance"]
+transform = Transform( -1.26449, 1.90932e-007, -3.30012e-015, 0, -5.52724e-008, -0.5, -1.90932e-007, -1.26449, 2.18557e-008, -0.548128, 0.0365675, -0.609676 )
+texture = ExtResource( 4 )
 script = ExtResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button2"]
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Gunfire"]
 transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button2/StaticBody"]
-transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Gunfire/StaticBody"]
+transform = Transform( 1, 0, 2.82455e-015, 0, 1, 1.95399e-014, -1.88738e-015, -7.10543e-015, 1.49654, 1.49012e-007, 0, 1.38329 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Button3" type="Sprite3D" parent="MeshInstance"]
-editor/display_folded = true
-transform = Transform( -0.5, 7.72997e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, -0.339365 )
-texture = ExtResource( 2 )
+[node name="Five Shooter" type="Sprite3D" parent="MeshInstance"]
+transform = Transform( -1.3815, 2.14011e-007, -7.92608e-015, 0, -6.19535e-008, -1.20088, -2.08601e-007, -1.41733, 5.2492e-008, 0.38623, 0.0365677, 0.37829 )
+texture = ExtResource( 5 )
 script = ExtResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button3"]
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Five Shooter"]
 transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button3/StaticBody"]
-transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Five Shooter/StaticBody"]
+transform = Transform( 1, 0, 1.67592e-015, -1.42109e-014, 1, 1.06581e-014, -1.88738e-015, -1.42109e-014, 0.887962, 1.49012e-007, 0, 1.38329 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Button4" type="Sprite3D" parent="MeshInstance"]
-editor/display_folded = true
-transform = Transform( -0.5, 7.72997e-008, 2.98023e-008, -1.49012e-008, -2.42144e-008, -0.5, -7.45058e-008, -0.5, 1.95578e-008, -0.821164, 0.0365677, 0.227132 )
-texture = ExtResource( 2 )
+[node name="Yankee Yipee" type="Sprite3D" parent="MeshInstance"]
+transform = Transform( -1.57875, 2.44073e-007, 9.41005e-008, -1.49012e-008, -2.42144e-008, -0.5, -1.99638e-007, -1.33975, 5.2405e-008, -0.464106, 0.0365677, 1.36662 )
+texture = ExtResource( 6 )
 script = ExtResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance/Button4"]
+[node name="StaticBody" type="StaticBody" parent="MeshInstance/Yankee Yipee"]
+editor/display_folded = true
 transform = Transform( 1, 1.42109e-014, 1.05818e-015, 5.68434e-014, 1, 0, -1.11026e-016, -1.42109e-014, 1, -1.19209e-007, 0, -1.44703 )
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Button4/StaticBody"]
-transform = Transform( 1, 0, 1.05818e-015, 0, 1, 0, -1.88738e-015, -1.42109e-014, 1, 1.19209e-007, 0, 1.38329 )
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Yankee Yipee/StaticBody"]
+transform = Transform( 1, -1.42109e-014, -1.8789e-015, 0, 1, 1.42109e-014, -1.11027e-016, -1.42109e-014, 1.48569, 1.49012e-007, 0, 1.38329 )
 shape = SubResource( 3 )
 disabled = true
 
@@ -180,7 +181,15 @@ anims/Move = SubResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 5 )
 
-[connection signal="input_event" from="MeshInstance/Button1/StaticBody" to="MeshInstance/Button1" method="_on_StaticBody_input_event"]
-[connection signal="input_event" from="MeshInstance/Button2/StaticBody" to="MeshInstance/Button2" method="_on_StaticBody_input_event"]
-[connection signal="input_event" from="MeshInstance/Button3/StaticBody" to="MeshInstance/Button3" method="_on_StaticBody_input_event"]
-[connection signal="input_event" from="MeshInstance/Button4/StaticBody" to="MeshInstance/Button4" method="_on_StaticBody_input_event"]
+[connection signal="input_event" from="MeshInstance/Confederate Charisma/StaticBody" to="MeshInstance/Confederate Charisma" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="MeshInstance/Confederate Charisma/StaticBody" to="MeshInstance/Confederate Charisma" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance/Confederate Charisma/StaticBody" to="MeshInstance/Confederate Charisma" method="_on_StaticBody_mouse_exited"]
+[connection signal="input_event" from="MeshInstance/Gunfire/StaticBody" to="MeshInstance/Gunfire" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="MeshInstance/Gunfire/StaticBody" to="MeshInstance/Gunfire" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance/Gunfire/StaticBody" to="MeshInstance/Gunfire" method="_on_StaticBody_mouse_exited"]
+[connection signal="input_event" from="MeshInstance/Five Shooter/StaticBody" to="MeshInstance/Five Shooter" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="MeshInstance/Five Shooter/StaticBody" to="MeshInstance/Five Shooter" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance/Five Shooter/StaticBody" to="MeshInstance/Five Shooter" method="_on_StaticBody_mouse_exited"]
+[connection signal="input_event" from="MeshInstance/Yankee Yipee/StaticBody" to="MeshInstance/Yankee Yipee" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="MeshInstance/Yankee Yipee/StaticBody" to="MeshInstance/Yankee Yipee" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance/Yankee Yipee/StaticBody" to="MeshInstance/Yankee Yipee" method="_on_StaticBody_mouse_exited"]

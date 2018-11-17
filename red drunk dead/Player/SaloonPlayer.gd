@@ -59,6 +59,7 @@ const STAIRJUMP = 6
 var temp = true
 var RandomMovement
 var FrameVar = 0
+var text
 
 # Setup
 func _ready():
@@ -189,6 +190,18 @@ func _process_movement(delta):
 	Velocity.z = hVel.z
 	
 	$Hud/Cash.text = "$" + var2str(Cash)
+	
+	if $Yaw/Camera/GunCheck.is_colliding():
+		text = $Yaw/Camera/GunCheck.get_collider().name
+		if text == "Wanted" || text == "Menu":
+			$Hud/Item.text = text
+		else:
+			$Hud/Item.text = ""
+	
+	elif text == "Confederate Charisma" || text == "Gunfire" || text == "Five Shooter" || text == "Yankee Yipee":
+		$Hud/Item.text = text
+	else:
+		$Hud/Item.text = ""
 	
 	CanMove = false
 	

@@ -25,13 +25,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.77642, 0 )
 transform = Transform( -1.93755, 0.121929, 0.480664, 0.118342, 1.99628, -0.029358, -0.48156, 9.31323e-009, -1.94116, -5.74407, 14.2297, 4.67825 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6498, 39.8647, -7.54475 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6498, 32.9348, -4.44064 )
 light_energy = 3.4
 shadow_enabled = true
-shadow_bias = 1.87
-omni_range = 80.7
+shadow_bias = 1.32
+shadow_contact = 1.4
+omni_range = 46.7
 
-[node name="Wanted1" parent="." instance=ExtResource( 3 )]
+[node name="Wanted" parent="." instance=ExtResource( 3 )]
 transform = Transform( 2, 0, 0, 0, -0.0900239, -1.99797, 0, 1.99797, -0.0900239, 0.989035, 21.0346, -35.0418 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]

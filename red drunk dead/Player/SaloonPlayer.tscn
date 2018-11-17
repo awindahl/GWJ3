@@ -106,6 +106,13 @@ custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 0.133333, 0.552941, 0.129412, 1 )
 text = "Cash"
 
+[node name="Item" type="RichTextLabel" parent="Hud"]
+margin_left = 196.0
+margin_top = 43.0
+margin_right = 322.0
+margin_bottom = 88.0
+custom_fonts/normal_font = ExtResource( 4 )
+
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
