@@ -96,6 +96,7 @@ func _process(delta):
 		die()
 	
 	if BodyPos:
+		var LastRot = rotation_degrees
 		var value = 0.2
 		value += delta
 		var LookDir = (BodyPos.translation - translation) * -1
@@ -106,6 +107,7 @@ func _process(delta):
 			value = 1
 		
 		set_transform(Transform(ThisRot, translation))
+		rotation_degrees.x = LastRot.x
 
 func die():
 	CanMove = false

@@ -3,9 +3,10 @@
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/bandit/Bandit.tscn" type="PackedScene" id=2]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="CapsuleShape" id=1]
 
-extents = Vector3( 3.62, 3.83, 3.35 )
+radius = 2.5
+height = 3.7
 
 [sub_resource type="BoxShape" id=2]
 
@@ -22,7 +23,7 @@ script = ExtResource( 1 )
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -4.19028, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -3.39662e-008, -1.01017, 0, 1, -5.68248e-008, 0, -0.589968, 0 )
+transform = Transform( 1, 0, 0, 0, -3.39662e-008, -1.01017, 0, 1, -5.68248e-008, 0, 0.816003, 0 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -35,7 +36,7 @@ one_shot = true
 autostart = true
 
 [node name="GunCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.33409, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, -0.312456, 0.166419 )
 cast_to = Vector3( 0, 55.43, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
