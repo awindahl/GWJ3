@@ -187,7 +187,6 @@ func _shoot():
 		$ShootTimer.start()
 		
 		if $GunCast.is_colliding():
-			get_node("shoot"+str(randi()%3+1)).play()
 			var body = $GunCast.get_collider()
 			
 			if body == null:
@@ -195,6 +194,7 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				randomize()
+				get_node("shoot"+str(randi()%3+1)).play()
 				$Mesh/AnimationPlayer.play("shoot")
 				var random = randi()%11 + 1
 				if random > 4:
@@ -203,6 +203,7 @@ func _shoot():
 					body.enemyMissed()
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
+				get_node("shoot"+str(randi()%3+1)).play()
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
 func _on_ShootTimer_timeout():
