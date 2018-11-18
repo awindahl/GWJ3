@@ -108,7 +108,8 @@ func _process(delta):
 		
 		set_transform(Transform(ThisRot, translation))
 		rotation_degrees.x = LastRot.x
-
+		
+	
 func die():
 	get_node("die"+str(randi()%4+1)).play()
 	CanMove = false
@@ -209,9 +210,8 @@ func _shoot():
 func _on_ShootTimer_timeout():
 	CanFire = true
 
-
 func _on_Area_body_entered(body):
-	if body.get("TYPE") == "PLAYER":
+	if body.get("TYPE") == "PLAYER" && CanMove:
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
 		$Timer.paused = true
@@ -219,7 +219,7 @@ func _on_Area_body_entered(body):
 		BodyPos = body
 	
 func _on_Area_body_exited(body):
-	if body.get("TYPE") == "PLAYER":
+	if body.get("TYPE") == "PLAYER" && !CanMove:
 		CanMove = true
 		$Timer.start()
 		BodyPos = null
