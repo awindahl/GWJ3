@@ -33,7 +33,7 @@ script = ExtResource( 1 )
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -4.19028, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -3.39662e-008, -1.01017, 0, 1, -5.68248e-008, 0, 0.816003, 0 )
+transform = Transform( 1, 0, 0, 0, -3.39662e-008, -1.01017, 0, 1, -5.68248e-008, 0, -0.253961, 0 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -46,7 +46,7 @@ one_shot = true
 autostart = true
 
 [node name="GunCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, -0.312456, 0.166419 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, -0.0338634, 0.166419 )
 cast_to = Vector3( 0, 55.43, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
@@ -69,7 +69,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="FloorCheck" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.75864, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.68856, 0 )
 enabled = true
 
 [node name="die1" type="AudioStreamPlayer3D" parent="."]

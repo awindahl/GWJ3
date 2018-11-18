@@ -75,7 +75,7 @@ func _process(delta):
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
 
-	if InTheZone && !BeenShot && CanMove:
+	if !BeenShot && CanMove:
 	
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 		
@@ -99,10 +99,8 @@ func _process(delta):
 		if value > 1:
 			value = 1
 		
-		set_transform(Transform(ThisRot, get_transform().origin))
-		
+		set_transform(Transform(ThisRot, translation))
 		rotation_degrees.x = LastRot.x
-		
 
 func die():
 	$die.play()
@@ -147,7 +145,7 @@ func bullet_hit(damage, bullet_global_transform):
 	CanMove = false
 	BeenShot = true
 	$KnockTimer.start()
-	$Timer.stop()
+	$Timer.paused = true
 	
 	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	DirectionVector.y = 3
@@ -210,9 +208,11 @@ func _on_Area_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
-		$Timer.stop()
+		$Timer.paused = true
 		drawGun()
 		BodyPos = body
+	else:
+		pass
 	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
@@ -230,6 +230,8 @@ func _on_Area_body_exited(body):
 		else:
 			
 			rotation_degrees.y = rot(TempDir)
+	else:
+		pass
 
 func _on_Spawner_body_exited(body):
 	$ExitTimer.start(2)
@@ -252,7 +254,7 @@ func _on_ExitTimer_timeout():
 func _on_Hindsight_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
 		CanMove = false
-		$Timer.stop()
+		$Timer.paused = true
 		drawGun()
 		BodyPos = body
 		return

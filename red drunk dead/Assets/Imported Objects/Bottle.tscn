@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.36, 0.33, 0.32 )
+extents = Vector3( 0.36, 0.7, 0.32 )
 
 [sub_resource type="Animation" id=2]
 

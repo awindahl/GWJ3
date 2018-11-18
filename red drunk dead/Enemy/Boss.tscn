@@ -32,7 +32,7 @@ script = ExtResource( 1 )
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -6.84486, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0, -0.610785, 0, 1, 0, 0.104001, -1.67545, 0.0480776 )
+transform = Transform( 1, 0, 0, 0, 0, -0.610785, 0, 1, 0, 0.104001, -1.30908, 0.0480776 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]

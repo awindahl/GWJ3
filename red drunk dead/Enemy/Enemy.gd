@@ -85,7 +85,7 @@ func _process(delta):
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
 
-	if InTheZone && !BeenShot && CanMove:
+	if !BeenShot && CanMove:
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
@@ -156,7 +156,7 @@ func bullet_hit(damage, bullet_global_transform):
 	CanMove = false
 	BeenShot = true
 	$KnockTimer.start()
-	$Timer.stop()
+	$Timer.paused = true
 	
 	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
 	DirectionVector.y = 3
@@ -182,9 +182,7 @@ func _shoot():
 	$GunCast.force_raycast_update()
 	#should only be called once
 	if CanFire:
-		
-		CanFire = false
-		$ShootTimer.start()
+
 		if $GunCast.is_colliding():
 			var body = $GunCast.get_collider()
 			if body == null:
@@ -192,6 +190,8 @@ func _shoot():
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				randomize()
+				CanFire = false
+				$ShootTimer.start()
 				get_node("shoot"+str(randi()%3+1)).play()
 				$Mesh/AnimationPlayer.play("shoot")
 				var random = randi()%11 + 1
@@ -201,20 +201,22 @@ func _shoot():
 					body.enemyMissed()
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
+				CanFire = false
+				$ShootTimer.start()
 				get_node("shoot"+str(randi()%3+1)).play()
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
 func _on_ShootTimer_timeout():
 	CanFire = true
 
+
 func _on_Area_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
-		$Timer.stop()
+		$Timer.paused = true
 		get_node("spotted"+str(randi()%3+1)).play()
 		BodyPos = body
-		return
 	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
@@ -255,7 +257,7 @@ func _on_ExitTimer_timeout():
 func _on_Hindsight_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
 		CanMove = false
-		$Timer.stop()
+		$Timer.paused = true
 		get_node("spotted"+str(randi()%3+1)).play()
 		BodyPos = body
 		return

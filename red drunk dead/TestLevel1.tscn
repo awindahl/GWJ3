@@ -1,14 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Enemy/EnemyArea.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://town/RealTown.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
-
-[sub_resource type="BoxShape" id=1]
-
-extents = Vector3( 50, 25, 60 )
+[ext_resource path="res://town/RealTown.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=2]
 
@@ -39,32 +34,9 @@ directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 1.57
 directional_shadow_bias_split_scale = 0.16
 
-[node name="EnemyArea1" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 20 )
-script = ExtResource( 1 )
-
-[node name="Spawner" type="Area" parent="EnemyArea1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4545, 9, -64.0396 )
-
-[node name="CollisionShape" type="CollisionShape" parent="EnemyArea1/Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7197, 0, 3.01724 )
-shape = SubResource( 1 )
-
-[node name="Boss" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5956, 7.40947, -91.5118 )
-
-[node name="Enemy" parent="EnemyArea1" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0883, 4.45628, -59.9395 )
-
-[node name="Enemy3" parent="EnemyArea1" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3322, 4.45628, -59.9395 )
-
-[node name="Enemy2" parent="EnemyArea1" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8379, 4.45628, -88.2821 )
-
 [node name="Barrels" type="Spatial" parent="."]
 
-[node name="Town" parent="." instance=ExtResource( 4 )]
+[node name="Town" parent="." instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 
@@ -79,6 +51,18 @@ material/0 = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="Town/MeshInstance/StaticBody"]
 shape = SubResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.707971, 0, 0.706241, 0, 1, 0, -0.706241, 0, 0.707971, -12.9908, 2.3592, 16.167 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.707971, 0, 0.706241, 0, 1, 0, -0.706241, 0, 0.707971, -13.011, 1.835, 16.167 )
+
+[node name="Boss" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -94.1138, 6.83276, -63.2129 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7197, 3.67661, -62.4197 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64.7691, 3.67661, -62.4197 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.0958, 3.67661, -44.7622 )
 
