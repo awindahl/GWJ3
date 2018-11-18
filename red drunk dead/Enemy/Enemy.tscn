@@ -45,17 +45,17 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="GunCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, -0.0338634, 0.166419 )
-cast_to = Vector3( 0, 55.43, 0 )
-
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.913592, 3.0082, 25.9506 )
+transform = Transform( 1, 0, 0, 0, -7.86357e-008, -1.79897, 0, 1, -4.37114e-008, -0.913592, 3.0082, 25.9506 )
 shape = SubResource( 2 )
+
+[node name="GunCast" type="RayCast" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, -0.0338634, 0.166419 )
+cast_to = Vector3( 0, 55.43, 0 )
 
 [node name="Hindsight" type="Area" parent="."]
 

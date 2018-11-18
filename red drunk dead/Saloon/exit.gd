@@ -3,4 +3,5 @@ extends StaticBody
 #warning-ignore:unused_argument
 #warning-ignore:unused_argument
 func bullet_hit(damage, bullet_global_transform):
-	get_tree().quit()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	transition.fade_to("res://Saloon/AreYouSure.tscn")
