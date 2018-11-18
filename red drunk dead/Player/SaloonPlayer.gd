@@ -193,12 +193,12 @@ func _process_movement(delta):
 	
 	if $Yaw/Camera/GunCheck.is_colliding():
 		text = $Yaw/Camera/GunCheck.get_collider().name
-		if text == "Wanted" || text == "Menu" || text == "Exit":
+		if text == "Head To Town" || text == "Menu" || text == "Quit Game":
 			$Hud/Item.text = text
 		else:
 			$Hud/Item.text = ""
 	
-	elif text == "Confederate Charisma" || text == "Gunfire" || text == "Five Shooter" || text == "Yankee Yipee":
+	elif text == "Confederate Charisma $25" || text == "Gunfire $210" || text == "Five Shooter $300" || text == "Yankee Yipee $50":
 		$Hud/Item.text = text
 	else:
 		$Hud/Item.text = ""

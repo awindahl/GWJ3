@@ -110,7 +110,7 @@ func _process(delta):
 		rotation_degrees.x = LastRot.x
 
 func die():
-	get_node("spotted"+str(randi()%4+1)).play()
+	get_node("die"+str(randi()%4+1)).play()
 	CanMove = false
 	set_process(false)
 	$Timer.paused = true
@@ -201,6 +201,7 @@ func _shoot():
 					body.enemyMissed()
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
+				get_node("shoot"+str(randi()%3+1)).play()
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
 func _on_ShootTimer_timeout():

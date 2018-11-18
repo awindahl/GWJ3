@@ -51,11 +51,11 @@ margin_bottom = 59.0
 [node name="Ammo" type="RichTextLabel" parent="Hud"]
 margin_left = 186.0
 margin_top = 44.0
-margin_right = 228.0
+margin_right = 254.0
 margin_bottom = 83.0
 custom_fonts/normal_font = ExtResource( 2 )
-text = "
-5/5
+meta_underlined = false
+text = "5/5
 "
 scroll_active = false
 
@@ -66,8 +66,7 @@ margin_right = 53.0
 margin_bottom = 120.0
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.560784, 0.101961, 0.101961, 1 )
-text = "
-+ 100"
+text = "+ 100"
 
 [node name="Cash" type="RichTextLabel" parent="Hud"]
 margin_left = 260.0
@@ -87,8 +86,7 @@ margin_right = 100.0
 margin_bottom = 65.0
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
-text = "
-0%"
+text = "0%"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Shake = ExtResource( 3 )
@@ -101,11 +99,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, 0, 8.64267e-006 )
 current = true
 near = 0.01
 far = 2048.0
-
-[node name="FloorCheck" type="RayCast" parent="Yaw/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791371, -5.00286, -0.171759 )
-enabled = true
-cast_to = Vector3( 0, -0.59, 0 )
 
 [node name="StairCheck" type="RayCast" parent="Yaw/Camera"]
 transform = Transform( -4.37114e-008, 0, 1, 0.00261881, 0.999997, 1.14472e-010, -0.999997, 0.00261881, -4.37112e-008, -0.00170898, -3.63941, -0.450779 )
@@ -173,6 +166,11 @@ volume_db = -30.0
 [node name="jump2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 volume_db = -30.0
+
+[node name="FloorCheck" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, -0.70662, -0.181 )
+enabled = true
+cast_to = Vector3( 0, -0.27, 0 )
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]

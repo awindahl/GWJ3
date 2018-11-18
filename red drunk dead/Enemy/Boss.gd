@@ -74,8 +74,7 @@ func _process(delta):
 		hVel = hVel.linear_interpolate(Target, Acceleration * MoveSpeed * delta)
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
-		
-	print (Velocity)
+
 	if InTheZone && !BeenShot && CanMove:
 	
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
@@ -86,7 +85,7 @@ func _process(delta):
 		
 	if Health <= 0:
 		_apply_gravity(delta)
-		$Mesh/AnimationPlayer.play("die")
+		$Mesh/AnimationPlayer.queue("die")
 		die()
 	
 	if BodyPos:
@@ -186,6 +185,7 @@ func _shoot():
 				pass
 			
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
+				get_node("shoot"+str(randi()%3+1)).play()
 				randomize()
 				get_node("shoot"+str(randi()%3+1)).play()
 				$Mesh/AnimationPlayer.play("fire" + var2str(anim))
@@ -196,6 +196,7 @@ func _shoot():
 					body.enemyMissed()
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
+				get_node("shoot"+str(randi()%3+1)).play()
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
 func _on_ShootTimer_timeout():
@@ -212,7 +213,6 @@ func _on_Area_body_entered(body):
 		$Timer.stop()
 		drawGun()
 		BodyPos = body
-		return
 	
 func _on_Area_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
@@ -245,8 +245,7 @@ func _on_Spawner_body_exited(body):
 		else:
 			TempDir *= -1
 			rotation_degrees.y = rot(TempDir) 
-
-
+			
 func _on_ExitTimer_timeout():
 	$Timer.start(2)
 

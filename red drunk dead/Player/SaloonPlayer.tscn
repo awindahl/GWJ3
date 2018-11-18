@@ -99,9 +99,9 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Cash" type="RichTextLabel" parent="Hud"]
-margin_left = 268.0
+margin_left = 267.0
 margin_top = 99.0
-margin_right = 312.0
+margin_right = 320.0
 margin_bottom = 120.0
 custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 0.133333, 0.552941, 0.129412, 1 )

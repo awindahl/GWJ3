@@ -60,13 +60,17 @@ const STAIRJUMP = 12
 var temp = true
 var RandomMovement
 var FrameVar = 0
+var MyEffect
+var fiveshot = false
 
 # Setup
 func _ready():
+	MyEffect = Global.MyEffect
 	randomize()
 	# Get the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	MoveSpeed = WalkSpeed
+	effect(Global.Effect)
 
 func takeDamage(ammount):
 	get_node("hurt"+str(randi() % 2 + 1)).play()
@@ -85,19 +89,13 @@ func _physics_process(delta):
 		if FrameVar > 100:
 			Health -= 1
 	
-	if Input.is_action_just_pressed("1"):
-		Drunkeness = 0
-	if Input.is_action_just_pressed("2") && Drunkeness < 50:
-		Drunkeness += 10
-		temp = true
-	
 	if Drunkeness > 0.1:
 		if FrameVar > 100:
 			Drunkeness -= 0.1
 			FrameVar = 0
 		CurrentStatus = "DRUNK"
-		WalkSpeed = 15 + (Drunkeness/3)
-		SprintSpeed = 25 + (Drunkeness/3)
+		WalkSpeed = Global.WalkSpeed + (Drunkeness/3)
+		SprintSpeed = Global.SprintSpeed + (Drunkeness/3)
 		RandomMovement = Vector3(1, 0, 1)
 		
 		if temp:
@@ -106,13 +104,42 @@ func _physics_process(delta):
 	else:
 		temp = true
 		$AnimationPlayer.stop()
-		WalkSpeed = 15
-		SprintSpeed = 25
+		WalkSpeed = Global.WalkSpeed * 0.5
+		SprintSpeed = Global.SprintSpeed * 0.5
 
 # Self Exlpanatory
 func _apply_gravity(delta):
 	Velocity.y += delta * Gravity
 
+# cool function B-) 
+func effect(effect):
+	# reset
+	if MyEffect.size() == 0:
+		Global.MaxAmmo = 5
+		Global.Ammo = 5
+		MaxAmmo = Global.MaxAmmo
+		Ammo = Global.Ammo
+		fiveshot = false
+		$GunCoolDown.wait_time = 0.5
+		
+	for effects in MyEffect:
+		if effects == effect[0]:
+			FrameVar -= 1
+		if effects == effect[1]:
+			Global.MaxAmmo = 12
+			Global.Ammo = 12
+			MaxAmmo = Global.MaxAmmo
+			Ammo = Global.Ammo
+			var rand = randi()%11 + 1
+			if rand == 1:
+				Input.action_press("shoot", 1)
+		if effects == effect[2]:
+			if Input.is_action_just_pressed("shoot"):
+					$GunCoolDown.wait_time = 0.2
+					fiveshot = true
+		if effects == effect[3]:
+			$GunCoolDown.wait_time = 0.2
+		
 # Payoff
 func _process_movement(delta):
 	# Inputs
@@ -150,8 +177,8 @@ func _process_movement(delta):
 		MovementState = IDLE
 	
 	var Normal
-	if $Yaw/Camera/FloorCheck.is_colliding():
-		Normal = $Yaw/Camera/FloorCheck.get_collision_normal()
+	if $FloorCheck.is_colliding():
+		Normal = $FloorCheck.get_collision_normal()
 	else:
 		Normal = Vector3(0,0,0)
 	
@@ -215,7 +242,7 @@ func _process_movement(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().change_scene("res://Saloon/LoseScreen.tscn")
 	
-	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < 5 && !IsShooting:
+	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < MaxAmmo && !IsShooting:
 		$Yaw/reload.play()
 		$ReloadTimer.start()
 		$Yaw/Camera/revolver/AnimationPlayer.play("reload")
@@ -225,7 +252,7 @@ func _process_movement(delta):
 	elif BeenShot:
 		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 	
-	FrameVar += 1
+	FrameVar += 2
 	
 # Camera Movements
 func _unhandled_input(event):
@@ -237,7 +264,7 @@ func _unhandled_input(event):
 
 func _shoot():
 	#should only be called once
-	if Input.is_action_just_pressed("shoot") && CanFire && Ammo && $ReloadTimer.time_left == 0:
+	if Input.is_action_just_pressed("shoot") && CanFire && Ammo && $ReloadTimer.time_left == 0 && !fiveshot:
 		IsShooting = true
 		Ammo -= 1
 		$Yaw.get_node("gunshot"+str(randi() % 3 + 1)).play()
@@ -246,6 +273,20 @@ func _shoot():
 		CanFire = false
 		$GunCoolDown.start()
 		
+		if $Yaw/Camera/revolver/GunCheck.is_colliding():
+			var body = $Yaw/Camera/revolver/GunCheck.get_collider()
+			
+			if body == null:
+				pass
+			
+			elif body.has_method("bullet_hit"):
+				body.bullet_hit(DAMAGE, $Yaw/Camera/revolver/GunCheck.global_transform)
+	
+	elif Input.is_action_pressed("shoot") && fiveshot && Ammo && $ReloadTimer.time_left == 0 && CanFire:
+		CanFire = false
+		Ammo -= 1
+		$GunCoolDown.start()
+		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
 		if $Yaw/Camera/revolver/GunCheck.is_colliding():
 			var body = $Yaw/Camera/revolver/GunCheck.get_collider()
 			
@@ -273,7 +314,6 @@ func _on_MoveTimer_timeout():
 	CanMove = true
 	BeenShot = false
 
-
 func _on_ReloadTimer_timeout():
-	Ammo = 5
+	Ammo = Global.MaxAmmo
 	return

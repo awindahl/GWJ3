@@ -5,6 +5,7 @@ var playing = false
 func _ready():
 	randomize()
 
+#warning-ignore:unused_argument
 func _physics_process(delta):
 	if $drink1.is_playing() || $drink2.is_playing():
 		playing = true

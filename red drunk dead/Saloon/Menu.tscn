@@ -122,6 +122,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Confederate Charisma" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
 transform = Transform( -1.19081, 1.79807e-007, -3.30012e-015, 0, -5.20518e-008, -0.5, -1.79807e-007, -1.19081, 2.18557e-008, 0.483918, 0.0365679, -1.33486 )
 transparent = false
 texture = ExtResource( 2 )
@@ -136,6 +137,7 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Gunfire" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
 transform = Transform( -1.26449, 1.90932e-007, -3.30012e-015, 0, -5.52724e-008, -0.5, -1.90932e-007, -1.26449, 2.18557e-008, -0.548128, 0.0365675, -0.609676 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
@@ -149,6 +151,7 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Five Shooter" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
 transform = Transform( -1.3815, 2.14011e-007, -7.92608e-015, 0, -6.19535e-008, -1.20088, -2.08601e-007, -1.41733, 5.2492e-008, 0.38623, 0.0365677, 0.37829 )
 texture = ExtResource( 5 )
 script = ExtResource( 3 )
@@ -162,6 +165,7 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Yankee Yipee" type="Sprite3D" parent="MeshInstance"]
+editor/display_folded = true
 transform = Transform( -1.57875, 2.44073e-007, 9.41005e-008, -1.49012e-008, -2.42144e-008, -0.5, -1.99638e-007, -1.33975, 5.2405e-008, -0.464106, 0.0365677, 1.36662 )
 texture = ExtResource( 6 )
 script = ExtResource( 3 )

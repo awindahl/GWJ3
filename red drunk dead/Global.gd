@@ -10,7 +10,9 @@ var Cash = 50
 #warning-ignore:unused_class_variable
 var DAMAGE = 20
 #warning-ignore:unused_class_variable
-var Effect
+var Effect = ["Confederate Charisma", "Gunfire", "Five Shooter", "Yankee Yipee"]
+#warning-ignore:unused_class_variable
+var MyEffect = []
 #warning-ignore:unused_class_variable
 var JUMP = 20
 #warning-ignore:unused_class_variable
