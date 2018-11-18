@@ -47,7 +47,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4545, 9, -64.0396 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EnemyArea1/Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7197, 0, 3.01724 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7197, 0, -126.228 )
 shape = SubResource( 1 )
 
 [node name="Boss" parent="EnemyArea1" instance=ExtResource( 2 )]
