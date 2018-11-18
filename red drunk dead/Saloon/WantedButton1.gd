@@ -17,7 +17,9 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 			get_parent().get_parent().get_parent().get_node("Player").set_process(true)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 #warning-ignore:return_value_discarded
-			get_tree().change_scene("res://TestLevel"+str(randi()%4+1)+".tscn")
+			transition.fade_to("res://TestLevel"+str(randi()%4+1)+".tscn")
+			#transition.fade_to("res://TestLevel1.tscn")
+			#get_tree().change_scene("res://TestLevel"+str(randi()%4+1)+".tscn")
 		else:
 			temp = 0
 	

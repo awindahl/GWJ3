@@ -5,16 +5,16 @@
 [ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=1]
 
 size = Vector3( 124.21, 2, 174.81 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 
 albedo_color = Color( 0.360784, 0.25098, 0.180392, 1 )
 metallic_specular = 0.0
 
-[sub_resource type="ConcavePolygonShape" id=4]
+[sub_resource type="ConcavePolygonShape" id=3]
 
 data = PoolVector3Array( -62.105, 1, 87.405, 62.105, 1, 87.405, -62.105, -1, 87.405, 62.105, 1, 87.405, 62.105, -1, 87.405, -62.105, -1, 87.405, 62.105, 1, -87.405, -62.105, 1, -87.405, 62.105, -1, -87.405, -62.105, 1, -87.405, -62.105, -1, -87.405, 62.105, -1, -87.405, 62.105, 1, 87.405, 62.105, 1, -87.405, 62.105, -1, 87.405, 62.105, 1, -87.405, 62.105, -1, -87.405, 62.105, -1, 87.405, -62.105, 1, -87.405, -62.105, 1, 87.405, -62.105, -1, -87.405, -62.105, 1, 87.405, -62.105, -1, 87.405, -62.105, -1, -87.405, 62.105, 1, 87.405, -62.105, 1, 87.405, 62.105, 1, -87.405, -62.105, 1, 87.405, -62.105, 1, -87.405, 62.105, 1, -87.405, -62.105, -1, 87.405, 62.105, -1, 87.405, -62.105, -1, -87.405, 62.105, -1, 87.405, 62.105, -1, -87.405, -62.105, -1, -87.405 )
 
@@ -43,13 +43,13 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 [node name="MeshInstance" type="MeshInstance" parent="Town"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.21, 0 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="Town/MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Town/MeshInstance/StaticBody"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.707971, 0, 0.706241, 0, 1, 0, -0.706241, 0, 0.707971, -13.011, 1.835, 16.167 )

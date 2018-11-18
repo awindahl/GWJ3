@@ -240,7 +240,8 @@ func _process_movement(delta):
 	#here be game over
 	if Health <= 0:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().change_scene("res://Saloon/LoseScreen.tscn")
+		transition.fade_to("res://Saloon/LoseScreen.tscn")
+		#get_tree().change_scene("res://Saloon/LoseScreen.tscn")
 	
 	if Input.is_action_just_pressed("r") && $ReloadTimer.time_left == 0 && Ammo < MaxAmmo && !IsShooting:
 		$Yaw/reload.play()

@@ -5,5 +5,6 @@ func _on_ToSaloon_button_down():
 	Global.Drunkeness = 0
 	Global.Cash += 200
 	Global.MyEffect.clear()
-	get_tree().change_scene("res://Saloon/SaloonGame.tscn")
+	transition.fade_to("res://Saloon/SaloonGame.tscn")
+	#get_tree().change_scene("res://Saloon/SaloonGame.tscn")
 
