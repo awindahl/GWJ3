@@ -15,8 +15,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="red drunk dead"
-config/icon="res://icon.png"
+config/name="Drinking On the Job"
+run/main_scene="res://Saloon/SaloonGame.tscn"
+boot_splash/image="res://icon2.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.752941, 0.462745, 0.121569, 1 )
+config/icon="res://icon2.png"
 
 [autoload]
 
