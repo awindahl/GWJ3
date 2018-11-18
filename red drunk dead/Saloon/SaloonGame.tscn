@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Saloon/SaloonGame.gd" type="Script" id=1]
 [ext_resource path="res://Saloon/SaloonMesh.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/voicelines/player/this_one_please2.wav" type="AudioStream" id=12]
 [ext_resource path="res://Assets/voicelines/player/this_one_please.wav" type="AudioStream" id=13]
 [ext_resource path="res://Saloon/Credits.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Saloon/Credits.gd" type="Script" id=15]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -194,5 +195,6 @@ stream = ExtResource( 13 )
 volume_db = -10.0
 
 [node name="Credits" parent="." instance=ExtResource( 14 )]
-transform = Transform( -0.0242768, 0, 0.999705, 0, 1, 0, -0.999705, 0, -0.0242768, 15.699, 30.1217, 39.1001 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 15.699, 30.1217, 40.0437 )
+script = ExtResource( 15 )
 
