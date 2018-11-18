@@ -187,6 +187,7 @@ func _shoot():
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
 				get_node("shoot"+str(randi()%3+1)).play()
 				randomize()
+				get_node("shoot"+str(randi()%3+1)).play()
 				$Mesh/AnimationPlayer.play("fire" + var2str(anim))
 				var random = randi()%11 + 1
 				if random > 3:

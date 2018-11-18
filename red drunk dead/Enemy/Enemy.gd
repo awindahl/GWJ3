@@ -185,10 +185,8 @@ func _shoot():
 		
 		CanFire = false
 		$ShootTimer.start()
-		
 		if $GunCast.is_colliding():
 			var body = $GunCast.get_collider()
-			
 			if body == null:
 				pass
 			
