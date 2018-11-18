@@ -193,7 +193,7 @@ func _process_movement(delta):
 	
 	if $Yaw/Camera/GunCheck.is_colliding():
 		text = $Yaw/Camera/GunCheck.get_collider().name
-		if text == "Head To Town" || text == "Menu" || text == "Quit Game":
+		if text == "Head To Town" || text == "Menu" || text == "Quit Game" || text == "Credits":
 			$Hud/Item.text = text
 		else:
 			$Hud/Item.text = ""

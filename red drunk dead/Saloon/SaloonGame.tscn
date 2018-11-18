@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Saloon/SaloonGame.gd" type="Script" id=1]
 [ext_resource path="res://Saloon/SaloonMesh.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/sound/remix/gulp.wav" type="AudioStream" id=11]
 [ext_resource path="res://Assets/voicelines/player/this_one_please2.wav" type="AudioStream" id=12]
 [ext_resource path="res://Assets/voicelines/player/this_one_please.wav" type="AudioStream" id=13]
+[ext_resource path="res://Saloon/Credits.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -59,6 +60,7 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Items" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="SolidBarrel" parent="Items" instance=ExtResource( 7 )]
 transform = Transform( 1.77, 0, 0, 0, 1.76, 0, 0, 0, 1.76, -23.3754, 0.079567, -30.7632 )
@@ -190,4 +192,7 @@ volume_db = -10.0
 [node name="drink2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -10.0
+
+[node name="Credits" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.0242768, 0, 0.999705, 0, 1, 0, -0.999705, 0, -0.0242768, 15.699, 30.1217, 39.1001 )
 

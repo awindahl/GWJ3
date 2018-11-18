@@ -118,6 +118,7 @@ extents = Vector3( 1, 0.158231, 2.23711 )
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+editor/display_folded = true
 mesh = SubResource( 2 )
 material/0 = null
 
