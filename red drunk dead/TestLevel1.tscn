@@ -40,22 +40,27 @@ directional_shadow_normal_bias = 1.57
 directional_shadow_bias_split_scale = 0.16
 
 [node name="EnemyArea1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 20 )
 script = ExtResource( 1 )
 
 [node name="Spawner" type="Area" parent="EnemyArea1"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4545, 9, -64.0396 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EnemyArea1/Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7197, 0, 3.01724 )
 shape = SubResource( 1 )
 
 [node name="Boss" parent="EnemyArea1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5956, 7.40947, -62.1523 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5956, 7.40947, -91.5118 )
 
 [node name="Enemy" parent="EnemyArea1" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0883, 4.45628, -66.2821 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0883, 4.45628, -59.9395 )
+
+[node name="Enemy3" parent="EnemyArea1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3322, 4.45628, -59.9395 )
+
+[node name="Enemy2" parent="EnemyArea1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8379, 4.45628, -88.2821 )
 
 [node name="Barrels" type="Spatial" parent="."]
 
