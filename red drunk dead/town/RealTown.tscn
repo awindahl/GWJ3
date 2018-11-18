@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://town/town/town.dae" type="PackedScene" id=1]
 [ext_resource path="res://Assets/sound/music/world_music.wav" type="AudioStream" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/lowPolyObjectPack/cart.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/lowPolyObjectPack/sign.tscn" type="PackedScene" id=12]
 [ext_resource path="res://verycool.png" type="Texture" id=13]
+[ext_resource path="res://town/town/sand.material" type="Material" id=14]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 
@@ -109,6 +110,13 @@ data = PoolVector3Array( -1, -1, 1, -1, -0.8922, 0.937, -1, -0.8922, 1, -1, -1, 
 
 flags_albedo_tex_force_srgb = true
 albedo_texture = ExtResource( 13 )
+
+[sub_resource type="PlaneMesh" id=25]
+
+
+[sub_resource type="ConcavePolygonShape" id=26]
+
+data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
 [node name="Scene Root" index="0" instance=ExtResource( 1 )]
 
@@ -626,8 +634,18 @@ transform = Transform( 0.0986854, 0.0278077, 0.594379, -0.163588, 0.580549, 0, -
 [node name="Scene Root3" parent="." index="135" instance=ExtResource( 12 )]
 transform = Transform( -0.997622, 0, 0.0689216, 0, 1, 0, -0.0689216, 0, -0.997622, 21.8752, -1.39287e-007, -0.229799 )
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="136"]
+[node name="easteregg" type="MeshInstance" parent="." index="136"]
 transform = Transform( 0.775246, 0, 0.0810272, 0, 0.618812, 0, -0.754393, 0, 0.0832669, -0.226596, 5.90743, 5.19773 )
 mesh = SubResource( 23 )
 material/0 = SubResource( 24 )
+
+[node name="sand" type="MeshInstance" parent="." index="137"]
+transform = Transform( 310.63, 0, 0, 0, 5.14598, 0, 0, 0, 310.63, 0, -0.222841, 0 )
+mesh = SubResource( 25 )
+material/0 = ExtResource( 14 )
+
+[node name="StaticBody" type="StaticBody" parent="sand" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="sand/StaticBody" index="0"]
+shape = SubResource( 26 )
 
