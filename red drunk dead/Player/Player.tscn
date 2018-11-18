@@ -170,7 +170,7 @@ volume_db = -30.0
 [node name="FloorCheck" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, -0.70662, -0.181 )
 enabled = true
-cast_to = Vector3( 0, -1.07, 0 )
+cast_to = Vector3( 0, -1.42, 0 )
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]

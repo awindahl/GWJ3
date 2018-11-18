@@ -205,7 +205,7 @@ func drawGun():
 	get_node("spotted"+str(randi()%2+1)).play()
 
 func _on_Area_body_entered(body):
-	if body.get("TYPE") == "PLAYER":
+	if body.get("TYPE") == "PLAYER" && CanMove:
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
 		$Timer.paused = true
@@ -215,7 +215,7 @@ func _on_Area_body_entered(body):
 		pass
 	
 func _on_Area_body_exited(body):
-	if body.get("TYPE") == "PLAYER":
+	if body.get("TYPE") == "PLAYER" && !CanMove:
 		CanMove = true
 		$Timer.start()
 		BodyPos = null
