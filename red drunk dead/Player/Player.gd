@@ -21,7 +21,7 @@ var CurrentStatus = Status[0]
 var Ammo = Global.Ammo
 var MaxAmmo = Global.MaxAmmo
 var Drunkeness = Global.Drunkeness
-var Cash = Global.Cash
+var Cash = Global.Cash + 1000
 
 const STAND = 0
 const CROUCH = 1
@@ -134,9 +134,8 @@ func effect(effect):
 			if rand == 1:
 				Input.action_press("shoot", 1)
 		if effects == effect[2]:
-			if Input.is_action_just_pressed("shoot"):
-					$GunCoolDown.wait_time = 0.2
-					fiveshot = true
+			fiveshot = true
+			$GunCoolDown.wait_time = 0.2
 		if effects == effect[3]:
 			$GunCoolDown.wait_time = 0.2
 		
@@ -288,6 +287,7 @@ func _shoot():
 		Ammo -= 1
 		$GunCoolDown.start()
 		$Yaw/Camera/revolver.get_node("AnimationPlayer").play("shoot")
+		$Yaw.get_node("gunshot"+str(randi() % 3 + 1)).play()
 		if $Yaw/Camera/revolver/GunCheck.is_colliding():
 			var body = $Yaw/Camera/revolver/GunCheck.get_collider()
 			
