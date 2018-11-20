@@ -20,6 +20,7 @@ var BeenShot = false
 var InTheZone = true
 var pickup 
 var spawn
+var isDead = false
 
 const TYPE = "ENEMY"
 
@@ -58,6 +59,9 @@ func _process(delta):
 	_apply_gravity(delta)
 	_shoot()
 	
+	if !BodyPos:
+		$Timer.paused = false
+	
 	Direction.y = 0
 	Direction = Direction.normalized()
 	
@@ -76,16 +80,12 @@ func _process(delta):
 		Velocity.z = hVel.z
 
 	if !BeenShot && CanMove:
-	
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 		
-	elif BeenShot:
-		Velocity = move_and_slide(DirectionVector, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
-	
-		
 	if Health <= 0:
+		isDead = true
 		_apply_gravity(delta)
-		$Mesh/AnimationPlayer.queue("die")
+		$Mesh/AnimationPlayer.play("die")
 		die()
 	
 	if BodyPos:
@@ -101,24 +101,6 @@ func _process(delta):
 		
 		set_transform(Transform(ThisRot, translation))
 		rotation_degrees.x = LastRot.x
-
-func die():
-	$die.play()
-	CanMove = false
-	set_process(false)
-	$Timer.paused = true
-	$KnockTimer.paused = true
-	$ShootTimer.paused = true
-	$CollisionShape.disabled = true
-	CanFire = false
-	$Area/CollisionShape.disabled = true
-	$Hindsight/CollisionShape.disabled = true
-	$ExitTimer.paused = true
-	#BodyPos = null
-	spawn = pickup.instance()
-	add_child(spawn)
-	spawn.translation.y = -3.5
-	spawn.get_node("AnimationPlayer").play("Spin")
 
 func _on_Timer_timeout():
 	if CanMove:
@@ -144,7 +126,7 @@ func bullet_hit(damage, bullet_global_transform):
 	Health -= damage
 	CanMove = false
 	BeenShot = true
-	$KnockTimer.start()
+	$KnockTimer.paused = false
 	$Timer.paused = true
 	
 	DirectionVector = -bullet_global_transform.basis.y.normalized() * BASE_BULLET_BOOST
@@ -163,26 +145,24 @@ func _on_KnockTimer_timeout():
 	if !BodyPos:
 		CanMove = true
 	BeenShot = false
-	$Timer.start()
+	$Timer.paused = false
 	
 func _shoot():
 
 	$GunCast.force_raycast_update()
 	#should only be called once
 	if CanFire:
-
 		var anim = randi() % 3 + 1
-		
-		CanFire = false
-		$ShootTimer.start()
 		
 		if $GunCast.is_colliding():
 			var body = $GunCast.get_collider()
 			
 			if body == null:
 				pass
-			
+				
 			elif body.has_method("bullet_hit") && body.get("TYPE") == "PLAYER":
+				CanFire = false
+				$ShootTimer.start()
 				get_node("shoot"+str(randi()%3+1)).play()
 				randomize()
 				get_node("shoot"+str(randi()%3+1)).play()
@@ -194,6 +174,8 @@ func _shoot():
 					body.enemyMissed()
 			
 			elif BodyPos && body.get("TYPE") == "BARREL":
+				CanFire = false
+				$ShootTimer.start()
 				get_node("shoot"+str(randi()%3+1)).play()
 				body.bullet_hit(DAMAGE, $GunCast.global_transform)
 			
@@ -205,20 +187,18 @@ func drawGun():
 	get_node("spotted"+str(randi()%2+1)).play()
 
 func _on_Area_body_entered(body):
-	if body.get("TYPE") == "PLAYER" && CanMove:
+	if body.get("TYPE") == "PLAYER" && CanMove && !isDead:
 		CanMove = false
 		$Hindsight/CollisionShape.disabled = true
 		$Timer.paused = true
 		drawGun()
 		BodyPos = body
-	else:
-		pass
 	
 func _on_Area_body_exited(body):
-	if body.get("TYPE") == "PLAYER" && !CanMove:
+	if body.get("TYPE") == "PLAYER" && !CanMove && !isDead:
 		CanMove = true
-		$Timer.start()
-		BodyPos = null
+		$Timer.paused = false
+		#BodyPos = null
 		rotation_degrees.x = 0
 		var TempDir = Direction
 		TempDir.y = 0
@@ -228,13 +208,10 @@ func _on_Area_body_exited(body):
 		if TempDir.x == 0 && TempDir.z == 0:
 			pass
 		else:
-			
 			rotation_degrees.y = rot(TempDir)
-	else:
-		pass
 
 func _on_Spawner_body_exited(body):
-	$ExitTimer.start(2)
+	$ExitTimer.paused = false
 	if body.get("TYPE") == "ENEMY":
 		var TempDir = Direction
 		Direction *= -1
@@ -249,7 +226,7 @@ func _on_Spawner_body_exited(body):
 			rotation_degrees.y = rot(TempDir) 
 			
 func _on_ExitTimer_timeout():
-	$Timer.start(2)
+	$Timer.paused = false
 
 func _on_Hindsight_body_entered(body):
 	if body.get("TYPE") == "PLAYER":
@@ -262,3 +239,22 @@ func _on_Hindsight_body_entered(body):
 func _on_Hindsight_body_exited(body):
 	if body.get("TYPE") == "PLAYER":
 		pass
+		
+
+func die():
+	$die.play()
+	CanMove = false
+	set_process(false)
+	$Timer.paused = true
+	$KnockTimer.paused = true
+	$ShootTimer.paused = true
+	$CollisionShape.disabled = true
+	CanFire = false
+	$Area/CollisionShape.disabled = true
+	$Hindsight/CollisionShape.disabled = true
+	$ExitTimer.paused = true
+	#BodyPos = null
+	spawn = pickup.instance()
+	add_child(spawn)
+	spawn.translation.y = -3.5
+	spawn.get_node("AnimationPlayer").play("Spin")

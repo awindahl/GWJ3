@@ -32,7 +32,8 @@ transition="*res://transition.tscn"
 window/size/width=322
 window/size/height=120
 window/size/resizable=false
-window/stretch/mode="viewport"
+window/size/fullscreen=true
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [input]

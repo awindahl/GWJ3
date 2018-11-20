@@ -77,8 +77,8 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="WantedButton1" type="Sprite3D" parent="MeshInstance"]
-transform = Transform( 4, 0, 0, 0, -1.74846e-007, 0, 0, -4, 0, 0, 0.127163, 0.0368633 )
-modulate = Color( 1, 0.913725, 0.352941, 1 )
+transform = Transform( -0.733965, -6.41652e-008, 0, -1.01662e-015, -3.20826e-008, 0, 6.41652e-008, -0.733965, 0, 0, 0.127163, 0.0368633 )
+flip_h = true
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 

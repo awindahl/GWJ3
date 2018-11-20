@@ -111,6 +111,7 @@ transform = Transform( -0.19, 0, 1.66103e-008, 0, 0.19, 0, -1.66103e-008, 0, -0.
 transform = Transform( -5.26258, 3.7182e-007, 0, 2.01103e-014, 1.8591e-007, -5.19413, -4.60069e-007, -4.25312, -2.27043e-007, 2.1, 4.125, -4.077 )
 enabled = true
 cast_to = Vector3( 0, -2400, 0 )
+collision_mask = 3
 
 [node name="Crosshair" type="Sprite3D" parent="Yaw/Camera/revolver/GunCheck"]
 transform = Transform( 4.66839e-016, 0.499696, 0.0174497, 1.06798e-008, -0.0174497, 0.499695, 0.5, 3.7272e-010, -1.06733e-008, -1.04308e-007, -1.82284, 0 )
@@ -168,9 +169,10 @@ stream = ExtResource( 14 )
 volume_db = -30.0
 
 [node name="FloorCheck" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, -0.70662, -0.181 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878594, 0.0845889, -0.181 )
 enabled = true
 cast_to = Vector3( 0, -1.42, 0 )
+collision_mask = 2
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]

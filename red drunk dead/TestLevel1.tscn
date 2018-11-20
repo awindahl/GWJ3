@@ -31,14 +31,17 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 transform = Transform( 0.707971, 0, 0.706241, 0, 1, 0, -0.706241, 0, 0.707971, -13.011, 1.835, 16.167 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -94.1138, 6.83276, -63.2129 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -95.0412, 7.40947, -56.6204 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7197, 3.67661, -62.4197 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -105.093, 3.91129, -57.7336 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64.7691, 3.67661, -62.4197 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8508, 3.91129, -38.0268 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.0958, 3.67661, -44.7622 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8508, 3.91129, -87.1059 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6134, 3.91129, -72.3821 )
 
