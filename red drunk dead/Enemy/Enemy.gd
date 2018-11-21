@@ -17,7 +17,6 @@ var CanFire = true
 export var DAMAGE = 20
 var BodyPos
 var BeenShot = false
-var InTheZone = true
 var bottle
 var spawn
 var isDead = false

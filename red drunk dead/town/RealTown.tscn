@@ -1,19 +1,18 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://town/town/town.dae" type="PackedScene" id=1]
 [ext_resource path="res://Assets/sound/music/world_music.wav" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Imported Objects/SolidBarrel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/lowPolyObjectPack/fence.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/lowPolyObjectPack/cactus_b.dae" type="PackedScene" id=5]
-[ext_resource path="res://Assets/lowPolyObjectPack/cactus_a.dae" type="PackedScene" id=6]
-[ext_resource path="res://Assets/lowPolyObjectPack/tower.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/lowPolyObjectPack/well.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/lowPolyObjectPack/fancyfence.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/lowPolyObjectPack/wagon.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Assets/lowPolyObjectPack/cart.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/lowPolyObjectPack/sign.tscn" type="PackedScene" id=12]
-[ext_resource path="res://verycool.png" type="Texture" id=13]
-[ext_resource path="res://town/town/sand.material" type="Material" id=14]
+[ext_resource path="res://Assets/lowPolyObjectPack/tower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/lowPolyObjectPack/well.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/lowPolyObjectPack/fancyfence.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/lowPolyObjectPack/wagon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/lowPolyObjectPack/cart.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/lowPolyObjectPack/sign.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/lowPolyObjectPack/Cactus A.tscn" type="PackedScene" id=11]
+[ext_resource path="res://verycool.png" type="Texture" id=12]
+[ext_resource path="res://town/town/sand.material" type="Material" id=13]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 
@@ -109,7 +108,7 @@ data = PoolVector3Array( -1, -1, 1, -1, -0.8922, 0.937, -1, -0.8922, 1, -1, -1, 
 [sub_resource type="SpatialMaterial" id=24]
 
 flags_albedo_tex_force_srgb = true
-albedo_texture = ExtResource( 13 )
+albedo_texture = ExtResource( 12 )
 
 [sub_resource type="PlaneMesh" id=25]
 
@@ -118,7 +117,7 @@ albedo_texture = ExtResource( 13 )
 
 data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
-[node name="Scene Root" index="0" instance=ExtResource( 1 )]
+[node name="Scene Root" instance=ExtResource( 1 )]
 
 [node name="StaticBody" type="StaticBody" parent="church" index="0"]
 collision_layer = 2
@@ -474,155 +473,135 @@ transform = Transform( -0.795292, 0, -0.54096, 0, 0.961835, 0, 0.54096, 0, -0.79
 [node name="fence12" parent="." index="89" instance=ExtResource( 4 )]
 transform = Transform( -0.912411, 0, -0.304357, 0, 0.961835, 0, 0.304357, 0, -0.912411, -19.6125, 0.414795, -14.9691 )
 
-[node name="cactus_b" parent="." index="90" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.9053, 0.185814, -32.5954 )
-
-[node name="cactus_b3" parent="." index="91" instance=ExtResource( 5 )]
-transform = Transform( 0.366345, 0, 0.930479, 0, 1, 0, -0.930479, 0, 0.366345, 40.0969, 0.185814, -4.1577 )
-
-[node name="cactus_b5" parent="." index="92" instance=ExtResource( 5 )]
-transform = Transform( -0.442258, 0, 0.896888, 0, 1, 0, -0.896888, 0, -0.442258, 33.868, 0.185814, 27.9393 )
-
-[node name="cactus_b8" parent="." index="93" instance=ExtResource( 5 )]
-transform = Transform( -0.817813, 0, -0.575484, 0, 1, 0, 0.575484, 0, -0.817813, -6.50126, 0.185814, 39.9283 )
-
-[node name="cactus_b10" parent="." index="94" instance=ExtResource( 5 )]
-transform = Transform( 0.308414, 0, -0.951252, 0, 1, 0, 0.951252, 0, 0.308414, -32.3145, 0.185814, 43.1804 )
-
-[node name="cactus_b11" parent="." index="95" instance=ExtResource( 5 )]
-transform = Transform( 0.308414, 0, -0.951252, 0, 1, 0, 0.951252, 0, 0.308414, -35.8372, 0.185814, 13.4241 )
-
-[node name="cactus_b14" parent="." index="96" instance=ExtResource( 5 )]
-transform = Transform( 0.99227, 0, 0.1241, 0, 1, 0, -0.1241, 0, 0.99227, -30.421, 0.185814, -35.9905 )
-
-[node name="cactus_b15" parent="." index="97" instance=ExtResource( 5 )]
-transform = Transform( 0.902303, 0, -0.431103, 0, 1, 0, 0.431103, 0, 0.902303, 3.22082, 0.185814, -38.0063 )
-
-[node name="cactus_b2" parent="." index="98" instance=ExtResource( 5 )]
-transform = Transform( -0.185381, 0, 0.982667, 0, 1, 0, -0.982667, 0, -0.185381, 29.567, 0.185814, -32.5954 )
-
-[node name="cactus_b4" parent="." index="99" instance=ExtResource( 5 )]
-transform = Transform( -0.982264, 0, 0.187502, 0, 1, 0, -0.187502, 0, -0.982264, 34.1114, 0.185814, 11.0448 )
-
-[node name="cactus_b6" parent="." index="100" instance=ExtResource( 5 )]
-transform = Transform( -0.799356, 0, -0.600858, 0, 1, 0, 0.600858, 0, -0.799356, 41.0938, 0.185814, 42.593 )
-
-[node name="cactus_b7" parent="." index="101" instance=ExtResource( 5 )]
-transform = Transform( 0.717116, 0, -0.696954, 0, 1, 0, 0.696954, 0, 0.717116, 6.86046, 0.185814, 30.5259 )
-
-[node name="cactus_b9" parent="." index="102" instance=ExtResource( 5 )]
-transform = Transform( 0.87759, 0, 0.479412, 0, 1, 0, -0.479412, 0, 0.87759, -37.3535, 0.185814, 27.6385 )
-
-[node name="cactus_b12" parent="." index="103" instance=ExtResource( 5 )]
-transform = Transform( 0.87759, 0, 0.479412, 0, 1, 0, -0.479412, 0, 0.87759, -40.8762, 0.185814, -2.11782 )
-
-[node name="cactus_b13" parent="." index="104" instance=ExtResource( 5 )]
-transform = Transform( -0.305897, 0, 0.952065, 0, 1, 0, -0.952065, 0, -0.305897, -46.6331, 0.185814, -33.9629 )
-
-[node name="cactus_b16" parent="." index="105" instance=ExtResource( 5 )]
-transform = Transform( 0.256361, 0, 0.966581, 0, 1, 0, -0.966581, 0, 0.256361, -11.5213, 0.185814, -45.0498 )
-
-[node name="cactus_a" parent="." index="106" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3552, 0.589813, -41.3242 )
-
-[node name="cactus_a4" parent="." index="107" instance=ExtResource( 6 )]
-transform = Transform( 0.366345, 0, 0.930479, 0, 1, 0, -0.930479, 0, 0.366345, 30.308, 0.589813, -3.12165 )
-
-[node name="cactus_a6" parent="." index="108" instance=ExtResource( 6 )]
-transform = Transform( -0.442258, 0, 0.896888, 0, 1, 0, -0.896888, 0, -0.442258, 28.0516, 0.589813, 35.8807 )
-
-[node name="cactus_a8" parent="." index="109" instance=ExtResource( 6 )]
-transform = Transform( -0.817813, 0, -0.575484, 0, 1, 0, 0.575484, 0, -0.817813, 2.24319, 0.589813, 44.4483 )
-
-[node name="cactus_a9" parent="." index="110" instance=ExtResource( 6 )]
-transform = Transform( 0.308414, 0, -0.951252, 0, 1, 0, 0.951252, 0, 0.308414, -25.4145, 0.589813, 36.16 )
-
-[node name="cactus_a11" parent="." index="111" instance=ExtResource( 6 )]
-transform = Transform( 0.308414, 0, -0.951252, 0, 1, 0, 0.951252, 0, 0.308414, -28.9373, 0.589813, 6.40368 )
-
-[node name="cactus_a14" parent="." index="112" instance=ExtResource( 6 )]
-transform = Transform( 0.99227, 0, 0.1241, 0, 1, 0, -0.1241, 0, 0.99227, -36.0192, 0.589813, -44.0871 )
-
-[node name="cactus_a16" parent="." index="113" instance=ExtResource( 6 )]
-transform = Transform( 0.902303, 0, -0.431103, 0, 1, 0, 0.431103, 0, 0.902303, 2.87824, 0.589813, -47.8439 )
-
-[node name="cactus_a2" parent="." index="114" instance=ExtResource( 6 )]
-transform = Transform( 0.51026, 0, -0.86002, 0, 1, 0, 0.86002, 0, 0.51026, 36.9468, 0.589813, -22.5081 )
-
-[node name="cactus_a3" parent="." index="115" instance=ExtResource( 6 )]
-transform = Transform( 0.987162, 0, 0.159722, 0, 1, 0, -0.159722, 0, 0.987162, 46.201, 0.589813, 7.87343 )
-
-[node name="cactus_a5" parent="." index="116" instance=ExtResource( 6 )]
-transform = Transform( 0.545676, 0, 0.837997, 0, 1, 0, -0.837997, 0, 0.545676, 46.8771, 0.589813, 31.513 )
-
-[node name="cactus_a7" parent="." index="117" instance=ExtResource( 6 )]
-transform = Transform( -0.912225, 0, 0.409689, 0, 1, 0, -0.409689, 0, -0.912225, -4.97992, 0.589813, 26.5234 )
-
-[node name="cactus_a10" parent="." index="118" instance=ExtResource( 6 )]
-transform = Transform( -0.660725, 0, -0.750628, 0, 1, 0, 0.750628, 0, -0.660725, -44.673, 0.589813, 37.7696 )
-
-[node name="cactus_a12" parent="." index="119" instance=ExtResource( 6 )]
-transform = Transform( -0.660725, 0, -0.750628, 0, 1, 0, 0.750628, 0, -0.660725, -48.1957, 0.589813, 8.01332 )
-
-[node name="cactus_a13" parent="." index="120" instance=ExtResource( 6 )]
-transform = Transform( 0.613044, 0, -0.790049, 0, 1, 0, 0.790049, 0, 0.613044, -38.0584, 0.589813, -24.8694 )
-
-[node name="cactus_a15" parent="." index="121" instance=ExtResource( 6 )]
-transform = Transform( 0.0896513, 0, -0.995973, 0, 1, 0, 0.995973, 0, 0.0896513, -9.21113, 0.589813, -32.7666 )
-
-[node name="tower" parent="." index="122" instance=ExtResource( 7 )]
+[node name="tower" parent="." index="90" instance=ExtResource( 5 )]
 transform = Transform( -0.78478, 0, 0.619774, 0, 1, 0, -0.619774, 0, -0.78478, 19.7892, -0.0548131, -13.6523 )
 
-[node name="well" parent="." index="123" instance=ExtResource( 8 )]
+[node name="well" parent="." index="91" instance=ExtResource( 6 )]
 transform = Transform( 0.508424, 0, 0, 0, 0.508424, 0, 0, 0, 0.508424, 12.742, 0.518153, 12.6894 )
 
-[node name="fancyfence" parent="." index="124" instance=ExtResource( 9 )]
+[node name="fancyfence" parent="." index="92" instance=ExtResource( 7 )]
 transform = Transform( -0.026916, 0, 0.999638, 0, 1, 0, -0.999638, 0, -0.026916, -11.4253, 0.0317253, -1.18313 )
 
-[node name="fancyfence2" parent="." index="125" instance=ExtResource( 9 )]
+[node name="fancyfence2" parent="." index="93" instance=ExtResource( 7 )]
 transform = Transform( -0.026916, 0, 0.999638, 0, 1, 0, -0.999638, 0, -0.026916, -11.4253, 0.0317253, -4.95003 )
 
-[node name="fancyfence3" parent="." index="126" instance=ExtResource( 9 )]
+[node name="fancyfence3" parent="." index="94" instance=ExtResource( 7 )]
 transform = Transform( -0.026916, 0, 0.999638, 0, 1, 0, -0.999638, 0, -0.026916, -9.18968, 0.0317253, -1.18313 )
 
-[node name="fancyfence4" parent="." index="127" instance=ExtResource( 9 )]
+[node name="fancyfence4" parent="." index="95" instance=ExtResource( 7 )]
 transform = Transform( -0.026916, 0, 0.999638, 0, 1, 0, -0.999638, 0, -0.026916, -9.18968, 0.0317253, -4.95003 )
 
-[node name="fancyfence5" parent="." index="128" instance=ExtResource( 9 )]
+[node name="fancyfence5" parent="." index="96" instance=ExtResource( 7 )]
 transform = Transform( -0.026916, 0, 0.999638, 0, 1, 0, -0.999638, 0, -0.026916, -6.68014, 0.0317253, -1.18313 )
 
-[node name="fancyfence6" parent="." index="129" instance=ExtResource( 9 )]
+[node name="fancyfence6" parent="." index="97" instance=ExtResource( 7 )]
 transform = Transform( -0.026916, 0, 0.999638, 0, 1, 0, -0.999638, 0, -0.026916, -6.68014, 0.0317253, -4.95003 )
 
-[node name="wagon" parent="." index="130" instance=ExtResource( 10 )]
+[node name="wagon" parent="." index="98" instance=ExtResource( 8 )]
 transform = Transform( 0.00671553, 0, -0.511508, 0, 0.511552, 0, 0.511508, 0, 0.00671553, -14.4916, 0.148963, -0.377893 )
 
-[node name="wagon2" parent="." index="131" instance=ExtResource( 10 )]
+[node name="wagon2" parent="." index="99" instance=ExtResource( 8 )]
 transform = Transform( 0.5111, 0, -0.0215145, 0, 0.511552, 0, 0.0215145, 0, 0.5111, -6.81882, 0.148963, 13.9723 )
 
-[node name="wagon3" parent="." index="132" instance=ExtResource( 10 )]
+[node name="wagon3" parent="." index="100" instance=ExtResource( 8 )]
 transform = Transform( 0.135557, 0, 0.493265, 0, 0.511552, 0, -0.493265, 0, 0.135557, 22.279, 0.148963, 4.59974 )
 
-[node name="Scene Root" parent="." index="133" instance=ExtResource( 11 )]
+[node name="Scene Root" parent="." index="101" instance=ExtResource( 9 )]
 transform = Transform( 0.557149, 0.156994, 0.169518, -0.163588, 0.580549, 0, -0.163164, -0.0459767, 0.578846, -10.8395, -0.525023, 2.7439 )
 
-[node name="Scene Root2" parent="." index="134" instance=ExtResource( 11 )]
+[node name="Scene Root2" parent="." index="102" instance=ExtResource( 9 )]
 transform = Transform( 0.0986854, 0.0278077, 0.594379, -0.163588, 0.580549, 0, -0.5721, -0.161207, 0.102528, 1.16465, -0.525023, -4.285 )
 
-[node name="Scene Root3" parent="." index="135" instance=ExtResource( 12 )]
-transform = Transform( -0.997622, 0, 0.0689216, 0, 1, 0, -0.0689216, 0, -0.997622, 21.8752, -1.39287e-007, -0.229799 )
+[node name="Scene Root3" parent="." index="103" instance=ExtResource( 10 )]
+transform = Transform( -0.997622, 0, 0.0689216, 0, 1, 0, -0.0689216, 0, -0.997622, 21.8752, -0.455052, -1.69212 )
 
-[node name="easteregg" type="MeshInstance" parent="." index="136"]
+[node name="Cactus A" parent="." index="104" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8203, 0.429451, -6.77931 )
+
+[node name="Cactus A10" parent="." index="105" instance=ExtResource( 11 )]
+transform = Transform( 0.071152, 0, -0.997465, 0, 1, 0, 0.997465, 0, 0.071152, 11.606, 0.429453, 35.9327 )
+
+[node name="Cactus A24" parent="." index="106" instance=ExtResource( 11 )]
+transform = Transform( -0.94849, 0, 0.316806, 0, 1, 0, -0.316806, 0, -0.94849, -38.7715, 0.429453, 3.86265 )
+
+[node name="Cactus A2" parent="." index="107" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 36.4353, 0.429451, -15.5765 )
+
+[node name="Cactus A15" parent="." index="108" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 20.7804, 0.429453, 40.9076 )
+
+[node name="Cactus A20" parent="." index="109" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -46.8843, 0.429453, 10.4279 )
+
+[node name="Cactus A3" parent="." index="110" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 37.8085, 0.429451, -7.9964 )
+
+[node name="Cactus A11" parent="." index="111" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 13.3172, 0.429453, 42.8165 )
+
+[node name="Cactus A17" parent="." index="112" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -45.7852, 0.429453, 2.80317 )
+
+[node name="Cactus A4" parent="." index="113" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 29.5154, 0.429451, -18.8291 )
+
+[node name="Cactus A9" parent="." index="114" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 23.5324, 0.429453, 33.7738 )
+
+[node name="Cactus A22" parent="." index="115" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -41.3512, 0.429453, 15.7052 )
+
+[node name="Cactus A5" parent="." index="116" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 29.5154, 0.429451, -18.8291 )
+
+[node name="Cactus A13" parent="." index="117" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 23.5324, 0.429453, 33.7738 )
+
+[node name="Cactus A23" parent="." index="118" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -41.3512, 0.429453, 15.7052 )
+
+[node name="Cactus A6" parent="." index="119" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 17.5843, 0.429451, -27.1804 )
+
+[node name="Cactus A16" parent="." index="120" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 31.0136, 0.429453, 21.2787 )
+
+[node name="Cactus A21" parent="." index="121" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -32.6805, 0.429453, 27.4061 )
+
+[node name="Cactus A7" parent="." index="122" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 30.1455, 0.429451, -25.962 )
+
+[node name="Cactus A14" parent="." index="123" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 30.692, 0.429453, 33.8948 )
+
+[node name="Cactus A18" parent="." index="124" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -44.2087, 0.429453, 22.2711 )
+
+[node name="Cactus A8" parent="." index="125" instance=ExtResource( 11 )]
+transform = Transform( 0.515399, 0, -0.856951, 0, 1, 0, 0.856951, 0, 0.515399, 3.65035, 0.429452, -25.5736 )
+
+[node name="Cactus A12" parent="." index="126" instance=ExtResource( 11 )]
+transform = Transform( -0.818107, 0, -0.575066, 0, 1, 0, 0.575066, 0, -0.818107, 28.4194, 0.429454, 7.49436 )
+
+[node name="Cactus A19" parent="." index="127" instance=ExtResource( 11 )]
+transform = Transform( -0.217363, 0, 0.976091, 0, 1, 0, -0.976091, 0, -0.217363, -18.9552, 0.429454, 30.2964 )
+
+[node name="easteregg" type="MeshInstance" parent="." index="128"]
 transform = Transform( 0.775246, 0, 0.0810272, 0, 0.618812, 0, -0.754393, 0, 0.0832669, -0.226596, 5.90743, 5.19773 )
+layers = 2
 mesh = SubResource( 23 )
 material/0 = SubResource( 24 )
 
-[node name="sand" type="MeshInstance" parent="." index="137"]
-transform = Transform( 310.63, 0, 0, 0, 5.14598, 0, 0, 0, 310.63, 0, -0.222841, 0 )
+[node name="sand" type="MeshInstance" parent="." index="129"]
+transform = Transform( 310.63, 0, 0, 0, 5.14598, 0, 0, 0, 310.63, 0, -0.265218, 0 )
+layers = 2
 mesh = SubResource( 25 )
-material/0 = ExtResource( 14 )
+material/0 = ExtResource( 13 )
 
 [node name="StaticBody" type="StaticBody" parent="sand" index="0"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="sand/StaticBody" index="0"]
 shape = SubResource( 26 )

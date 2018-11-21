@@ -21,7 +21,7 @@ var CurrentStatus = Status[0]
 var Ammo = Global.Ammo
 var MaxAmmo = Global.MaxAmmo
 var Drunkeness = Global.Drunkeness
-var Cash = Global.Cash + 1000
+var Cash = Global.Cash
 
 const STAND = 0
 const CROUCH = 1
@@ -146,7 +146,7 @@ func _process_movement(delta):
 	var Down = Input.is_action_pressed("ui_down")
 	var Left = Input.is_action_pressed("ui_left")
 	var Right = Input.is_action_pressed("ui_right")
-	var Jump = Input.is_action_just_pressed("Jump")
+	var Jump = Input.is_action_pressed("Jump")
 	var Sprint = Input.is_action_pressed("Sprint")
 	var Aim = $Yaw/Camera.get_camera_transform().basis
 	
@@ -191,7 +191,7 @@ func _process_movement(delta):
 		CanChangeLastFloorHeight = true
 		Velocity -= Velocity.dot(Normal) * Normal
 		
-		if Jump: # Jump higher when sprinting
+		if Jump && Velocity.y < 20: # Jump higher when sprinting
 			get_node("jump"+str(randi()%2+1)).play()
 			if MovementState == SPRINT:
 				Velocity.y += JUMP * 1.1

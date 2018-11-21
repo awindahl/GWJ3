@@ -17,7 +17,6 @@ var CanFire = true
 export var DAMAGE = 20
 var BodyPos
 var BeenShot = false
-var InTheZone = true
 var pickup 
 var spawn
 var isDead = false
@@ -79,7 +78,7 @@ func _process(delta):
 		Velocity.x = hVel.x
 		Velocity.z = hVel.z
 
-	if !BeenShot && CanMove:
+	if !BeenShot && CanMove && !BodyPos:
 		Velocity = move_and_slide(Velocity, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAXSLOPEANGLE))
 		
 	if Health <= 0:

@@ -29,6 +29,7 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 223.0
 margin_bottom = 88.0
+rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 text = "Additional Content:
   opengameart.org
@@ -40,6 +41,7 @@ margin_left = 21.0
 margin_top = 74.0
 margin_right = 182.0
 margin_bottom = 148.0
+rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 text = "freemusicarchive.org
 		Lobo Loco
@@ -50,6 +52,7 @@ margin_left = 155.0
 margin_top = 20.0
 margin_right = 333.0
 margin_bottom = 126.0
+rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 text = "	freesound.org
 		rock-savage

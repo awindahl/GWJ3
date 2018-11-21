@@ -37,6 +37,7 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = 172.0
 margin_bottom = 111.0
+rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 text = "A man lies dead
 in the dust.
@@ -48,6 +49,7 @@ margin_left = 236.0
 margin_top = 52.0
 margin_right = 317.0
 margin_bottom = 94.0
+rect_clip_content = false
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0.545098, 0.137255, 1 )
 text = "You got $200"

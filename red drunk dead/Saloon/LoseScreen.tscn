@@ -14,6 +14,7 @@ margin_left = 7.0
 margin_top = 5.0
 margin_right = 233.0
 margin_bottom = 93.0
+rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 2 )
 text = "You've taken one too many bullets cowboy. 
 
@@ -25,6 +26,7 @@ margin_top = 44.0
 margin_right = 317.0
 margin_bottom = 90.0
 rect_pivot_offset = Vector2( 123, 15 )
+rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.627451, 0, 0, 1 )
 text = "You lost $10."

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/SaloonPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Player/crosshair2.png" type="Texture" id=2]
 [ext_resource path="res://Player/Arm.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Marlboro.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Marlboro.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -38,6 +39,14 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( -2.13444e-007, 90, 90 ), Vector3( 3.1491e-007, 82.7698, 82.7766 ), Vector3( -2.13444e-007, 90, 90 ), Vector3( -6.37231e-007, 97.5927, 97.3335 ), Vector3( -2.13444e-007, 90, 90 ) ]
 }
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 5 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00697231, 0.0135794, -0.00132084 )
@@ -101,16 +110,18 @@ margin_left = 267.0
 margin_top = 99.0
 margin_right = 320.0
 margin_bottom = 120.0
+rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 0.133333, 0.552941, 0.129412, 1 )
 text = "Cash"
 
 [node name="Item" type="RichTextLabel" parent="Hud"]
 margin_left = 196.0
-margin_top = 43.0
+margin_top = 56.0
 margin_right = 322.0
-margin_bottom = 88.0
-custom_fonts/normal_font = ExtResource( 4 )
+margin_bottom = 101.0
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 3 )
 
 [connection signal="timeout" from="GunCoolDown" to="." method="_on_GunCoolDown_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
